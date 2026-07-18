@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NZ Super + KiwiSaver Retirement Income Calculator 2026 | KiwiSums</title>
+<meta name="description" content="Estimate your combined weekly retirement income from NZ Superannuation and a KiwiSaver drawdown, using current 2026 NZ Super rates.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/nz-super-kiwisaver-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NZ Super + KiwiSaver Calculator — KiwiSums">
+<meta property="og:description" content="See your estimated combined weekly retirement income.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/nz-super-kiwisaver-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},{"@type":"ListItem","position":2,"name":"NZ Super + KiwiSaver Calculator","item":"https://www.kiwisums.co.nz/nz-super-kiwisaver-calculator.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much is NZ Superannuation per week?","acceptedAnswer":{"@type":"Answer","text":"From 1 April 2026, NZ Super after tax at the M tax code is $555.15 a week for a single person living alone, $512.45 a week for a single person sharing accommodation, and $854.08 a week combined for a couple (both qualifying). Rates adjust each April in line with wage growth."}},{"@type":"Question","name":"Is NZ Superannuation enough to live on by itself?","acceptedAnswer":{"@type":"Answer","text":"For many people, NZ Super alone covers only basic living costs, which is exactly why KiwiSaver was designed to supplement it. Whether Super alone is enough depends heavily on whether you own your home mortgage-free by retirement, since housing costs are usually the largest expense in any budget."}}]}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="ns_eyebrow">Earning · Retirement income</span>
+      <h1 style="margin-top:10px;" data-i18n="ns_h1">NZ Super + KiwiSaver calculator</h1>
+      <p class="lede" data-i18n="ns_lede">Combine NZ Superannuation with a KiwiSaver drawdown to estimate your total weekly retirement income.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field">
+          <label data-i18n="ns_label_status">Your situation</label>
+          <div class="seg" id="statusSeg">
+            <button type="button" data-v="alone" class="active" data-i18n="ns_seg_alone">Single, living alone</button>
+            <button type="button" data-v="sharing" data-i18n="ns_seg_sharing">Single, sharing</button>
+            <button type="button" data-v="couple" data-i18n="ns_seg_couple">Couple (combined)</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="balance" data-i18n="ns_label_balance">Projected KiwiSaver balance at retirement</label>
+          <input type="number" id="balance" value="200000" min="0" step="5000">
+        </div>
+        <div class="field">
+          <label for="drawdownYears"><span data-i18n="ns_label_drawdownyears">Draw down over</span> <span class="hint" data-i18n="ns_hint_years">years</span></label>
+          <input type="number" id="drawdownYears" value="20" min="1" max="40" step="1">
+        </div>
+        <div class="callout" data-i18n="ns_callout">
+          This spreads your KiwiSaver balance evenly with no further investment growth assumed during drawdown — a simple, conservative approach. Real strategies (staying invested, annuities, variable withdrawals) can produce different results.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" data-i18n="ns_receipt_label">Estimated total weekly income</div>
+          <div class="receipt-total" id="outTotalWeekly">$0</div>
+
+          <div class="receipt-lines">
+            <div class="receipt-line"><span class="k" data-i18n="ns_line_super">NZ Super / week</span><span class="v" id="outSuper">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="ns_line_kiwisaver">KiwiSaver drawdown / week</span><span class="v" id="outKiwisaver">$0</span></div>
+          </div>
+          <p class="receipt-note" data-i18n="ns_receipt_note">NZ Super rates shown are after tax at the M tax code, effective from 1 April 2026, and adjust each April. KiwiSaver drawdown ignores inflation and any investment returns during retirement, so treat it as a conservative floor.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/kiwisaver-calculator.html" data-i18n="ns_next_btn">Project your KiwiSaver balance →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="ns_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="ns_insight_placeholder">See how much of your weekly income comes from NZ Super versus your own KiwiSaver savings.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="ns_compare_h2">Compare drawdown periods</h2>
+      <p class="compare-intro" data-i18n="ns_compare_intro">Spreading your KiwiSaver balance over fewer or more years changes your weekly income — see the trade-off.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="m_compare_col_scenario">Scenario</th>
+              <th data-i18n="ns_compare_col_years">Drawdown period</th>
+              <th data-i18n="ns_compare_col_weekly">Total weekly income</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="ns_compare_row_shorter">Faster drawdown</td>
+              <td id="cmpShorterYears">15 years</td>
+              <td id="cmpShorterWeekly">$0</td>
+            </tr>
+            <tr class="compare-row-current">
+              <td data-i18n="m_compare_row_current">Current</td>
+              <td id="cmpCurrentYears">20 years</td>
+              <td id="cmpCurrentWeekly">$0</td>
+            </tr>
+            <tr>
+              <td data-i18n="ns_compare_row_longer">Slower drawdown</td>
+              <td id="cmpLongerYears">25 years</td>
+              <td id="cmpLongerWeekly">$0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="ns_compare_note">A shorter drawdown period gives you more per week now but risks running out sooner if you live longer than planned — this is the core trade-off of a simple even-spread approach.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="ns_assumptions_source_value">Work and Income NZ Superannuation payment rates, effective 1 April 2026.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="ns_assumptions_effective_value">1 April 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n="ns_assumptions_method_value">NZ Super rate is a fixed weekly amount based on your living situation. KiwiSaver drawdown simply divides your balance evenly across the weeks in your chosen drawdown period, with no growth or inflation applied.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="ns_assumptions_included_value">NZ Super at the M tax code rate for your living situation, plus a simple even drawdown of your projected KiwiSaver balance.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="ns_assumptions_excluded_value">Investment returns or inflation during retirement, other tax codes, and any other retirement income sources like rental property or other savings.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="ns_h2_1">NZ Super rates and how they work</h2>
+      <p data-i18n-html="ns_p1">NZ Superannuation is a universal payment available from age 65 to everyone who meets the residency requirements, regardless of income or assets, funded from general taxation rather than a dedicated fund. Rates are set as a percentage of the average wage and adjusted each April — from 1 April 2026, after-tax rates at the M tax code are $555.15 a week for someone living alone, $512.45 a week sharing accommodation, and $854.08 a week combined for a qualifying couple.</p>
+      <p data-i18n="ns_p2">KiwiSaver is designed to top up NZ Super, not replace it — most people drawing only NZ Super find it covers basic living costs at best, which is why the size of your KiwiSaver balance at retirement makes such a large difference to your standard of living once you stop working.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="ns_faq_q1">How much is NZ Super per week?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="ns_faq_a1">From 1 April 2026, after tax at the M tax code: $555.15/week living alone, $512.45/week sharing, $854.08/week combined for a couple. Rates adjust each April with wage growth.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="ns_faq_q2">Is NZ Super enough to live on by itself?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="ns_faq_a2">For many people it covers only basic living costs, which is why KiwiSaver was designed to supplement it. Whether it's enough depends heavily on whether you own your home mortgage-free by retirement, since housing is usually the largest expense.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/kiwisaver-calculator.html" data-i18n="rl_kiwisaver">KiwiSaver calculator</a>
+        <a href="/take-home-pay-calculator.html" data-i18n="rl_takehome">Take-home pay calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div><div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const statusSeg = document.getElementById('statusSeg');
+  const balance = document.getElementById('balance');
+  const drawdownYears = document.getElementById('drawdownYears');
+  let status = 'alone';
+
+  const rates = { alone: 555.15, sharing: 512.45, couple: 854.08 };
+
+  statusSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    statusSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    status = btn.dataset.v;
+    calc();
+  });
+
+  [balance, drawdownYears].forEach(el=>el.addEventListener('input', calc));
+
+  const shareBtn = document.getElementById('shareBtn');
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({ status, balance: Math.round(num(balance.value,0)), years: Math.round(num(drawdownYears.value,20)) });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('status') && rates[p.get('status')]){
+      status = p.get('status');
+      statusSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===status));
+    }
+    if(p.has('balance')) balance.value = p.get('balance');
+    if(p.has('years')) drawdownYears.value = p.get('years');
+  }
+
+  function calc(){
+    const bal = num(balance.value,0);
+    const years = Math.max(1, num(drawdownYears.value,20));
+    const superWeekly = rates[status];
+    const ksWeekly = bal / (years*52);
+    const total = superWeekly + ksWeekly;
+
+    document.getElementById('outTotalWeekly').textContent = fmt(total);
+    document.getElementById('outSuper').textContent = fmt(superWeekly);
+    document.getElementById('outKiwisaver').textContent = fmt(ksWeekly);
+
+    // ---- Insight panel ----
+    const insightEl = document.getElementById('insightText');
+    const superPct = total>0 ? (superWeekly/total*100) : 0;
+    insightEl.innerHTML = t('ns_insight_template')
+      .replace('{total}', fmt(total))
+      .replace('{superpct}', superPct.toFixed(0))
+      .replace('{kiwisaver}', fmt(ksWeekly));
+
+    // ---- Scenario comparison ----
+    const shorterYears = Math.max(1, years-5);
+    const shorterKs = bal / (shorterYears*52);
+    document.getElementById('cmpShorterYears').textContent = shorterYears + ' ' + t('sg_years');
+    document.getElementById('cmpShorterWeekly').textContent = fmt(superWeekly + shorterKs);
+
+    document.getElementById('cmpCurrentYears').textContent = years + ' ' + t('sg_years');
+    document.getElementById('cmpCurrentWeekly').textContent = fmt(total);
+
+    const longerYears = years+5;
+    const longerKs = bal / (longerYears*52);
+    document.getElementById('cmpLongerYears').textContent = longerYears + ' ' + t('sg_years');
+    document.getElementById('cmpLongerWeekly').textContent = fmt(superWeekly + longerKs);
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', calc);
+})();
+</script>
+</body>
+</html>

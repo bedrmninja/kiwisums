@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Feed-In / Export Earnings Calculator NZ 2026 | KiwiSums</title>
+<meta name="description" content="Estimate how much you could earn from exporting surplus solar power back to the grid in NZ, based on your system size and retailer buy-back rate.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/solar-export-earnings-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Solar Export Earnings Calculator NZ | KiwiSums">
+<meta property="og:description" content="See what your exported solar power could earn you.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/solar-export-earnings-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},{"@type":"ListItem","position":2,"name":"Solar Export Earnings Calculator","item":"https://www.kiwisums.co.nz/solar-export-earnings-calculator.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a solar buy-back rate in NZ?","acceptedAnswer":{"@type":"Answer","text":"It's the amount your electricity retailer pays you per kWh for surplus solar power you export to the grid. NZ buy-back rates in 2026 typically range from 7 to 17 cents per kWh depending on the retailer, with Octopus Energy and Contact Energy commonly cited as offering some of the higher rates. It's worth shopping around since rates vary meaningfully between retailers."}},{"@type":"Question","name":"Should I try to maximise exports or self-consumption?","acceptedAnswer":{"@type":"Answer","text":"Self-consumption almost always wins financially. Exported power earns the buy-back rate (7-17c/kWh), while power you use yourself avoids paying the full retail rate (around 33c/kWh) — two to four times more valuable per kWh. Export earnings are a genuine bonus for power you can't use yourself, but they shouldn't be the primary goal when sizing a system or scheduling appliance use."}}]}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="se_eyebrow">Solar · Export earnings</span>
+      <h1 style="margin-top:10px;" data-i18n="se_h1">Solar export earnings calculator</h1>
+      <p class="lede" data-i18n="se_lede">See what your surplus solar power could earn you in buy-back credits from your electricity retailer.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field">
+          <label for="sizeKw" data-i18n="se_label_size">System size (kW)</label>
+          <input type="number" id="sizeKw" value="6.6" min="0" step="0.1">
+        </div>
+        <div class="field">
+          <label for="yieldKwh"><span data-i18n="se_label_yield">Generation yield</span> <span class="hint" data-i18n="se_hint_yield">kWh per kW per year</span></label>
+          <input type="number" id="yieldKwh" value="1300" min="0" step="50">
+        </div>
+        <div class="field">
+          <label for="selfConsumption"><span data-i18n="se_label_selfconsumption">Self-consumption</span> <span class="hint" id="scHint">65%</span></label>
+          <input type="range" id="selfConsumption" min="20" max="95" step="5" value="65">
+        </div>
+        <div class="field">
+          <label for="buybackPrice" data-i18n="se_label_buyback">Buy-back rate ($/kWh)</label>
+          <input type="number" id="buybackPrice" value="0.10" min="0" step="0.01">
+        </div>
+        <div class="callout" data-i18n="se_callout">
+          Buy-back rates vary a lot between retailers — commonly 7-17c/kWh in 2026. It's worth comparing plans once your system is installed rather than accepting your current retailer's default rate.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="seg" id="earningsPeriodSeg" style="max-width:200px; margin-bottom:16px;">
+            <button type="button" data-v="annual" class="active" data-i18n="ss_seg_annual">Annual</button>
+            <button type="button" data-v="monthly" data-i18n="ss_seg_monthly">Monthly</button>
+          </div>
+          <div class="receipt-total-label" id="earningsLabel" data-i18n="se_receipt_label">Annual export earnings</div>
+          <div class="receipt-total" id="outEarnings">$0</div>
+
+          <div class="receipt-lines">
+            <div class="receipt-line"><span class="k" data-i18n="se_line_exported">Exported power</span><span class="v" id="outExported">0 kWh</span></div>
+            <div class="receipt-line"><span class="k" id="secondaryLineLabel" data-i18n="se_line_monthly">Average per month</span><span class="v" id="outMonthly">$0</span></div>
+          </div>
+          <p class="receipt-note" data-i18n="se_receipt_note">Export earnings are a bonus, not the main event — self-consumed power is worth 2-4x more per kWh than exported power at typical NZ retail vs buy-back rates.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/heat-pump-running-cost-calculator.html" data-i18n="se_next_btn">Heating your home too? Check heat pump running costs →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="se_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="se_insight_placeholder">See what that same exported power would have been worth if you'd used it yourself instead.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="se_compare_h2">Compare retailer buy-back rates</h2>
+      <p class="compare-intro" data-i18n="se_compare_intro">Buy-back rates vary a lot between retailers — see how much difference shopping around could make.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="se_compare_col_scenario">Scenario</th>
+              <th data-i18n="se_compare_col_rate">Buy-back rate</th>
+              <th data-i18n="se_compare_col_earnings">Annual earnings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="se_compare_row_low">Lower-rate retailer</td>
+              <td>7c/kWh</td>
+              <td id="cmpLowEarnings">$0</td>
+            </tr>
+            <tr class="compare-row-current">
+              <td data-i18n="m_compare_row_current">Current</td>
+              <td id="cmpCurrentRate">10c/kWh</td>
+              <td id="cmpCurrentEarnings">$0</td>
+            </tr>
+            <tr>
+              <td data-i18n="se_compare_row_high">Higher-rate retailer</td>
+              <td>17c/kWh</td>
+              <td id="cmpHighEarnings">$0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="se_compare_note">The gap between the lowest and highest buy-back rates on offer can be worth checking, especially if you export a large share of your generation.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="se_assumptions_source_value">Typical NZ solar buy-back rates advertised by major electricity retailers.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n-html="se_assumptions_method_value">Exported power = generation × (1 − self-consumption %), where generation = system size × yield. Earnings = exported power × buy-back rate.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="se_assumptions_included_value">Estimated buy-back earnings from exported solar power only.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="se_assumptions_excluded_value">Bill savings from self-consumed power — see the solar savings calculator for the bigger picture, since self-consumption is usually worth far more than exports.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="se_h2_1">Export earnings are a bonus, not the main event</h2>
+      <p data-i18n="se_p1">It's tempting to think of solar export as a mini income stream, and it genuinely is one — but it's worth keeping in perspective. At a typical 10c/kWh buy-back rate against a 33c/kWh retail rate, every kWh you export earns you roughly a third of what the same kWh would have saved you if used directly. Shopping around for a better buy-back rate is worthwhile once you've got a system installed, since the gap between retailers can be meaningful, but it shouldn't be the deciding factor in choosing a system size or an installer.</p>
+      <p data-i18n="se_p2">Some retailers bundle buy-back rates into wider "solar plans" with different fixed charges or time-of-use pricing — it pays to compare the full plan, not just the headline buy-back number, since a slightly lower buy-back rate on an otherwise cheaper plan can still come out ahead overall.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="se_faq_q1">What is a solar buy-back rate in NZ?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="se_faq_a1">The amount your retailer pays per kWh of surplus solar power you export. NZ rates in 2026 typically range 7-17c/kWh, varying by retailer — it's worth shopping around after installation.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="se_faq_q2">Should I maximise exports or self-consumption?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="se_faq_a2">Self-consumption almost always wins — it avoids the full retail rate (~33c/kWh) versus earning only the buy-back rate (7-17c/kWh), 2-4x more valuable per kWh. Export earnings are a bonus, not the primary goal.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/solar-savings-calculator.html" data-i18n="rl_solarsavings">Solar savings calculator</a>
+        <a href="/solar-battery-calculator.html" data-i18n="rl_solarbattery">Solar battery calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div>
+    <div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const sizeKw = document.getElementById('sizeKw');
+  const yieldKwh = document.getElementById('yieldKwh');
+  const selfConsumption = document.getElementById('selfConsumption');
+  const scHint = document.getElementById('scHint');
+  const buybackPrice = document.getElementById('buybackPrice');
+  const shareBtn = document.getElementById('shareBtn');
+  const earningsPeriodSeg = document.getElementById('earningsPeriodSeg');
+  const earningsLabel = document.getElementById('earningsLabel');
+  const secondaryLineLabel = document.getElementById('secondaryLineLabel');
+  let earningsPeriod = 'annual';
+
+  earningsPeriodSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    earningsPeriodSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    earningsPeriod = btn.dataset.v;
+    calc();
+  });
+
+  [sizeKw, yieldKwh, selfConsumption, buybackPrice].forEach(el=>el.addEventListener('input', calc));
+
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({
+      size: num(sizeKw.value,6.6), yield: num(yieldKwh.value,1300), sc: num(selfConsumption.value,65), buyback: num(buybackPrice.value,0.10), period: earningsPeriod,
+    });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('size')) sizeKw.value = p.get('size');
+    if(p.has('yield')) yieldKwh.value = p.get('yield');
+    if(p.has('sc')) selfConsumption.value = p.get('sc');
+    if(p.has('buyback')) buybackPrice.value = p.get('buyback');
+    if(p.has('period') && (p.get('period')==='annual' || p.get('period')==='monthly')){
+      earningsPeriod = p.get('period');
+      earningsPeriodSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===earningsPeriod));
+    }
+  }
+
+  function calc(){
+    const size = num(sizeKw.value, 0);
+    const yld = num(yieldKwh.value, 1300);
+    const sc = num(selfConsumption.value, 65);
+    scHint.textContent = sc + '%';
+    const buyback = num(buybackPrice.value, 0.10);
+
+    const generation = size * yld;
+    const exported = generation * (1 - sc/100);
+    const earnings = exported * buyback;
+
+    const monthly = earningsPeriod === 'monthly';
+    document.getElementById('outEarnings').textContent = fmt(monthly ? earnings/12 : earnings);
+    document.getElementById('outExported').textContent = Math.round(monthly ? exported/12 : exported).toLocaleString() + ' kWh';
+    earningsLabel.textContent = monthly ? t('se_receipt_label_monthly') : t('se_receipt_label');
+    secondaryLineLabel.textContent = monthly ? t('se_line_annualtotal') : t('se_line_monthly');
+    document.getElementById('outMonthly').textContent = monthly ? fmt(earnings) : fmt(earnings/12);
+
+    // ---- Insight panel ----
+    const insightEl = document.getElementById('insightText');
+    const retailValueIfUsed = exported * 0.33;
+    const multiple = earnings>0 ? (retailValueIfUsed/earnings) : 0;
+    insightEl.innerHTML = t('se_insight_template')
+      .replace('{earnings}', fmt(earnings))
+      .replace('{retailvalue}', fmt(retailValueIfUsed))
+      .replace('{multiple}', multiple.toFixed(1));
+
+    // ---- Scenario comparison ----
+    document.getElementById('cmpLowEarnings').textContent = fmt(exported*0.07);
+    document.getElementById('cmpCurrentRate').textContent = (buyback*100).toFixed(0)+'c/kWh';
+    document.getElementById('cmpCurrentEarnings').textContent = fmt(earnings);
+    document.getElementById('cmpHighEarnings').textContent = fmt(exported*0.17);
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', calc);
+})();
+</script>
+</body>
+</html>

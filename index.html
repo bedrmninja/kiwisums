@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KiwiSums — Free NZ Money Calculators (Mortgage, Car, Budget)</title>
+<meta name="description" content="Free, plain-English calculators built for New Zealand: mortgage repayments, how much you can borrow, car finance, car running costs and monthly budgeting — using current NZ rates.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KiwiSums — Free NZ Money Calculators">
+<meta property="og:description" content="Mortgage, car and budgeting calculators built around real New Zealand numbers.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/">
+<meta property="og:locale" content="en_NZ">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "KiwiSums",
+  "url": "https://www.kiwisums.co.nz/",
+  "description": "Free New Zealand money calculators for mortgages, cars and everyday budgeting.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.kiwisums.co.nz/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Google AdSense: uncomment once your site is approved and you have a publisher ID.
+     Replace ca-pub-XXXXXXXXXXXXXXXX with your real ID. See README-ADS.md for setup steps.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-flex">
+      <div class="hero-copy">
+        <span class="eyebrow" data-i18n="home_eyebrow">Built for New Zealand</span>
+        <h1 data-i18n-html="home_h1">Financial calculations,<br>made simple.</h1>
+        <p class="lede" data-i18n="home_lede">Compare mortgages, estimate KiwiSaver growth, calculate loans, GST, tax, savings and more with free New Zealand financial calculators.</p>
+        <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn" href="/mortgage-payment-calculator.html" data-i18n="home_btn_start">Start with mortgage repayments</a>
+          <a class="btn btn-ghost" href="#calculators" data-i18n="home_btn_seeall">See all calculators</a>
+        </div>
+      </div>
+      <img class="summy-hero" src="/images/summy_waving.png?v=2" alt="Summy the KiwiSums mascot waving hello">
+    </div>
+  </section>
+
+  <section class="section" id="calculators">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="home_eyebrow2">Twenty-nine calculators, one place</span>
+      <h2 style="margin-top:10px;" data-i18n="home_h2">Pick a sum</h2>
+      <div class="grid grid-3" style="margin-top:22px;">
+
+        <a class="calc-card" href="/mortgage-payment-calculator.html" data-cat="housing">
+          <span class="tag" data-i18n="tag_housing">Housing</span>
+          <h3 data-i18n="home_card1_title">Mortgage payment calculator</h3>
+          <p data-i18n="home_card1_desc">Work out weekly, fortnightly or monthly repayments on a home loan at today's NZ interest rates.</p>
+          <span class="go" data-i18n="home_card1_cta">Calculate repayments →</span>
+        </a>
+
+        <a class="calc-card" href="/how-much-can-i-borrow-calculator.html" data-cat="housing">
+          <span class="tag" data-i18n="tag_housing">Housing</span>
+          <h3 data-i18n="home_card2_title">How much can I borrow?</h3>
+          <p data-i18n="home_card2_desc">See your likely mortgage borrowing power under the RBNZ's DTI, LVR and serviceability rules.</p>
+          <span class="go" data-i18n="home_card2_cta">Estimate borrowing power →</span>
+        </a>
+
+        <a class="calc-card" href="/monthly-budget-calculator.html" data-cat="spending">
+          <span class="tag" data-i18n="tag_spending">Spending</span>
+          <h3 data-i18n="home_card3_title">Monthly spending calculator</h3>
+          <p data-i18n="home_card3_desc">Add up your income and everyday costs, and see how your spending compares to the average NZ household.</p>
+          <span class="go" data-i18n="home_card3_cta">Build your budget →</span>
+        </a>
+
+        <a class="calc-card" href="/car-finance-calculator.html" data-cat="car">
+          <span class="tag" data-i18n="tag_car">Motoring</span>
+          <h3 data-i18n="home_card4_title">Car finance calculator</h3>
+          <p data-i18n="home_card4_desc">Estimate loan repayments for a new or used car, including optional balloon payments.</p>
+          <span class="go" data-i18n="home_card4_cta">Calculate car loan →</span>
+        </a>
+
+        <a class="calc-card" href="/car-running-cost-calculator.html" data-cat="car">
+          <span class="tag" data-i18n="tag_car">Motoring</span>
+          <h3 data-i18n="home_card5_title">Car running cost calculator</h3>
+          <p data-i18n="home_card5_desc">Fuel, rego, WOF, insurance, servicing and RUC — the true weekly cost of owning your car.</p>
+          <span class="go" data-i18n="home_card5_cta">Work out running costs →</span>
+        </a>
+
+        <!-- Sponsored slot: replace with a real advertiser's creative, heading, and link when available. -->
+        <div class="calc-card-sponsored">
+          <span class="tag-sponsored" data-i18n="common_sponsored">Sponsored</span>
+          <h3 data-i18n="home_sponsored_title">This spot is reserved</h3>
+          <p data-i18n="home_sponsored_desc">A sponsored placement could sit here. It's clearly labelled, and sponsored content never changes what any calculator on this site tells you.</p>
+          <span class="go" data-i18n="home_sponsored_cta">Advertising enquiries →</span>
+        </div>
+
+        <a class="calc-card" href="/take-home-pay-calculator.html" data-cat="income">
+          <span class="tag" data-i18n="tag_income">Earning</span>
+          <h3 data-i18n="home_card6_title">Take-home pay (PAYE) calculator</h3>
+          <p data-i18n="home_card6_desc">See your net pay after tax, ACC levy, KiwiSaver and student loan repayments.</p>
+          <span class="go" data-i18n="home_card6_cta">Calculate take-home pay →</span>
+        </a>
+
+        <a class="calc-card" href="/gst-calculator.html" data-cat="spending">
+          <span class="tag" data-i18n="tag_spending">Spending</span>
+          <h3 data-i18n="home_card7_title">GST calculator</h3>
+          <p data-i18n="home_card7_desc">Add or remove 15% GST from any amount instantly, the IRD-prescribed way.</p>
+          <span class="go" data-i18n="home_card7_cta">Calculate GST →</span>
+        </a>
+
+        <a class="calc-card" href="/credit-card-payoff-calculator.html" data-cat="spending">
+          <span class="tag" data-i18n="tag_spending">Spending</span>
+          <h3 data-i18n="home_card8_title">Credit card payoff calculator</h3>
+          <p data-i18n="home_card8_desc">See how long it'll take to clear your balance and what it costs in interest.</p>
+          <span class="go" data-i18n="home_card8_cta">Calculate payoff time →</span>
+        </a>
+
+        <a class="calc-card" href="/kiwisaver-calculator.html" data-cat="income">
+          <span class="tag" data-i18n="tag_income">Earning</span>
+          <h3 data-i18n="home_card9_title">KiwiSaver calculator</h3>
+          <p data-i18n="home_card9_desc">Project your KiwiSaver balance at retirement from contributions and growth.</p>
+          <span class="go" data-i18n="home_card9_cta">Project my balance →</span>
+        </a>
+
+        <a class="calc-card" href="/rent-vs-buy-calculator.html" data-cat="housing">
+          <span class="tag" data-i18n="tag_housing">Housing</span>
+          <h3 data-i18n="home_card10_title">Rent vs buy calculator</h3>
+          <p data-i18n="home_card10_desc">See whether renting and investing or buying builds more wealth over time.</p>
+          <span class="go" data-i18n="home_card10_cta">Compare renting and buying →</span>
+        </a>
+
+        <a class="calc-card" href="/car-depreciation-calculator.html" data-cat="car">
+          <span class="tag" data-i18n="tag_car">Motoring</span>
+          <h3 data-i18n="home_card11_title">Car depreciation calculator</h3>
+          <p data-i18n="home_card11_desc">Estimate what your car will be worth in a few years.</p>
+          <span class="go" data-i18n="home_card11_cta">Estimate depreciation →</span>
+        </a>
+
+        <a class="calc-card" href="/savings-goal-calculator.html" data-cat="spending">
+          <span class="tag" data-i18n="tag_spending">Spending</span>
+          <h3 data-i18n="home_card12_title">Savings goal calculator</h3>
+          <p data-i18n="home_card12_desc">See how many months it'll take to reach your savings target.</p>
+          <span class="go" data-i18n="home_card12_cta">Plan my savings →</span>
+        </a>
+
+        <a class="calc-card" href="/contractor-vs-employee-calculator.html" data-cat="income">
+          <span class="tag" data-i18n="tag_income">Earning</span>
+          <h3 data-i18n="home_card13_title">Contractor vs employee calculator</h3>
+          <p data-i18n="home_card13_desc">Compare take-home pay as an employee vs a self-employed contractor.</p>
+          <span class="go" data-i18n="home_card13_cta">Compare take-home pay →</span>
+        </a>
+
+        <a class="calc-card" href="/home-buying-costs-calculator.html" data-cat="housing">
+          <span class="tag" data-i18n="tag_housing">Housing</span>
+          <h3 data-i18n="home_card14_title">Home buying costs calculator</h3>
+          <p data-i18n="home_card14_desc">See the true cash you'll need beyond your deposit to buy a home.</p>
+          <span class="go" data-i18n="home_card14_cta">Estimate buying costs →</span>
+        </a>
+
+        <a class="calc-card" href="/refix-refinance-calculator.html" data-cat="housing">
+          <span class="tag" data-i18n="tag_housing">Housing</span>
+          <h3 data-i18n="home_card15_title">Refix / refinance calculator</h3>
+          <p data-i18n="home_card15_desc">See if breaking your fixed mortgage early to refix lower is worth it.</p>
+          <span class="go" data-i18n="home_card15_cta">Check if refixing pays off →</span>
+        </a>
+
+        <a class="calc-card" href="/ev-vs-petrol-calculator.html" data-cat="car">
+          <span class="tag" data-i18n="tag_car">Motoring</span>
+          <h3 data-i18n="home_card16_title">EV vs petrol calculator</h3>
+          <p data-i18n="home_card16_desc">Compare total cost of ownership between an EV and a petrol car.</p>
+          <span class="go" data-i18n="home_card16_cta">Compare EV vs petrol →</span>
+        </a>
+
+        <a class="calc-card" href="/car-affordability-calculator.html" data-cat="car">
+          <span class="tag" data-i18n="tag_car">Motoring</span>
+          <h3 data-i18n="home_card17_title">Car affordability calculator</h3>
+          <p data-i18n="home_card17_desc">See a responsible spending ceiling for your next car, based on income.</p>
+          <span class="go" data-i18n="home_card17_cta">Check what I can afford →</span>
+        </a>
+
+        <a class="calc-card" href="/debt-payoff-order-calculator.html" data-cat="spending">
+          <span class="tag" data-i18n="tag_spending">Spending</span>
+          <h3 data-i18n="home_card18_title">Debt payoff order calculator</h3>
+          <p data-i18n="home_card18_desc">Compare snowball vs avalanche methods for paying off multiple debts.</p>
+          <span class="go" data-i18n="home_card18_cta">Compare payoff methods →</span>
+        </a>
+
+        <a class="calc-card" href="/bnpl-cost-calculator.html" data-cat="spending">
+          <span class="tag" data-i18n="tag_spending">Spending</span>
+          <h3 data-i18n="home_card19_title">Buy Now Pay Later cost calculator</h3>
+          <p data-i18n="home_card19_desc">See what Afterpay or Laybuy really costs if you miss a payment.</p>
+          <span class="go" data-i18n="home_card19_cta">Calculate BNPL cost →</span>
+        </a>
+
+        <a class="calc-card" href="/pay-rise-calculator.html" data-cat="income">
+          <span class="tag" data-i18n="tag_income">Earning</span>
+          <h3 data-i18n="home_card20_title">Pay rise calculator</h3>
+          <p data-i18n="home_card20_desc">See what a raise actually adds to your take-home pay after tax.</p>
+          <span class="go" data-i18n="home_card20_cta">Calculate my real raise →</span>
+        </a>
+
+        <a class="calc-card" href="/nz-super-kiwisaver-calculator.html" data-cat="income">
+          <span class="tag" data-i18n="tag_income">Earning</span>
+          <h3 data-i18n="home_card21_title">NZ Super + KiwiSaver calculator</h3>
+          <p data-i18n="home_card21_desc">Estimate your combined weekly retirement income.</p>
+          <span class="go" data-i18n="home_card21_cta">Estimate retirement income →</span>
+        </a>
+
+        <a class="calc-card" href="/solar-install-cost-calculator.html" data-cat="solar">
+          <span class="tag" data-i18n="tag_solar">Solar</span>
+          <h3 data-i18n="home_card22_title">Solar install cost calculator</h3>
+          <p data-i18n="home_card22_desc">See what a solar system actually costs installed, by size.</p>
+          <span class="go" data-i18n="home_card22_cta">Estimate install cost →</span>
+        </a>
+
+        <a class="calc-card" href="/solar-sizing-calculator.html" data-cat="solar">
+          <span class="tag" data-i18n="tag_solar">Solar</span>
+          <h3 data-i18n="home_card23_title">Solar system sizing calculator</h3>
+          <p data-i18n="home_card23_desc">Work out how many kW of solar your household needs.</p>
+          <span class="go" data-i18n="home_card23_cta">Size my system →</span>
+        </a>
+
+        <a class="calc-card" href="/solar-savings-calculator.html" data-cat="solar">
+          <span class="tag" data-i18n="tag_solar">Solar</span>
+          <h3 data-i18n="home_card24_title">Solar savings calculator</h3>
+          <p data-i18n="home_card24_desc">See how much solar could save on your power bill each year.</p>
+          <span class="go" data-i18n="home_card24_cta">Calculate my savings →</span>
+        </a>
+
+        <a class="calc-card" href="/solar-payback-calculator.html" data-cat="solar">
+          <span class="tag" data-i18n="tag_solar">Solar</span>
+          <h3 data-i18n="home_card25_title">Solar payback period calculator</h3>
+          <p data-i18n="home_card25_desc">See how many years until your solar system pays for itself.</p>
+          <span class="go" data-i18n="home_card25_cta">Calculate payback period →</span>
+        </a>
+
+        <a class="calc-card" href="/solar-home-value-calculator.html" data-cat="solar">
+          <span class="tag" data-i18n="tag_solar">Solar</span>
+          <h3 data-i18n="home_card26_title">Solar & home value calculator</h3>
+          <p data-i18n="home_card26_desc">See how much solar could add to your home's value.</p>
+          <span class="go" data-i18n="home_card26_cta">Estimate value uplift →</span>
+        </a>
+
+        <a class="calc-card" href="/solar-battery-calculator.html" data-cat="solar">
+          <span class="tag" data-i18n="tag_solar">Solar</span>
+          <h3 data-i18n="home_card27_title">Solar battery storage calculator</h3>
+          <p data-i18n="home_card27_desc">See if adding a home battery makes financial sense.</p>
+          <span class="go" data-i18n="home_card27_cta">Check battery payback →</span>
+        </a>
+
+        <a class="calc-card" href="/solar-export-earnings-calculator.html" data-cat="solar">
+          <span class="tag" data-i18n="tag_solar">Solar</span>
+          <h3 data-i18n="home_card28_title">Solar export earnings calculator</h3>
+          <p data-i18n="home_card28_desc">See what your surplus solar power could earn you.</p>
+          <span class="go" data-i18n="home_card28_cta">Estimate export earnings →</span>
+        </a>
+
+        <a class="calc-card" href="/heat-pump-running-cost-calculator.html" data-cat="solar">
+          <span class="tag" data-i18n="tag_solar">Solar</span>
+          <h3 data-i18n="home_card29_title">Heat pump running cost calculator</h3>
+          <p data-i18n="home_card29_desc">Compare heat pump running costs vs a standard electric heater.</p>
+          <span class="go" data-i18n="home_card29_cta">Compare heating costs →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="callout" data-i18n-html="home_callout">
+        <strong>Why the numbers here are different:</strong> most calculators online use generic, often stale defaults. Ours are checked against current Reserve Bank of New Zealand settings, major bank advertised rates, Waka Kotahi (NZTA) fees, IRD tax thresholds and Stats NZ household spending data — and every default is clearly labelled so you know what's built in and what you should change for your own situation.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;">
+        <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums
+      </a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div>
+      <h4 data-i18n="footer_housing">Housing</h4>
+      <ul>
+        <li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li>
+        <li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li>
+        <li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li>
+        <li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li>
+        <li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="footer_car">Motoring</h4>
+      <ul>
+        <li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li>
+        <li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li>
+        <li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li>
+        <li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li>
+        <li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="navcat_solar">Solar</h4>
+      <ul>
+        <li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li>
+        <li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li>
+        <li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li>
+        <li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li>
+        <li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li>
+        <li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li>
+        <li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li>
+        <li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="footer_money">Money</h4>
+      <ul>
+        <li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li>
+        <li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li>
+        <li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li>
+        <li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li>
+        <li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li>
+        <li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li>
+        <li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li>
+        <li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li>
+        <li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li>
+        <li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li>
+        <li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+</body>
+</html>

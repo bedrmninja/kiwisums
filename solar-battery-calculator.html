@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Battery Storage Calculator NZ 2026 — Is a Battery Worth It? | KiwiSums</title>
+<meta name="description" content="Work out whether adding home battery storage to your NZ solar system makes financial sense, and how long it takes to pay for itself.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/solar-battery-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Solar Battery Calculator NZ | KiwiSums">
+<meta property="og:description" content="See if a home battery is worth adding to your solar system.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/solar-battery-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},{"@type":"ListItem","position":2,"name":"Solar Battery Calculator","item":"https://www.kiwisums.co.nz/solar-battery-calculator.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a home battery cost in NZ?","acceptedAnswer":{"@type":"Answer","text":"A 10kWh home battery system typically costs $12,000 to $20,000 fully installed in NZ in 2026, depending on the brand. Adding a battery to a new solar install typically costs somewhat less than retrofitting one later, since it's a single truck roll and commissioning visit rather than two."}},{"@type":"Question","name":"Is a solar battery worth it financially in NZ?","acceptedAnswer":{"@type":"Answer","text":"On its own, often marginal — standalone battery payback commonly runs 12-18 years given NZ's relatively low buy-back rates, which limits how much value shifting exported power to self-consumption actually creates. The financial case improves with rising electricity prices, higher usage overnight, or a genuine need for backup power during outages, which isn't captured in a pure payback calculation."}}]}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="sb_eyebrow">Solar · Battery</span>
+      <h1 style="margin-top:10px;" data-i18n="sb_h1">Solar battery storage calculator</h1>
+      <p class="lede" data-i18n="sb_lede">See whether adding a home battery to your solar system makes financial sense, and how long it takes to pay for itself.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field-row">
+          <div class="field"><label for="batteryKwh" data-i18n="sb_label_batterykwh">Battery capacity (kWh)</label><input type="number" id="batteryKwh" value="10" min="0" step="1"></div>
+          <div class="field"><label for="batteryCost" data-i18n="sb_label_batterycost">Battery cost installed</label><input type="number" id="batteryCost" value="14000" min="0" step="500"></div>
+        </div>
+        <div class="field">
+          <label data-i18n="sb_label_cycledperiod">Usage entry</label>
+          <div class="seg" id="cycledPeriodSeg">
+            <button type="button" data-v="annual" class="active" data-i18n="ss_seg_annual">Annual</button>
+            <button type="button" data-v="monthly" data-i18n="ss_seg_monthly">Monthly</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="cycledKwh" id="cycledLabel"><span data-i18n="sb_label_cycled">Power shifted to battery use</span> <span class="field-help" tabindex="0" aria-label="What counts as power shifted to battery use"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="11"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg><span class="jargon-tip" data-i18n="sb_cycled_tip">The extra solar power you're able to use yourself because the battery stored it, instead of it being exported to the grid at the low buy-back rate — for example, running the house on stored solar after sunset. It's not your home's total electricity use.</span></span> <span class="hint" data-i18n="sb_hint_cycled">kWh per year, was previously exported</span></label>
+          <input type="number" id="cycledKwh" value="2000" min="0" step="100">
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="retailPrice" data-i18n="sb_label_retail">Retail price ($/kWh)</label><input type="number" id="retailPrice" value="0.33" min="0" step="0.01"></div>
+          <div class="field"><label for="buybackPrice" data-i18n="sb_label_buyback">Buy-back rate ($/kWh)</label><input type="number" id="buybackPrice" value="0.10" min="0" step="0.01"></div>
+        </div>
+        <div class="callout" data-i18n="sb_callout">
+          A battery's value comes from converting a low buy-back rate into an avoided high retail rate — it doesn't generate any extra power itself, it just changes when you use the power you already made.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" data-i18n="sb_receipt_label">Battery payback period</div>
+          <div class="receipt-total" id="outPayback">0 years</div>
+
+          <div class="receipt-lines">
+            <div class="receipt-line"><span class="k" data-i18n="sb_line_batterycost">Battery cost</span><span class="v" id="outBatteryCost">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="sb_line_annualsaving">Additional annual saving</span><span class="v" id="outAnnualSaving">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="sb_line_valueperkwh">Value gain per kWh shifted</span><span class="v" id="outValuePerKwh">$0.00</span></div>
+          </div>
+          <p class="receipt-note" data-i18n="sb_receipt_note">Doesn't include the value of backup power during an outage, which isn't a dollar-for-dollar saving but is a real benefit some households value highly.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/solar-export-earnings-calculator.html" data-i18n="sb_next_btn">See what surplus power could earn you →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="sb_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="sb_insight_placeholder">See how much your battery's payback improves if you're able to shift more usage through it.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="sb_compare_h2">Compare usage levels</h2>
+      <p class="compare-intro" data-i18n="sb_compare_intro">The more power you shift through the battery each year, the faster it pays back — see the range.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="sb_compare_col_scenario">Scenario</th>
+              <th data-i18n="sb_compare_col_cycled">Power shifted / year</th>
+              <th data-i18n="sb_compare_col_payback">Payback period</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-i18n="sb_compare_row_light">Light use</td>
+              <td>1,000 kWh</td>
+              <td id="cmpLightPayback">—</td>
+            </tr>
+            <tr class="compare-row-current">
+              <td data-i18n="m_compare_row_current">Current</td>
+              <td id="cmpCurrentCycled">2,000 kWh</td>
+              <td id="cmpCurrentPayback">—</td>
+            </tr>
+            <tr>
+              <td data-i18n="sb_compare_row_heavy">Heavy use (e.g. EV charging)</td>
+              <td>4,000 kWh</td>
+              <td id="cmpHeavyPayback">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="sb_compare_note">Households charging an EV overnight or running high evening loads can shift much more power through a battery, meaningfully improving the payback math.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="sb_assumptions_source_value">Typical NZ home battery pricing and retail/buy-back electricity rate spreads from major retailers.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n="sb_assumptions_method_value">Payback = battery cost ÷ annual saving, where annual saving = power shifted × (retail rate − buy-back rate).</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="sb_assumptions_included_value">Battery hardware and installation cost, and the value of shifting exported power to self-consumption.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="sb_assumptions_excluded_value">The value of backup power during an outage, and any battery degradation over its usable life.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="sb_h2_1">Why NZ's low buy-back rates make batteries a harder sell</h2>
+      <p data-i18n="sb_p1">A battery doesn't generate a single extra kilowatt-hour of power — its entire value proposition is converting power you'd otherwise export at a low buy-back rate into power you use yourself and avoid paying the much higher retail rate for. In markets with generous feed-in tariffs, that arbitrage is small and batteries make less financial sense. In NZ, where buy-back rates commonly sit at 8-12 cents against a retail rate around 33 cents, that gap is actually quite large in relative terms — but the battery hardware cost is also high enough that payback periods still typically run into the teens of years on the numbers alone.</p>
+      <p data-i18n="sb_p2">That's why battery decisions in NZ often come down to more than pure payback maths — genuine backup power during an outage, EV charging flexibility, or simply wanting to maximise self-sufficiency can tip the decision even when the payback period alone looks marginal.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="sb_faq_q1">How much does a home battery cost in NZ?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="sb_faq_a1">A 10kWh battery system typically costs $12,000-$20,000 fully installed in 2026, depending on brand. Adding one during a new solar install is usually cheaper than retrofitting later.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="sb_faq_q2">Is a solar battery worth it financially?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="sb_faq_a2">On its own, often marginal — standalone payback commonly runs 12-18 years given NZ's relatively low buy-back rates. The case improves with rising power prices or a genuine need for backup power, which pure payback maths doesn't capture.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/solar-export-earnings-calculator.html" data-i18n="rl_solarexport">Solar export earnings calculator</a>
+        <a href="/solar-savings-calculator.html" data-i18n="rl_solarsavings">Solar savings calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div>
+    <div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const batteryKwh = document.getElementById('batteryKwh');
+  const batteryCost = document.getElementById('batteryCost');
+  const cycledKwh = document.getElementById('cycledKwh');
+  const cycledLabel = document.getElementById('cycledLabel');
+  const cycledPeriodSeg = document.getElementById('cycledPeriodSeg');
+  const retailPrice = document.getElementById('retailPrice');
+  const buybackPrice = document.getElementById('buybackPrice');
+  const shareBtn = document.getElementById('shareBtn');
+  let cycledPeriod = 'annual';
+
+  function refreshCycledLabel(){
+    const helpSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="11"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>';
+    cycledLabel.innerHTML = (cycledPeriod==='annual' ? t('sb_label_cycled') : t('sb_label_cycled_monthly'))
+      + ' <span class="field-help" tabindex="0" aria-label="What counts as power shifted to battery use">' + helpSvg
+      + '<span class="jargon-tip">' + t('sb_cycled_tip') + '</span></span>'
+      + ' <span class="hint">' + (cycledPeriod==='annual' ? t('sb_hint_cycled') : t('sb_hint_cycled_monthly')) + '</span>';
+  }
+
+  cycledPeriodSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    const next = btn.dataset.v;
+    if(next === cycledPeriod) return;
+    cycledPeriodSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    // Convert the entered figure so the underlying annual kWh stays the same
+    const current = num(cycledKwh.value, 0);
+    cycledKwh.value = next==='monthly' ? Math.round((current/12)*100)/100 : Math.round(current*12);
+    cycledPeriod = next;
+    refreshCycledLabel();
+    calc();
+  });
+
+  [batteryKwh, batteryCost, cycledKwh, retailPrice, buybackPrice].forEach(el=>el.addEventListener('input', calc));
+
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({
+      kwh: num(batteryKwh.value,10), cost: Math.round(num(batteryCost.value,0)),
+      cycled: Math.round(num(cycledKwh.value,0)), period: cycledPeriod, retail: num(retailPrice.value,0.33), buyback: num(buybackPrice.value,0.10),
+    });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('kwh')) batteryKwh.value = p.get('kwh');
+    if(p.has('cost')) batteryCost.value = p.get('cost');
+    if(p.has('period') && (p.get('period')==='annual' || p.get('period')==='monthly')){
+      cycledPeriod = p.get('period');
+      cycledPeriodSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===cycledPeriod));
+    }
+    if(p.has('cycled')) cycledKwh.value = p.get('cycled');
+    if(p.has('retail')) retailPrice.value = p.get('retail');
+    if(p.has('buyback')) buybackPrice.value = p.get('buyback');
+    refreshCycledLabel();
+  }
+
+  function paybackAt(cycled, cost, valuePerKwh){
+    const annualSaving = cycled * valuePerKwh;
+    return annualSaving > 0 ? cost / annualSaving : 0;
+  }
+
+  function calc(){
+    const cost = num(batteryCost.value, 0);
+    const enteredCycled = num(cycledKwh.value, 0);
+    const cycled = cycledPeriod==='monthly' ? enteredCycled*12 : enteredCycled;
+    const retail = num(retailPrice.value, 0.33);
+    const buyback = num(buybackPrice.value, 0.10);
+
+    const valuePerKwh = retail - buyback;
+    const annualSaving = cycled * valuePerKwh;
+    const payback = paybackAt(cycled, cost, valuePerKwh);
+
+    document.getElementById('outPayback').textContent = (payback>0 ? payback.toFixed(1) : '—') + (payback>0 ? ' years' : '');
+    document.getElementById('outBatteryCost').textContent = fmt(cost);
+    document.getElementById('outAnnualSaving').textContent = fmt(annualSaving);
+    document.getElementById('outValuePerKwh').textContent = '$' + valuePerKwh.toFixed(2);
+
+    // ---- Insight panel ----
+    const insightEl = document.getElementById('insightText');
+    insightEl.innerHTML = t('sb_insight_template')
+      .replace('{payback}', payback>0 ? payback.toFixed(1) : '—')
+      .replace('{valueperkwh}', valuePerKwh.toFixed(2));
+
+    // ---- Scenario comparison ----
+    const lightPayback = paybackAt(1000, cost, valuePerKwh);
+    document.getElementById('cmpLightPayback').textContent = lightPayback>0 ? lightPayback.toFixed(1)+' years' : '—';
+    document.getElementById('cmpCurrentCycled').textContent = Math.round(cycled).toLocaleString()+' kWh';
+    document.getElementById('cmpCurrentPayback').textContent = payback>0 ? payback.toFixed(1)+' years' : '—';
+    const heavyPayback = paybackAt(4000, cost, valuePerKwh);
+    document.getElementById('cmpHeavyPayback').textContent = heavyPayback>0 ? heavyPayback.toFixed(1)+' years' : '—';
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', function(){ refreshCycledLabel(); calc(); });
+})();
+</script>
+</body>
+</html>

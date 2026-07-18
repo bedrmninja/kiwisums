@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savings Goal Calculator NZ 2026 — How Long to Reach Your Target | KiwiSums</title>
+<meta name="description" content="Work out how many months it will take to reach a savings goal in NZ, based on your starting balance, monthly contribution and interest rate.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/savings-goal-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Savings Goal Calculator NZ — KiwiSums">
+<meta property="og:description" content="See how long it'll take to reach your savings target.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/savings-goal-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"Savings Goal Calculator","item":"https://www.kiwisums.co.nz/savings-goal-calculator.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What interest rate should I use for a savings goal calculator?","acceptedAnswer":{"@type":"Answer","text":"Use the actual rate on the account you'll keep the money in. NZ savings accounts and term deposits commonly offer somewhere in the 3-5% p.a. range depending on the provider, term, and whether rates are moving up or down at the time. Check your bank's current rate rather than relying on a generic assumption for anything time-sensitive."}},
+    {"@type":"Question","name":"Does a savings account or a KiwiSaver-style investment make more sense for a short-term goal?","acceptedAnswer":{"@type":"Answer","text":"For goals within the next 1-3 years, a savings account or term deposit is usually safer, since your balance won't drop right before you need the money. Growth or share-based investments suit longer time horizons where you can ride out short-term drops, which is why KiwiSaver defaults to lower-risk funds as members approach withdrawal age for a first home or retirement."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="sg_eyebrow">Spending · Savings</span>
+      <h1 style="margin-top:10px;" data-i18n="sg_h1">Savings goal calculator</h1>
+      <p class="lede" data-i18n="sg_lede">Whatever you're saving for, see exactly how many months it'll take at your current contribution rate.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field">
+          <label for="target" data-i18n="sg_label_target">Savings target</label>
+          <input type="number" id="target" value="10000" min="0" step="100">
+        </div>
+        <div class="field">
+          <label for="current" data-i18n="sg_label_current">Current savings</label>
+          <input type="number" id="current" value="1000" min="0" step="100">
+        </div>
+        <div class="field">
+          <label for="monthly" data-i18n="sg_label_monthly">Monthly contribution</label>
+          <input type="number" id="monthly" value="300" min="0" step="10">
+        </div>
+        <div class="field">
+          <label for="rate"><span data-i18n="sg_label_rate">Interest rate</span> <span class="hint" data-i18n="sg_hint_rate">savings account / term deposit</span></label>
+          <input type="number" id="rate" value="4" min="0" max="10" step="0.1">
+        </div>
+        <div class="callout" data-i18n="sg_callout">
+          NZ savings accounts and term deposits commonly offer somewhere around 3-5% p.a. depending on the provider and term — check your bank's current rate for an accurate result.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" data-i18n="sg_receipt_label">Time to reach your goal</div>
+          <div class="receipt-total" id="outTime">0</div>
+
+          <div class="receipt-lines">
+            <div class="receipt-line"><span class="k" data-i18n="sg_line_target">Savings target</span><span class="v" id="outTarget">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="sg_line_contributed">Total you'll contribute</span><span class="v" id="outContributed">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="sg_line_interest">Interest earned</span><span class="v" id="outInterestEarned">$0</span></div>
+          </div>
+          <p class="receipt-note" data-i18n="sg_receipt_note">Assumes a fixed monthly contribution and interest compounding monthly. Real accounts may compound differently or have rates that change over time.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/debt-payoff-order-calculator.html" data-i18n="sg_next_btn">Got debt to deal with too? →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="chart-panel">
+      <h2 data-i18n="sg_chart_h2">Balance over time</h2>
+      <p class="chart-intro" data-i18n="sg_chart_intro">See your balance grow toward your goal, and how a bigger monthly contribution speeds things up.</p>
+      <div class="chart-card" id="chartCard"></div>
+      <div class="chart-legend">
+        <span class="chart-legend-item"><span class="chart-legend-swatch" style="background:#2FA36B;"></span><span data-i18n="sg_chart_legend_current">Current contribution</span></span>
+        <span class="chart-legend-item"><span class="chart-legend-swatch" style="background:#E0693F;"></span><span data-i18n="sg_chart_legend_plus50">+$50/month</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="sg_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="sg_insight_placeholder">See how much sooner you'd reach your goal with a bigger monthly contribution.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="sg_compare_h2">Compare contribution amounts</h2>
+      <p class="compare-intro" data-i18n="sg_compare_intro">See how much sooner a bigger monthly contribution would get you to your goal.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="m_compare_col_scenario">Scenario</th>
+              <th data-i18n="sg_compare_col_monthly">Monthly contribution</th>
+              <th data-i18n="sg_compare_col_time">Time to goal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="compare-row-current">
+              <td data-i18n="m_compare_row_current">Current</td>
+              <td id="cmpCurrentMonthly">$0</td>
+              <td id="cmpCurrentTime">—</td>
+            </tr>
+            <tr>
+              <td data-i18n="sg_compare_row_plus50">+$50/month</td>
+              <td id="cmp50Monthly">$0</td>
+              <td id="cmp50Time">—</td>
+            </tr>
+            <tr>
+              <td data-i18n="sg_compare_row_plus100">+$100/month</td>
+              <td id="cmp100Monthly">$0</td>
+              <td id="cmp100Time">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="sg_compare_note">For short-to-medium goals, your contribution amount usually matters far more than the interest rate — a bigger monthly amount is the most reliable lever you have.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="sg_assumptions_source_value">Typical NZ savings account and term deposit interest rates from major banks.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n="sg_assumptions_method_value">Month-by-month simulation: each month your balance earns interest, then your fixed contribution is added, until the balance reaches your target.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="sg_assumptions_included_value">Your starting balance, fixed monthly contribution, and interest compounding monthly at your chosen rate.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="sg_assumptions_excluded_value">Tax (RWT) on interest earned, and any rate changes your bank makes over the saving period.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="sg_h2_1">Making a savings goal realistic</h2>
+      <p data-i18n="sg_p1">The two levers that matter most are your monthly contribution and your starting point — interest helps, especially over longer timeframes, but for most short-to-medium goals it's a smaller factor than simply how much you set aside each month. Automating a transfer on payday, before you can spend it, is one of the most reliable ways to hit a savings target on schedule.</p>
+      <p data-i18n="sg_p2">For goals within the next 1-3 years, a savings account or term deposit is usually the safer home for the money, since the balance won't drop right before you need it. Growth-style investments suit longer horizons where short-term dips have time to recover.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="sg_faq_q1">What interest rate should I use?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="sg_faq_a1">Use the actual rate on the account you'll keep the money in. NZ savings accounts and term deposits commonly sit around 3-5% p.a. depending on the provider and term — check your bank's current rate for anything time-sensitive.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="sg_faq_q2">Savings account or investment for a short-term goal?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="sg_faq_a2">For goals within 1-3 years, a savings account or term deposit is usually safer since the balance won't drop right before you need it. Growth investments suit longer horizons where you can ride out short-term dips.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/monthly-budget-calculator.html" data-i18n="rl_budget">Monthly budget calculator</a>
+        <a href="/credit-card-payoff-calculator.html" data-i18n="rl_ccpayoff">Credit card payoff calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div><div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const target = document.getElementById('target');
+  const current = document.getElementById('current');
+  const monthly = document.getElementById('monthly');
+  const rate = document.getElementById('rate');
+
+  [target, current, monthly, rate].forEach(el=>el.addEventListener('input', calc));
+
+  function monthsLabel(totalMonths){
+    const y = Math.floor(totalMonths/12);
+    const m = totalMonths % 12;
+    const yWord = t('sg_years');
+    const mWord = t('sg_months');
+    if(y===0) return m + ' ' + mWord;
+    if(m===0) return y + ' ' + yWord;
+    return y + ' ' + yWord + ' ' + m + ' ' + mWord;
+  }
+
+  function simulate(tgt, cur, mth, annualRate){
+    const i = annualRate/100/12;
+    let bal = cur, months = 0;
+    if(bal >= tgt) return { alreadyThere:true, months:0 };
+    if(mth <= 0 && i === 0) return { impossible:true };
+    while(bal < tgt && months < 600){
+      bal = bal*(1+i) + mth;
+      months++;
+    }
+    return { months, reached: bal>=tgt };
+  }
+
+  function buildGrowthSeries(cur, mth, annualRate, totalMonths, sampleCount){
+    const i = annualRate/100/12;
+    let bal = cur;
+    const raw = [{m:0, v:cur}];
+    for(let m=1; m<=totalMonths; m++){
+      bal = bal*(1+i) + mth;
+      raw.push({m, v:bal});
+    }
+    const step = Math.max(1, Math.ceil(raw.length / sampleCount));
+    const sampled = [];
+    for(let idx=0; idx<raw.length; idx+=step) sampled.push(raw[idx]);
+    const last = raw[raw.length-1];
+    if(sampled[sampled.length-1].m !== last.m) sampled.push(last);
+    return sampled;
+  }
+
+  function calc(){
+    const tgt = num(target.value,0);
+    const cur = num(current.value,0);
+    const mth = num(monthly.value,0);
+    const annualRate = num(rate.value,4);
+    const i = annualRate/100/12;
+
+    let bal = cur, months = 0, totalContributed = 0, reached = false;
+    if(bal >= tgt){
+      reached = true;
+      document.getElementById('outTime').textContent = t('sg_already_there');
+    } else if(mth <= 0 && i === 0){
+      document.getElementById('outTime').textContent = '—';
+    } else {
+      while(bal < tgt && months < 600){
+        bal = bal*(1+i) + mth;
+        totalContributed += mth;
+        months++;
+      }
+      reached = bal >= tgt;
+      document.getElementById('outTime').textContent = reached ? monthsLabel(months) : '—';
+    }
+
+    const interestEarned = Math.max(0, bal - cur - totalContributed);
+    document.getElementById('outTarget').textContent = fmt(tgt);
+    document.getElementById('outContributed').textContent = fmt(totalContributed);
+    document.getElementById('outInterestEarned').textContent = fmt(interestEarned);
+
+    // ---- Chart ----
+    const chartCard = document.getElementById('chartCard');
+    if(cur < tgt && months > 0 && reached){
+      const seriesCurrent = buildGrowthSeries(cur, mth, annualRate, months, 20);
+      const seriesAlt = buildGrowthSeries(cur, mth+50, annualRate, months, 20);
+      renderLineChart(chartCard, {
+        years: seriesCurrent.map(p=>p.m),
+        series: [
+          { label:t('sg_chart_legend_current'), color:'#2FA36B', darkColor:'#4ED393', values: seriesCurrent.map(p=>p.v) },
+          { label:t('sg_chart_legend_plus50'), color:'#E0693F', darkColor:'#F0855C', values: seriesAlt.map(p=>p.v) },
+        ],
+        yFormatFn: fmt,
+        xLabelFn: (m)=> t('sg_chart_month_label').replace('{m}', m),
+        xLabelEvery: Math.max(1, Math.ceil(seriesCurrent.length/6)),
+      });
+    } else {
+      chartCard.innerHTML = '';
+    }
+
+    // ---- Insight panel ----
+    const insightEl = document.getElementById('insightText');
+    if(cur >= tgt){
+      insightEl.innerHTML = t('sg_insight_alreadythere');
+    } else if(!reached){
+      insightEl.innerHTML = t('sg_insight_placeholder');
+    } else if(mth > 0 || i > 0){
+      const r50 = simulate(tgt, cur, mth+50, annualRate);
+      if(r50.months !== undefined && !r50.impossible){
+        const monthsSaved = months - r50.months;
+        insightEl.innerHTML = t('sg_insight_template')
+          .replace('{time}', monthsLabel(months))
+          .replace('{savedtime}', monthsLabel(Math.max(0,monthsSaved)));
+      } else {
+        insightEl.innerHTML = t('sg_insight_placeholder');
+      }
+    } else {
+      insightEl.innerHTML = t('sg_insight_placeholder');
+    }
+
+    // ---- Scenario comparison ----
+    document.getElementById('cmpCurrentMonthly').textContent = fmt(mth);
+    document.getElementById('cmpCurrentTime').textContent = cur>=tgt ? t('sg_already_there') : (reached && months>0 ? monthsLabel(months) : '—');
+
+    const r50c = simulate(tgt, cur, mth+50, annualRate);
+    document.getElementById('cmp50Monthly').textContent = fmt(mth+50);
+    document.getElementById('cmp50Time').textContent = r50c.alreadyThere ? t('sg_already_there') : (r50c.months!==undefined ? monthsLabel(r50c.months) : '—');
+
+    const r100c = simulate(tgt, cur, mth+100, annualRate);
+    document.getElementById('cmp100Monthly').textContent = fmt(mth+100);
+    document.getElementById('cmp100Time').textContent = r100c.alreadyThere ? t('sg_already_there') : (r100c.months!==undefined ? monthsLabel(r100c.months) : '—');
+  }
+
+  const shareBtn = document.getElementById('shareBtn');
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({
+      target: Math.round(num(target.value,0)), current: Math.round(num(current.value,0)),
+      monthly: Math.round(num(monthly.value,0)), rate: num(rate.value,4),
+    });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('target')) target.value = p.get('target');
+    if(p.has('current')) current.value = p.get('current');
+    if(p.has('monthly')) monthly.value = p.get('monthly');
+    if(p.has('rate')) rate.value = p.get('rate');
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', calc);
+  document.addEventListener('themechange', calc);
+})();
+</script>
+</body>
+</html>

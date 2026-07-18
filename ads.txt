@@ -1,0 +1,8 @@
+# ads.txt — required by Google AdSense to prevent unauthorised ad reselling.
+# Once your AdSense account is approved, replace pub-0000000000000000 below
+# with your real publisher ID (find it in AdSense under Account > Settings
+# > Account information — it looks like pub-1234567890123456).
+#
+# This file must live at the root of your domain: https://www.kiwisums.co.nz/ads.txt
+
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

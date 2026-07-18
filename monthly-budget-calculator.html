@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monthly Budget Calculator NZ 2026 — Compare Your Spending | KiwiSums</title>
+<meta name="description" content="Add up your income and everyday expenses and see how your monthly budget compares to average New Zealand household spending, category by category.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/monthly-budget-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Monthly Budget Calculator NZ — KiwiSums">
+<meta property="og:description" content="Build a monthly budget and see how it compares to the average NZ household.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/monthly-budget-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"Monthly Budget Calculator","item":"https://www.kiwisums.co.nz/monthly-budget-calculator.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How much does the average NZ household spend per month?",
+     "acceptedAnswer":{"@type":"Answer","text":"Stats NZ's Household Economic Survey found average weekly household expenditure of around $1,598 in the year to June 2023, which is roughly $6,900 a month. Adjusted for inflation and wage growth since then, typical 2026 household spending is estimated at around $1,450-$1,650 a week, though this varies enormously by household size, region and housing status."}},
+    {"@type":"Question","name":"What percentage of income should go on housing in NZ?",
+     "acceptedAnswer":{"@type":"Answer","text":"A common guideline is to keep housing costs (rent or mortgage payments) to no more than 30% of gross income, though many NZ households, particularly renters and those with mortgages taken out during the 2021 peak, spend well above this. Stats NZ data shows housing typically makes up 18-22% of spending for homeowners with a mortgage and 28-35% for renters."}}
+  ]
+}
+</script>
+
+<!-- Google AdSense: uncomment once your site is approved and you have a publisher ID.
+     Replace ca-pub-XXXXXXXXXXXXXXXX with your real ID. See README-ADS.md for setup steps.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="bd_eyebrow">Budgeting · Monthly spending</span>
+      <h1 style="margin-top:10px;" data-i18n="bd_h1">Monthly budget calculator</h1>
+      <p class="lede" data-i18n="bd_lede">Add up what comes in and what goes out, and see exactly where your money is going compared to the average Kiwi household.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field">
+          <label for="income"><span data-i18n="bd_label_income">Net monthly income</span> <span class="hint" data-i18n="bd_hint_income">take-home, all sources</span></label>
+          <input type="number" id="income" value="6500" min="0" step="50">
+        </div>
+
+        <h3 style="margin-top:22px; margin-bottom:6px; font-size:1rem;" data-i18n="bd_h3_expenses">Monthly expenses</h3>
+
+        <div class="field-row">
+          <div class="field"><label for="e_housing"><span data-i18n="bd_cat_housing">Housing</span> <span class="hint" data-i18n="bd_hint_housing">rent / mortgage / rates</span></label><input type="number" id="e_housing" value="1900" step="10"></div>
+          <div class="field"><label for="e_food" data-i18n="bd_cat_food">Groceries &amp; food</label><input type="number" id="e_food" value="900" step="10"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="e_transport" data-i18n="bd_cat_transport">Transport</label><input type="number" id="e_transport" value="450" step="10"></div>
+          <div class="field"><label for="e_utilities" data-i18n="bd_cat_utilities">Power, water, internet, phone</label><input type="number" id="e_utilities" value="350" step="10"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="e_insurance" data-i18n="bd_cat_insurance">Insurance &amp; health</label><input type="number" id="e_insurance" value="250" step="10"></div>
+          <div class="field"><label for="e_debt" data-i18n="bd_cat_debt">Other debt repayments</label><input type="number" id="e_debt" value="200" step="10"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="e_personal" data-i18n="bd_cat_personal">Entertainment &amp; personal</label><input type="number" id="e_personal" value="400" step="10"></div>
+          <div class="field"><label for="e_other" data-i18n="bd_cat_other">Other / miscellaneous</label><input type="number" id="e_other" value="250" step="10"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" data-i18n="bd_receipt_label">Left over each month</div>
+          <div class="receipt-total" id="outLeftover">$0</div>
+          <p style="font-size:.85rem; color:var(--muted); margin-top:-4px;"><span data-i18n="bd_from">from</span> <span id="outIncomeEcho" class="mono">$0</span> <span data-i18n="bd_income_word">income and</span> <span id="outExpenseEcho" class="mono">$0</span> <span data-i18n="bd_expenses_word">expenses</span></p>
+
+          <div class="receipt-lines" id="catBreakdown"></div>
+
+          <p class="receipt-note" data-i18n="bd_receipt_note">Benchmarks compare each category's share of spending to Stats NZ Household Economic Survey averages, inflation-adjusted to 2026. Every household is different — use this as a sense check, not a target.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/savings-goal-calculator.html" data-i18n="bd_next_btn">Next: set a savings goal →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="bd_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="bd_insight_placeholder">See which category is most out of line with typical NZ spending, and how much trimming it could free up.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="bd_compare_h2">Compare trimming scenarios</h2>
+      <p class="compare-intro" data-i18n="bd_compare_intro">See how much extra you'd have left over by bringing over-budget categories back to the NZ average.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="bd_compare_col_scenario">Scenario</th>
+              <th data-i18n="bd_compare_col_leftover">Left over / month</th>
+              <th data-i18n="bd_compare_col_diff">Difference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="compare-row-current">
+              <td data-i18n="m_compare_row_current">Current</td>
+              <td id="cmpCurrentLeftover">$0</td>
+              <td id="cmpCurrentDiff">—</td>
+            </tr>
+            <tr>
+              <td data-i18n="bd_compare_row_worst">Trim your biggest over-spend</td>
+              <td id="cmpWorstLeftover">$0</td>
+              <td id="cmpWorstDiff">$0</td>
+            </tr>
+            <tr>
+              <td data-i18n="bd_compare_row_all">Trim all over-budget categories</td>
+              <td id="cmpAllLeftover">$0</td>
+              <td id="cmpAllDiff">$0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="bd_compare_note">"Trimming" here means bringing a category's dollar amount down to match its typical NZ share of your total spending — a rough illustration, not a strict target.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="bd_assumptions_source_value">Stats NZ Household Economic Survey category benchmarks, inflation-adjusted to 2026.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n="bd_assumptions_method_value">Each category's benchmark is its typical share of total household spending, not of income. A category is flagged when it's 6 percentage points or more above its benchmark share.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="bd_assumptions_included_value">Whatever categories and amounts you enter, compared against Stats NZ average spending shares.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="bd_assumptions_excluded_value">Irregular or annual costs (e.g. car registration, holidays) unless you've averaged them into a monthly figure yourself.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="bd_h2_1">How Kiwi households actually spend</h2>
+      <p data-i18n="bd_p1">Stats NZ's Household Economic Survey put average weekly household spending at around $1,598 in the year to June 2023 — call it roughly $1,550-$1,750 a week in 2026 after inflation and wage growth, or about $6,700-$7,600 a month. Housing is the single biggest slice for most households: 18-22% of spending for homeowners with a mortgage, and noticeably higher, often 28-35%, for renters. Food is usually the second-largest category, typically 15-18% of total spending.</p>
+      <p data-i18n="bd_p2">These are national averages across singles, couples and families of every size, so treat them as a rough compass rather than a rulebook — a single person in a share house and a family of five will land in very different places.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="bd_faq_q1">How much does the average NZ household spend per month?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="bd_faq_a1">Around $6,900 a month as of the last full Stats NZ survey (year to June 2023), with 2026 estimates running roughly $6,700-$7,600 a month after inflation. It varies a lot by household size and region.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="bd_faq_q2">What percentage of income should go on housing?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="bd_faq_a2">A common guideline is no more than 30% of gross income. In practice, homeowners with a mortgage average 18-22% of total spending on housing, while renters average 28-35%.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/take-home-pay-calculator.html" data-i18n="rl_takehome">Take-home pay calculator</a>
+        <a href="/car-running-cost-calculator.html" data-i18n="rl_carrunning">Car running cost calculator</a>
+        <a href="/how-much-can-i-borrow-calculator.html" data-i18n="rl_borrowcalc">Borrowing power calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div><div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const income = document.getElementById('income');
+  const ids = ['e_housing','e_food','e_transport','e_utilities','e_insurance','e_debt','e_personal','e_other'];
+  const labelKeys = {
+    e_housing:'bd_cat_housing', e_food:'bd_cat_food', e_transport:'bd_cat_transport', e_utilities:'bd_cat_utilities',
+    e_insurance:'bd_cat_insurance', e_debt:'bd_cat_debt', e_personal:'bd_cat_personal', e_other:'bd_cat_other'
+  };
+  // benchmark share of TOTAL EXPENSES, approx from Stats NZ HES categories
+  const benchmarks = {
+    e_housing:0.24, e_food:0.17, e_transport:0.14, e_utilities:0.08,
+    e_insurance:0.07, e_debt:0.06, e_personal:0.14, e_other:0.10
+  };
+  const inputs = ids.map(id=>document.getElementById(id));
+  [income, ...inputs].forEach(el=>el.addEventListener('input', calc));
+
+  function calc(){
+    const inc = num(income.value,0);
+    let total = 0;
+    const vals = {};
+    ids.forEach(id=>{ const v = num(document.getElementById(id).value,0); vals[id]=v; total+=v; });
+
+    const leftover = inc - total;
+    document.getElementById('outLeftover').textContent = fmt(leftover);
+    document.getElementById('outLeftover').style.color = leftover < 0 ? 'var(--coral-dark)' : 'var(--primary-dark)';
+    document.getElementById('outIncomeEcho').textContent = fmt(inc);
+    document.getElementById('outExpenseEcho').textContent = fmt(total);
+
+    const box = document.getElementById('catBreakdown');
+    box.innerHTML = '';
+    ids.forEach(id=>{
+      const v = vals[id];
+      const sharePct = total>0 ? (v/total*100) : 0;
+      const bench = benchmarks[id]*100;
+      const diff = sharePct - bench;
+      const flag = total>0 && Math.abs(diff) >= 6 ? (diff>0 ? ' ⚠ ' + t('bd_aboveavg') : ' ✓ ' + t('bd_belowavg')) : '';
+      const row = document.createElement('div');
+      row.className = 'receipt-line';
+      row.style.flexDirection = 'column';
+      row.style.alignItems = 'stretch';
+      row.innerHTML = `
+        <div style="display:flex; justify-content:space-between;">
+          <span class="k">${t(labelKeys[id])}</span>
+          <span class="v">${fmt(v)} <span style="color:var(--muted); font-weight:400;">(${sharePct.toFixed(0)}%)</span></span>
+        </div>
+        <div class="bar${diff>6?' rust':''}"><span style="width:${clamp(sharePct/ Math.max(bench*1.6,1) *100,2,100)}%"></span></div>
+        <div style="font-size:.72rem; color:var(--muted); margin-top:3px;">${t('bd_avgnz')} ${bench.toFixed(0)}%${flag}</div>
+      `;
+      box.appendChild(row);
+    });
+    updateInsightAndCompare(inc, total, leftover);
+  }
+
+  const shareBtn = document.getElementById('shareBtn');
+  shareBtn.addEventListener('click', function(){
+    const paramObj = { income: Math.round(num(income.value,0)) };
+    ids.forEach(id=>{ paramObj[id] = Math.round(num(document.getElementById(id).value,0)); });
+    const params = new URLSearchParams(paramObj);
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('income')) income.value = p.get('income');
+    ids.forEach(id=>{ if(p.has(id)) document.getElementById(id).value = p.get(id); });
+  }
+
+  function updateInsightAndCompare(inc, total, leftover){
+    const vals = {};
+    ids.forEach(id=>{ vals[id] = num(document.getElementById(id).value,0); });
+
+    // Find each category's overspend vs benchmark, in dollars
+    let worstId = null, worstOver = 0, allOver = 0;
+    ids.forEach(id=>{
+      const bench = benchmarks[id]*total;
+      const over = vals[id] - bench;
+      if(over > 0) allOver += over;
+      if(over > worstOver){ worstOver = over; worstId = id; }
+    });
+
+    const insightEl = document.getElementById('insightText');
+    if(worstId && worstOver > 0){
+      insightEl.innerHTML = t('bd_insight_template')
+        .replace('{leftover}', fmt(leftover))
+        .replace('{category}', t(labelKeys[worstId]))
+        .replace('{amount}', fmt(worstOver));
+    } else {
+      insightEl.innerHTML = t('bd_insight_ontrack').replace('{leftover}', fmt(leftover));
+    }
+
+    document.getElementById('cmpCurrentLeftover').textContent = fmt(leftover);
+    document.getElementById('cmpWorstLeftover').textContent = fmt(leftover + worstOver);
+    document.getElementById('cmpWorstDiff').textContent = '+' + fmt(worstOver);
+    document.getElementById('cmpAllLeftover').textContent = fmt(leftover + allOver);
+    document.getElementById('cmpAllDiff').textContent = '+' + fmt(allOver);
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', calc);
+})();
+</script>
+</body>
+</html>

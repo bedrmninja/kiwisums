@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KiwiSaver Calculator NZ 2026 — Retirement Balance Projection | KiwiSums</title>
+<meta name="description" content="Project your KiwiSaver balance at retirement based on your contribution rate, employer contributions, government contribution and expected fund returns.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/kiwisaver-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KiwiSaver Calculator NZ — KiwiSums">
+<meta property="og:description" content="See what your KiwiSaver balance could look like at retirement.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/kiwisaver-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"KiwiSaver Calculator","item":"https://www.kiwisums.co.nz/kiwisaver-calculator.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is the minimum KiwiSaver contribution rate?","acceptedAnswer":{"@type":"Answer","text":"From 1 April 2026, the default minimum employee and employer contribution rate is 3.5% of before-tax pay, up from 3%. It's scheduled to rise again to 4% from 1 April 2028. Members can apply to Inland Revenue for a temporary reduction back to 3% for 3-12 months if needed."}},
+    {"@type":"Question","name":"How much does the government contribute to KiwiSaver?","acceptedAnswer":{"@type":"Answer","text":"Since 1 July 2025, the government contributes 25 cents for every dollar a member contributes, up to a maximum of $260.72 per year. To get the full amount, you need to contribute at least $1,043 in the KiwiSaver year (1 July to 30 June). Members earning over $180,000 a year are not eligible."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="ks_eyebrow">Earning · Retirement</span>
+      <h1 style="margin-top:10px;" data-i18n="ks_h1">KiwiSaver calculator</h1>
+      <p class="lede" data-i18n="ks_lede">Project your KiwiSaver balance at retirement from your contributions, your employer's, the government's, and expected fund growth.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field-row">
+          <div class="field">
+            <label for="currentAge" data-i18n="ks_label_currentage">Your age now</label>
+            <input type="number" id="currentAge" value="30" min="16" max="64" step="1">
+          </div>
+          <div class="field">
+            <label for="retireAge" data-i18n="ks_label_retireage">Retirement age</label>
+            <input type="number" id="retireAge" value="65" min="17" max="70" step="1">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="currentBalance" data-i18n="ks_label_balance">Current KiwiSaver balance</label>
+          <input type="number" id="currentBalance" value="15000" min="0" step="500">
+        </div>
+
+        <div class="field">
+          <label for="salary" data-i18n="ks_label_salary">Gross annual salary</label>
+          <input type="number" id="salary" value="80000" min="0" step="500">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="employeeRate" data-i18n="ks_label_employeerate">Your contribution rate</label>
+            <select id="employeeRate">
+              <option value="3.5" selected data-i18n="ks_opt_default">3.5% (default)</option>
+              <option value="4" data-i18n="ks_opt_4">4%</option>
+              <option value="6" data-i18n="ks_opt_6">6%</option>
+              <option value="8" data-i18n="ks_opt_8">8%</option>
+              <option value="10" data-i18n="ks_opt_10">10%</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="employerRate" data-i18n="ks_label_employerrate">Employer contribution rate</label>
+            <input type="number" id="employerRate" value="3.5" min="0" max="10" step="0.5">
+          </div>
+        </div>
+
+        <div class="field">
+          <label data-i18n="ks_label_fundtype">Fund type</label>
+          <div class="seg" id="fundSeg">
+            <button type="button" data-v="4" data-i18n="ks_fund_conservative">Conservative</button>
+            <button type="button" data-v="5.5" class="active" data-i18n="ks_fund_balanced">Balanced</button>
+            <button type="button" data-v="7" data-i18n="ks_fund_growth">Growth</button>
+            <button type="button" data-v="8.5" data-i18n="ks_fund_aggressive">Aggressive</button>
+          </div>
+        </div>
+
+        <div class="callout" data-i18n="ks_callout">
+          Return assumptions are long-term planning averages after typical fees, not a guarantee — actual returns vary year to year and can fall as well as rise. Assumes your salary stays flat in today's dollars.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" id="balanceLabel">Projected balance at 65</div>
+          <div class="receipt-total" id="outFinalBalance">$0</div>
+
+          <div class="receipt-lines">
+            <div class="receipt-line"><span class="k" data-i18n="ks_line_yourcontrib">Your contributions</span><span class="v" id="outYourContrib">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="ks_line_employercontrib">Employer contributions</span><span class="v" id="outEmployerContrib">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="ks_line_govtcontrib">Government contributions</span><span class="v" id="outGovtContrib">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="ks_line_growth">Investment growth</span><span class="v" id="outGrowth">$0</span></div>
+          </div>
+          <p class="receipt-note" data-i18n="ks_receipt_note">Government contribution assumes eligibility (income under $180,000, aged 16-64) and contributing at least $1,043/year, currently capped at $260.72/year.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/nz-super-kiwisaver-calculator.html" data-i18n="ks_next_btn">Estimate your total retirement income →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="chart-panel">
+      <h2 data-i18n="ks_chart_h2">Balance over time</h2>
+      <p class="chart-intro" data-i18n="ks_chart_intro">Your projected balance from now until retirement — notice how growth accelerates in later years.</p>
+      <div class="chart-card" id="chartCard"></div>
+      <div class="chart-legend">
+        <span class="chart-legend-item"><span class="chart-legend-swatch" style="background:#4A7FB5;"></span><span data-i18n="ks_fund_conservative">Conservative</span></span>
+        <span class="chart-legend-item"><span class="chart-legend-swatch" style="background:#2FA36B;"></span><span data-i18n="ks_fund_balanced">Balanced</span></span>
+        <span class="chart-legend-item"><span class="chart-legend-swatch" style="background:#E0A030;"></span><span data-i18n="ks_fund_growth">Growth</span></span>
+        <span class="chart-legend-item"><span class="chart-legend-swatch" style="background:#E0693F;"></span><span data-i18n="ks_fund_aggressive">Aggressive</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="ks_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="ks_insight_placeholder">See how much of your final balance comes from investment growth, and how a higher contribution rate would change it.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="ks_compare_h2">Compare fund types</h2>
+      <p class="compare-intro" data-i18n="ks_compare_intro">See how much your projected balance shifts between a more conservative and more aggressive fund.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="ks_compare_col_fund">Fund type</th>
+              <th data-i18n="ks_compare_col_return">Assumed return</th>
+              <th data-i18n="ks_compare_col_balance">Projected balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="rowConservative"><td data-i18n="ks_fund_conservative">Conservative</td><td>4%</td><td id="cmpConservativeBalance">$0</td></tr>
+            <tr id="rowBalanced"><td data-i18n="ks_fund_balanced">Balanced</td><td>5.5%</td><td id="cmpBalancedBalance">$0</td></tr>
+            <tr id="rowGrowth"><td data-i18n="ks_fund_growth">Growth</td><td>7%</td><td id="cmpGrowthBalance">$0</td></tr>
+            <tr id="rowAggressive"><td data-i18n="ks_fund_aggressive">Aggressive</td><td>8.5%</td><td id="cmpAggressiveBalance">$0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="ks_compare_note">Your currently-selected fund is highlighted. Higher-growth funds swing more year to year — the smoother conservative numbers don't mean lower risk of running out, just lower volatility along the way.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="ks_assumptions_source_value">IRD KiwiSaver government contribution rules; long-term fund return averages by risk category from Sorted/FMA fund comparison data.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n="ks_assumptions_method_value">Year-by-year projection: your and your employer's contributions plus the government contribution (while eligible) are added annually, then the whole balance compounds at your selected fund's assumed return rate.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="ks_assumptions_included_value">Your contributions, employer contributions, government contribution (until age 65), and investment growth at your selected fund's assumed rate.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="ks_assumptions_excluded_value">Fund fees beyond what's baked into the return assumption, future salary increases, and any withdrawals (e.g. for a first home) during the projection period.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="ks_h2_1">What's built into this projection</h2>
+      <p data-i18n="ks_p1">From 1 April 2026, the default minimum contribution rate for both employees and employers is 3.5% of before-tax pay, rising again to 4% from 1 April 2028 — this calculator uses your selected rate for the whole projection rather than modelling that future step-up. The government adds 25 cents for every dollar you contribute, up to $260.72 a year, provided you contribute at least $1,043 in the KiwiSaver year and earn under $180,000.</p>
+      <p data-i18n="ks_p2">Fund return assumptions (Conservative 4%, Balanced 5.5%, Growth 7%, Aggressive 8.5%) are long-term planning averages after typical fees, not a promise — growth funds swing much more year to year than conservative funds, and past performance never guarantees future returns. This projection also keeps your salary flat in today's dollars rather than modelling future pay rises.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="ks_faq_q1">What is the minimum KiwiSaver contribution rate?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="ks_faq_a1">From 1 April 2026, it's 3.5% of before-tax pay for both employees and employers, up from 3%. It rises again to 4% from 1 April 2028. A temporary reduction back to 3% can be requested from Inland Revenue for 3-12 months.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="ks_faq_q2">How much does the government contribute?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="ks_faq_a2">25 cents per dollar you contribute, up to $260.72 a year, since 1 July 2025. You need to contribute at least $1,043 in the KiwiSaver year (1 July - 30 June) to get the full amount, and earn under $180,000 a year.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/take-home-pay-calculator.html" data-i18n="rl_takehome">Take-home pay calculator</a>
+        <a href="/monthly-budget-calculator.html" data-i18n="rl_budget">Monthly budget calculator</a>
+        <a href="/how-much-can-i-borrow-calculator.html" data-i18n="rl_borrowcalc">Borrowing power calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div><div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const currentAge = document.getElementById('currentAge');
+  const retireAge = document.getElementById('retireAge');
+  const currentBalance = document.getElementById('currentBalance');
+  const salary = document.getElementById('salary');
+  const employeeRate = document.getElementById('employeeRate');
+  const employerRate = document.getElementById('employerRate');
+  const fundSeg = document.getElementById('fundSeg');
+  const balanceLabel = document.getElementById('balanceLabel');
+  let returnRate = 5.5;
+
+  const GOVT_MAX = 260.72;
+  const GOVT_MATCH_THRESHOLD = 1043;
+
+  fundSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    fundSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    returnRate = num(btn.dataset.v, 5.5);
+    calc();
+  });
+
+  [currentAge, retireAge, currentBalance, salary, employeeRate, employerRate].forEach(el=>el.addEventListener('input', calc));
+
+  function projectAt(age0, ageR, startBalance, sal, eeRate, erRate, rate){
+    const years = ageR - age0;
+    const r = rate/100;
+    let balance = startBalance;
+    let totalYou = 0, totalEmployer = 0, totalGovt = 0;
+    const yourAnnual = sal * eeRate;
+    const employerAnnual = sal * erRate;
+    const govtAnnual = yourAnnual >= GOVT_MATCH_THRESHOLD ? GOVT_MAX : Math.max(0, yourAnnual * 0.25);
+    for(let yr = 0; yr < years; yr++){
+      const eligibleForGovt = (age0 + yr) < 65;
+      const govtThisYear = eligibleForGovt ? govtAnnual : 0;
+      const contribThisYear = yourAnnual + employerAnnual + govtThisYear;
+      balance = balance * (1 + r) + contribThisYear;
+      totalYou += yourAnnual;
+      totalEmployer += employerAnnual;
+      totalGovt += govtThisYear;
+    }
+    return { balance, totalYou, totalEmployer, totalGovt };
+  }
+
+  function calc(){
+    const age0 = clamp(num(currentAge.value, 30), 16, 64);
+    const ageR = clamp(num(retireAge.value, 65), age0+1, 70);
+    const sal = num(salary.value, 0);
+    const eeRate = num(employeeRate.value, 3.5)/100;
+    const erRate = num(employerRate.value, 0)/100;
+    const startBalance = num(currentBalance.value, 0);
+
+    const r = projectAt(age0, ageR, startBalance, sal, eeRate, erRate, returnRate);
+    const totalContrib = r.totalYou + r.totalEmployer + r.totalGovt;
+    const growth = r.balance - startBalance - totalContrib;
+
+    balanceLabel.textContent = t('ks_balance_label').replace('{age}', ageR);
+    document.getElementById('outFinalBalance').textContent = fmt(r.balance);
+    document.getElementById('outYourContrib').textContent = fmt(r.totalYou);
+    document.getElementById('outEmployerContrib').textContent = fmt(r.totalEmployer);
+    document.getElementById('outGovtContrib').textContent = fmt(r.totalGovt);
+    document.getElementById('outGrowth').textContent = fmt(Math.max(0, growth));
+
+    // ---- Chart ----
+    const totalYears = ageR - age0;
+    const sampleCount = 20;
+    const step = Math.max(1, Math.ceil(totalYears / sampleCount));
+    const yearPoints = [];
+    for(let y=0; y<=totalYears; y+=step) yearPoints.push(y);
+    if(yearPoints[yearPoints.length-1] !== totalYears) yearPoints.push(totalYears);
+
+    const chartFunds = [
+      { rate:4, label:t('ks_fund_conservative'), color:'#4A7FB5', darkColor:'#6FA3D9' },
+      { rate:5.5, label:t('ks_fund_balanced'), color:'#2FA36B', darkColor:'#4ED393' },
+      { rate:7, label:t('ks_fund_growth'), color:'#E0A030', darkColor:'#F0C05A' },
+      { rate:8.5, label:t('ks_fund_aggressive'), color:'#E0693F', darkColor:'#F0855C' },
+    ];
+    const fundSeries = chartFunds.map(f => ({
+      label: f.label, color: f.color, darkColor: f.darkColor,
+      isActive: f.rate === returnRate,
+      values: yearPoints.map(y => projectAt(age0, age0+y, startBalance, sal, eeRate, erRate, f.rate).balance),
+    }));
+    // Draw the active fund last (on top) and thicker, so it stands out against the other three
+    fundSeries.sort((a,b) => (a.isActive?1:0) - (b.isActive?1:0));
+    fundSeries.forEach(s => { s.width = s.isActive ? 3.5 : 2; });
+
+    renderLineChart(document.getElementById('chartCard'), {
+      years: yearPoints,
+      series: fundSeries,
+      yFormatFn: fmt,
+      xLabelFn: (y)=> t('ks_chart_age_label').replace('{age}', age0+y),
+      xLabelEvery: Math.max(1, Math.ceil(yearPoints.length/6)),
+      step: 25000,
+    });
+
+    // ---- Insight panel ----
+    const insightEl = document.getElementById('insightText');
+    const growthPct = r.balance>0 ? (Math.max(0,growth)/r.balance*100) : 0;
+    const rHigher = projectAt(age0, ageR, startBalance, sal, eeRate+0.02, erRate, returnRate);
+    const balanceDelta = rHigher.balance - r.balance;
+    insightEl.innerHTML = t('ks_insight_template')
+      .replace('{balance}', fmt(r.balance))
+      .replace('{growthpct}', growthPct.toFixed(0))
+      .replace('{delta}', fmt(balanceDelta));
+
+    // ---- Scenario comparison ----
+    const funds = [
+      {id:'Conservative', rate:4},
+      {id:'Balanced', rate:5.5},
+      {id:'Growth', rate:7},
+      {id:'Aggressive', rate:8.5},
+    ];
+    funds.forEach(function(f){
+      const fr = projectAt(age0, ageR, startBalance, sal, eeRate, erRate, f.rate);
+      document.getElementById('cmp'+f.id+'Balance').textContent = fmt(fr.balance);
+      document.getElementById('row'+f.id).classList.toggle('compare-row-current', f.rate===returnRate);
+    });
+  }
+
+  const shareBtn = document.getElementById('shareBtn');
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({
+      currentage: num(currentAge.value,30), retireage: num(retireAge.value,65),
+      balance: Math.round(num(currentBalance.value,0)), salary: Math.round(num(salary.value,0)),
+      eerate: num(employeeRate.value,3.5), errate: num(employerRate.value,3.5), fund: returnRate,
+    });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('currentage')) currentAge.value = p.get('currentage');
+    if(p.has('retireage')) retireAge.value = p.get('retireage');
+    if(p.has('balance')) currentBalance.value = p.get('balance');
+    if(p.has('salary')) salary.value = p.get('salary');
+    if(p.has('eerate')) employeeRate.value = p.get('eerate');
+    if(p.has('errate')) employerRate.value = p.get('errate');
+    if(p.has('fund')){
+      returnRate = num(p.get('fund'), 5.5);
+      fundSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', num(b.dataset.v,0)===returnRate));
+    }
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', calc);
+  document.addEventListener('themechange', calc);
+})();
+</script>
+</body>
+</html>

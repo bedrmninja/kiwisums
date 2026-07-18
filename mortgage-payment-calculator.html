@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Payment Calculator NZ 2026 — Weekly &amp; Monthly Repayments | KiwiSums</title>
+<meta name="description" content="Calculate your NZ mortgage repayments by week, fortnight or month. Uses current 2026 bank interest rates as a starting point, and shows total interest over the life of the loan.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/mortgage-payment-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mortgage Payment Calculator NZ — KiwiSums">
+<meta property="og:description" content="Work out weekly, fortnightly or monthly mortgage repayments using current NZ interest rates.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/mortgage-payment-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"Mortgage Payment Calculator","item":"https://www.kiwisums.co.nz/mortgage-payment-calculator.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What interest rate should I use to estimate my mortgage repayments?",
+     "acceptedAnswer":{"@type":"Answer","text":"As a starting point, use whatever rate you've been quoted or the current advertised rate for the fixed term you're considering. As of July 2026, advertised carded rates from the major banks sit roughly between 4.5% for a 6-month fixed term and 5.5% for a 5-year fixed term, with special rates sometimes lower for borrowers with 20%+ equity. Always confirm the exact rate with your bank or broker before relying on it."}},
+    {"@type":"Question","name":"Does this calculator include rates, insurance or body corporate fees?",
+     "acceptedAnswer":{"@type":"Answer","text":"No. This calculator estimates only the loan principal and interest repayment. Council rates, home insurance, and body corporate or ground rent (for apartments and cross-lease properties) are separate ongoing costs you should budget for on top of the mortgage repayment shown here."}},
+    {"@type":"Question","name":"Why is my repayment different to what my bank quoted me?",
+     "acceptedAnswer":{"@type":"Answer","text":"Banks calculate repayments using your exact settlement date, compounding method and any offset or revolving credit structure, which can shift the figure slightly from a standard reducing-balance estimate like this one. Use this calculator to compare scenarios and get in the right ballpark, then confirm exact figures with your lender."}}
+  ]
+}
+</script>
+
+<!-- Google AdSense: uncomment once your site is approved and you have a publisher ID.
+     Replace ca-pub-XXXXXXXXXXXXXXXX with your real ID. See README-ADS.md for setup steps.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="m_eyebrow">Housing · Repayments</span>
+      <h1 style="margin-top:10px;" data-i18n="m_h1">Mortgage payment calculator</h1>
+      <p class="lede" data-i18n="m_lede">See what your home loan will actually cost per week, fortnight or month — and how much of that is interest.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field">
+          <label for="loanAmount"><span data-i18n="m_label_loan">Loan amount</span> <span class="hint" data-i18n="m_hint_loan">home price minus deposit</span></label>
+          <input type="number" id="loanAmount" value="650000" min="0" step="1000">
+        </div>
+
+        <div class="field">
+          <label for="rate"><span data-i18n="m_label_rate">Interest rate (% p.a.)</span> <span class="hint" id="rateHint">5.59%</span></label>
+          <input type="range" id="rate" min="3" max="9" step="0.01" value="5.59">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="term" data-i18n="m_label_term">Loan term (years)</label>
+            <input type="number" id="term" value="30" min="1" max="30" step="1">
+          </div>
+          <div class="field">
+            <label for="fixedTerm" data-i18n="m_label_fixedterm">Fixed for (info only)</label>
+            <select id="fixedTerm">
+              <option value="0.5" data-i18n="m_opt_6mo">6 months — ~4.49%</option>
+              <option value="1" data-i18n="m_opt_1yr">1 year — ~4.65%</option>
+              <option value="2" data-i18n="m_opt_2yr">2 years — ~5.19%</option>
+              <option value="3" data-i18n="m_opt_3yr">3 years — ~5.29%</option>
+              <option value="4" data-i18n="m_opt_4yr">4 years — ~5.39%</option>
+              <option value="5" selected data-i18n="m_opt_5yr">5 years — ~5.49%</option>
+              <option value="-1" data-i18n="m_opt_custom">Custom rate</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label data-i18n="m_label_freq">Repayment frequency</label>
+          <div class="seg" id="freqSeg">
+            <button type="button" data-v="52" data-i18n="seg_weekly">Weekly</button>
+            <button type="button" data-v="26" data-i18n="seg_fortnightly">Fortnightly</button>
+            <button type="button" data-v="12" class="active" data-i18n="seg_monthly">Monthly</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="householdIncome"><span data-i18n="m_label_income">Household income (before tax)</span> <span class="hint" data-i18n="m_hint_income">optional — used for context below</span></label>
+          <input type="number" id="householdIncome" value="115000" min="0" step="1000">
+        </div>
+
+        <div class="callout" style="margin-top:6px;" data-i18n="m_callout">
+          The 5-year rate is pre-selected as a stable planning default. Switch the dropdown to match your own fixed term — it will update the interest rate above.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" data-i18n="m_receipt_label">Your repayment</div>
+          <div class="receipt-total"><span id="outPayment">$0</span><span style="font-size:1rem; color:var(--muted); font-weight:500;" id="outFreqLabel">/month</span></div>
+
+          <div class="receipt-lines">
+            <div class="receipt-line"><span class="k" data-i18n="m_receipt_loanline">Loan amount</span><span class="v" id="outLoan">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="m_receipt_rate">Interest rate</span><span class="v" id="outRate">0%</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="m_receipt_term">Loan term</span><span class="v" id="outTerm">30 years</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="m_receipt_interest">Total interest paid</span><span class="v" id="outInterest">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="m_receipt_total">Total repaid</span><span class="v" id="outTotal">$0</span></div>
+          </div>
+
+          <div style="margin-top:18px;">
+            <div style="display:flex; justify-content:space-between; font-size:.78rem; color:var(--muted); margin-bottom:4px;">
+              <span data-i18n="m_bar_principal">Principal</span><span data-i18n="m_bar_interest">Interest</span>
+            </div>
+            <div class="bar amber"><span id="splitBar" style="width:50%"></span></div>
+          </div>
+
+          <p class="receipt-note" data-i18n-html="m_receipt_note">Estimate only, based on a standard reducing-balance loan with no offset, revolving credit or interest-only period. Confirm exact figures with your bank or mortgage adviser.</p>
+        </div>
+
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/home-buying-costs-calculator.html" data-i18n="m_next_btn">Next: what else will it cost to buy? →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="chart-panel">
+      <h2 data-i18n="m_chart_h2">Where your payments go</h2>
+      <p class="chart-intro" data-i18n="m_chart_intro">Cumulative principal vs interest paid over the loan term — notice how much goes to interest early on.</p>
+      <div class="chart-card" id="chartCard"></div>
+      <div class="chart-legend">
+        <span class="chart-legend-item"><span class="chart-legend-swatch" style="background:#2FA36B;"></span><span data-i18n="m_chart_legend_principal">Principal paid</span></span>
+        <span class="chart-legend-item"><span class="chart-legend-swatch" style="background:#E0693F;"></span><span data-i18n="m_chart_legend_interest">Interest paid</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="m_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="m_insight_placeholder">Enter a household income above to see how this repayment compares to your income, and how a bigger deposit would change it.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="m_compare_h2">Compare scenarios</h2>
+      <p class="compare-intro" data-i18n="m_compare_intro">See how a bigger deposit or a shorter term would change your repayment and total interest.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="m_compare_col_scenario">Scenario</th>
+              <th data-i18n="m_compare_col_repayment">Repayment</th>
+              <th data-i18n="m_compare_col_year1">Year 1 vs current</th>
+              <th data-i18n="m_compare_col_interest">Total interest</th>
+              <th data-i18n="m_compare_col_fullterm">Full term vs current</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="compare-row-current">
+              <td data-i18n="m_compare_row_current">Current</td>
+              <td id="cmpCurrentPayment">$0</td>
+              <td id="cmpCurrentYear1">—</td>
+              <td id="cmpCurrentInterest">$0</td>
+              <td id="cmpCurrentFull">—</td>
+            </tr>
+            <tr>
+              <td data-i18n="m_compare_row_deposit">Bigger deposit (+$30k)</td>
+              <td id="cmpDepositPayment">$0</td>
+              <td id="cmpDepositYear1">$0</td>
+              <td id="cmpDepositInterest">$0</td>
+              <td id="cmpDepositFull">$0</td>
+            </tr>
+            <tr>
+              <td data-i18n="m_compare_row_shorter">Shorter term (−5yr)</td>
+              <td id="cmpShorterPayment">$0</td>
+              <td id="cmpShorterYear1">$0</td>
+              <td id="cmpShorterInterest">$0</td>
+              <td id="cmpShorterFull">$0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="m_compare_note">"Full term vs current" compares total interest paid, since the shorter-term scenario pays the loan off in fewer years — a fair like-for-like isn't possible on total repaid alone.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="m_assumptions_source_value">Major-bank carded fixed rates; Stats NZ Household Income and Living Survey (HILS) for the income benchmark.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n-html="m_assumptions_method_value">Standard reducing-balance (table) loan amortisation, compounding at your chosen repayment frequency.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="m_assumptions_included_value">Loan principal and interest only.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n-html="m_assumptions_excluded_value">Rates, insurance, body corporate fees, low-equity margins, break/refix fees. The income comparison deducts PAYE income tax only — not ACC levies or KiwiSaver contributions.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_income_label">About the income figure</strong>
+          <p data-i18n="m_assumptions_income_value">$115,000 is an approximate NZ median gross household income, informed by Stats NZ income trends. An exact, single published HILS 2025 median household figure wasn't available at time of writing — enter your own household income above for a figure specific to you.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="m_h2_1">How this calculator works</h2>
+      <p data-i18n="m_p1">This tool uses the standard reducing-balance formula that New Zealand banks use for table (principal &amp; interest) mortgages. Each repayment is the same amount, but the split between interest and principal shifts over time — early payments are mostly interest, later payments are mostly principal.</p>
+      <p data-i18n="m_p2">The interest rate defaults to a representative rate based on major-bank carded rates as advertised in July 2026. Fixed-rate NZ mortgages currently range from around 4.5% for a 6-month term up to around 5.5% for a 5-year term, though special rates for borrowers with 20%+ equity are often a little lower, and rates move regularly — always check the current rate with your bank or a mortgage adviser before making decisions.</p>
+      <h2 data-i18n="m_h2_2">What this doesn't include</h2>
+      <ul>
+        <li data-i18n="m_li1">Council rates, water rates, and home &amp; contents insurance</li>
+        <li data-i18n="m_li2">Body corporate fees or ground rent for units, apartments and cross-lease sections</li>
+        <li data-i18n="m_li3">Low-equity margins some banks add when your deposit is under 20%</li>
+        <li data-i18n="m_li4">One-off costs like legal fees, LIM reports and building inspections</li>
+      </ul>
+      <p data-i18n-html="m_p3">For a full picture of what you could afford, try the <a href="/how-much-can-i-borrow-calculator.html">borrowing power calculator</a> and the <a href="/monthly-budget-calculator.html">monthly budget calculator</a> next.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="m_faq_q1">What interest rate should I use?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="m_faq_a1">Use the rate you've been quoted, or the current advertised rate for the fixed term you're considering. As of July 2026, advertised rates from the major banks run roughly from 4.5% (6-month fixed) to 5.5% (5-year fixed), with lower special rates sometimes available for borrowers with 20%+ equity.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="m_faq_q2">Does this include rates, insurance or body corporate fees?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="m_faq_a2">No — this is the loan principal and interest only. Rates, insurance, and body corporate or ground rent are separate ongoing costs to budget for on top of this figure.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="m_faq_q3">Why does my bank's number look slightly different?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="m_faq_a3">Banks use your exact settlement date and compounding method, and account for any offset or revolving credit structure, which can shift the number slightly. Use this calculator to compare scenarios, then confirm the exact figure with your lender.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/how-much-can-i-borrow-calculator.html" data-i18n="rl_borrow">How much can I borrow?</a>
+        <a href="/monthly-budget-calculator.html" data-i18n="rl_budget">Monthly budget calculator</a>
+        <a href="/take-home-pay-calculator.html" data-i18n="rl_takehome">Take-home pay calculator</a>
+        <a href="/car-finance-calculator.html" data-i18n="rl_carfinance">Car finance calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div><div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const loanAmount = document.getElementById('loanAmount');
+  const rate = document.getElementById('rate');
+  const rateHint = document.getElementById('rateHint');
+  const term = document.getElementById('term');
+  const fixedTerm = document.getElementById('fixedTerm');
+  const freqSeg = document.getElementById('freqSeg');
+  const householdIncome = document.getElementById('householdIncome');
+  const shareBtn = document.getElementById('shareBtn');
+  let freq = 12;
+
+  const rateMap = {"0.5":4.49, "1":4.65, "2":5.19, "3":5.29, "4":5.39, "5":5.49};
+
+  // PAYE brackets (2026/27) — used only for the household-income context panel
+  const BRACKETS = [
+    {limit:15600, rate:0.105},{limit:53500, rate:0.175},{limit:78100, rate:0.30},
+    {limit:180000, rate:0.33},{limit:Infinity, rate:0.39},
+  ];
+  function payeTax(g){
+    let tax=0, prev=0;
+    for(const b of BRACKETS){ if(g>prev){ tax+=(Math.min(g,b.limit)-prev)*b.rate; prev=b.limit; } else break; }
+    return tax;
+  }
+  // Assumes household income is split evenly between two earners, since NZ tax is individual not household-based
+  function householdAfterTax(grossHousehold){
+    const perPerson = grossHousehold/2;
+    return grossHousehold - 2*payeTax(perPerson);
+  }
+  function paymentFor(P, i, n){
+    if(n<=0) return 0;
+    if(i===0) return P/n;
+    return P * i / (1 - Math.pow(1+i, -n));
+  }
+
+  freqSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    freqSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    freq = parseInt(btn.dataset.v, 10);
+    calc();
+  });
+
+  fixedTerm.addEventListener('change', function(){
+    const v = fixedTerm.value;
+    if(v !== "-1" && rateMap[v]){
+      rate.value = rateMap[v];
+    }
+    calc();
+  });
+
+  [loanAmount, rate, term, householdIncome].forEach(el => el.addEventListener('input', function(){
+    if(el===rate){ fixedTerm.value = "-1"; }
+    calc();
+  }));
+
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({
+      loan: Math.round(num(loanAmount.value,0)),
+      rate: num(rate.value,0),
+      term: Math.round(num(term.value,30)),
+      freq: freq,
+      income: Math.round(num(householdIncome.value,0)),
+    });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){
+      prompt(t('common_copylinkmanual'), url);
+    });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('loan')) loanAmount.value = p.get('loan');
+    if(p.has('rate')) rate.value = p.get('rate');
+    if(p.has('term')) term.value = p.get('term');
+    if(p.has('income')) householdIncome.value = p.get('income');
+    if(p.has('freq')){
+      freq = parseInt(p.get('freq'),10) || 12;
+      freqSeg.querySelectorAll('button').forEach(b=>{
+        b.classList.toggle('active', parseInt(b.dataset.v,10)===freq);
+      });
+    }
+    if(p.has('loan') || p.has('rate') || p.has('term') || p.has('income')){
+      fixedTerm.value = "-1";
+    }
+  }
+
+  function amortizationSeries(P, i, freq, years, payment){
+    let bal = P, cumPrincipal = 0, cumInterest = 0;
+    const n = years*freq;
+    const principalSeries = [0], interestSeries = [0];
+    for(let period=1; period<=n; period++){
+      const interest = bal*i;
+      const principal = Math.min(payment-interest, bal);
+      bal = Math.max(0, bal-principal);
+      cumPrincipal += principal;
+      cumInterest += interest;
+      if(period % freq === 0){
+        principalSeries.push(cumPrincipal);
+        interestSeries.push(cumInterest);
+      }
+    }
+    return { principalSeries, interestSeries };
+  }
+
+  function calc(){
+    const P = num(loanAmount.value, 0);
+    const annualRate = num(rate.value, 0);
+    rateHint.textContent = annualRate.toFixed(2) + '%';
+    const years = clamp(Math.round(num(term.value, 30)), 1, 30);
+    const n = years * freq;
+    const i = (annualRate/100) / freq;
+
+    const payment = paymentFor(P, i, n);
+    const totalPaid = payment * n;
+    const totalInterest = totalPaid - P;
+    const freqLabel = freq===52?'/week':freq===26?'/fortnight':'/month';
+
+    document.getElementById('outPayment').textContent = fmt2(payment);
+    document.getElementById('outFreqLabel').textContent = freqLabel;
+    document.getElementById('outLoan').textContent = fmt(P);
+    document.getElementById('outRate').textContent = annualRate.toFixed(2) + '%';
+    document.getElementById('outTerm').textContent = years + ' ' + t('m_years_suffix');
+    document.getElementById('outInterest').textContent = fmt(totalInterest);
+    document.getElementById('outTotal').textContent = fmt(totalPaid);
+
+    const principalPct = clamp(100 * P / totalPaid, 0, 100);
+    document.getElementById('splitBar').style.width = principalPct + '%';
+
+    // ---- Chart ----
+    const amort = amortizationSeries(P, i, freq, years, payment);
+    const yearPoints = []; for(let y=0; y<=years; y++) yearPoints.push(y);
+    renderLineChart(document.getElementById('chartCard'), {
+      years: yearPoints,
+      series: [
+        { label:t('m_chart_legend_principal'), color:'#2FA36B', darkColor:'#4ED393', values: amort.principalSeries },
+        { label:t('m_chart_legend_interest'), color:'#E0693F', darkColor:'#F0855C', values: amort.interestSeries },
+      ],
+      yFormatFn: fmt,
+      xLabelFn: (y)=> t('m_chart_year_label').replace('{y}', y),
+      xLabelEvery: Math.max(1, Math.ceil(yearPoints.length/8)),
+    });
+
+    // ---- Contextual insight panel ----
+    const income = num(householdIncome.value, 0);
+    const weeklyEquivCurrent = payment * freq / 52;
+    const reducedPayment = paymentFor(Math.max(0, P-30000), i, n);
+    const weeklyEquivReduced = reducedPayment * freq / 52;
+    const weeklySaving = weeklyEquivCurrent - weeklyEquivReduced;
+
+    const insightEl = document.getElementById('insightText');
+    if(income > 0){
+      const afterTax = householdAfterTax(income);
+      const annualRepayment = payment * freq;
+      const pctOfIncome = afterTax>0 ? (annualRepayment/afterTax*100) : 0;
+      insightEl.innerHTML = t('m_insight_template')
+        .replace('{payment}', fmt2(payment))
+        .replace('{freqlabel}', freqLabel.replace('/',''))
+        .replace('{pct}', pctOfIncome.toFixed(0))
+        .replace('{income}', fmt(income))
+        .replace('{saving}', fmt2(Math.abs(weeklySaving)));
+    } else {
+      insightEl.innerHTML = t('m_insight_placeholder');
+    }
+
+    // ---- Scenario comparison table ----
+    const depositStats = { payment: reducedPayment, n, i, loan: Math.max(0,P-30000) };
+    const depositTotalPaid = depositStats.payment * n;
+    const depositTotalInterest = depositTotalPaid - depositStats.loan;
+
+    const shorterYears = Math.max(1, years-5);
+    const shorterN = shorterYears * freq;
+    const shorterPayment = paymentFor(P, i, shorterN);
+    const shorterTotalPaid = shorterPayment * shorterN;
+    const shorterTotalInterest = shorterTotalPaid - P;
+
+    const yr1Periods = Math.min(freq, n);
+    const currentYr1Cost = payment * yr1Periods;
+    const depositYr1Cost = depositStats.payment * Math.min(freq, n);
+    const shorterYr1Cost = shorterPayment * Math.min(freq, shorterN);
+
+    document.getElementById('cmpCurrentPayment').textContent = fmt2(payment) + freqLabel;
+    document.getElementById('cmpCurrentInterest').textContent = fmt(totalInterest);
+
+    document.getElementById('cmpDepositPayment').textContent = fmt2(depositStats.payment) + freqLabel;
+    document.getElementById('cmpDepositYear1').textContent = '−' + fmt(currentYr1Cost - depositYr1Cost);
+    document.getElementById('cmpDepositInterest').textContent = fmt(depositTotalInterest);
+    document.getElementById('cmpDepositFull').textContent = '−' + fmt(totalInterest - depositTotalInterest);
+
+    document.getElementById('cmpShorterPayment').textContent = fmt2(shorterPayment) + freqLabel;
+    const shorterYr1Diff = shorterYr1Cost - currentYr1Cost;
+    document.getElementById('cmpShorterYear1').textContent = (shorterYr1Diff>=0?'+':'−') + fmt(Math.abs(shorterYr1Diff));
+    document.getElementById('cmpShorterInterest').textContent = fmt(shorterTotalInterest);
+    document.getElementById('cmpShorterFull').textContent = '−' + fmt(totalInterest - shorterTotalInterest);
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', calc);
+  document.addEventListener('themechange', calc);
+})();
+</script>
+</body>
+</html>

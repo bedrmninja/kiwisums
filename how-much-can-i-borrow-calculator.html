@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Much Can I Borrow for a Mortgage? NZ Borrowing Power Calculator | KiwiSums</title>
+<meta name="description" content="Estimate your NZ mortgage borrowing power based on the Reserve Bank's debt-to-income (DTI), loan-to-value (LVR) and bank serviceability rules for 2026.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/how-much-can-i-borrow-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How Much Can I Borrow? NZ Mortgage Borrowing Calculator">
+<meta property="og:description" content="See your estimated NZ mortgage borrowing power under DTI, LVR and serviceability rules.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/how-much-can-i-borrow-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"How Much Can I Borrow Calculator","item":"https://www.kiwisums.co.nz/how-much-can-i-borrow-calculator.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is the DTI rule for mortgages in New Zealand?",
+     "acceptedAnswer":{"@type":"Answer","text":"Since July 2024, the Reserve Bank of New Zealand restricts how much of each bank's new lending can go to borrowers with a debt-to-income (DTI) ratio above 6 times gross annual income for owner-occupiers, or above 7 times for residential investors. Banks can still lend above this for a limited share of borrowers, but 6x (or 7x for investors) functions as the effective ceiling for most people."}},
+    {"@type":"Question","name":"How much deposit do I need to buy a house in NZ?",
+     "acceptedAnswer":{"@type":"Answer","text":"Most banks require at least a 20% deposit for owner-occupiers under standard LVR settings, though a portion of each bank's lending can go to borrowers with smaller deposits (down to around 10%). Investors generally need a larger deposit, often 30-35%. New-build properties are typically exempt from these LVR restrictions."}},
+    {"@type":"Question","name":"Do banks use my gross or net income to work out how much I can borrow?",
+     "acceptedAnswer":{"@type":"Answer","text":"Both. The RBNZ's debt-to-income limit is based on gross (before-tax) income. Separately, your bank will run its own serviceability (affordability) test using your net income, living expenses and other debts, usually stress-tested at an interest rate a few percent above current rates. You need to pass both tests."}}
+  ]
+}
+</script>
+
+<!-- Google AdSense: uncomment once your site is approved and you have a publisher ID.
+     Replace ca-pub-XXXXXXXXXXXXXXXX with your real ID. See README-ADS.md for setup steps.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="b_eyebrow">Housing · Borrowing power</span>
+      <h1 style="margin-top:10px;" data-i18n="b_h1">How much can I borrow?</h1>
+      <p class="lede" data-i18n="b_lede">Banks check three things: your debt-to-income ratio, your deposit (LVR), and whether you can actually afford the repayments. This calculator estimates all three so you can see which one is holding you back.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field">
+          <label data-i18n="b_label_buyeras">Buying as</label>
+          <div class="seg" id="buyerSeg">
+            <button type="button" data-v="occupier" class="active" data-i18n="b_seg_occupier">Owner-occupier</button>
+            <button type="button" data-v="investor" data-i18n="b_seg_investor">Investor</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="grossIncome"><span data-i18n="b_label_gross">Gross annual household income</span> <span class="hint" data-i18n="b_hint_gross">before tax, combined</span></label>
+          <input type="number" id="grossIncome" value="140000" min="0" step="1000">
+        </div>
+
+        <div class="field">
+          <label for="netIncome"><span data-i18n="b_label_net">Net monthly take-home pay</span> <span class="hint" data-i18n="b_hint_net">combined, after tax</span></label>
+          <input type="number" id="netIncome" value="8600" min="0" step="50">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="existingDebt"><span data-i18n="b_label_existingdebt">Existing debt &amp; credit limits</span> <span class="hint" data-i18n="b_hint_existingdebt">loans + card limits</span></label>
+            <input type="number" id="existingDebt" value="15000" min="0" step="500">
+          </div>
+          <div class="field">
+            <label for="debtRepay" data-i18n="b_label_debtrepay">Other monthly debt repayments</label>
+            <input type="number" id="debtRepay" value="300" min="0" step="10">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="expenses"><span data-i18n="b_label_expenses">Monthly living expenses</span> <span class="hint" data-i18n="b_hint_expenses">excluding rent/mortgage</span></label>
+          <input type="number" id="expenses" value="3200" min="0" step="50">
+        </div>
+
+        <div class="field">
+          <label for="deposit" data-i18n="b_label_deposit">Deposit you have available</label>
+          <input type="number" id="deposit" value="120000" min="0" step="1000">
+        </div>
+
+        <div class="callout amber" data-i18n-html="b_callout">
+          Not sure of your take-home pay? Check the <a href="/take-home-pay-calculator.html">take-home pay calculator</a> first.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" data-i18n="b_receipt_label">Estimated borrowing power</div>
+          <div class="receipt-total" id="outMaxLoan">$0</div>
+          <p style="font-size:.85rem; color:var(--muted); margin-top:-4px;"><span data-i18n="b_plusdeposit">Plus your deposit of</span> <span id="outDepositEcho" class="mono">$0</span> ≈ <strong id="outPurchasePower">$0</strong> <span data-i18n="b_purchaseprice">purchase price</span></p>
+
+          <div style="margin-top:18px;">
+            <div class="constraint" id="rowDTI">
+              <span class="name"><span data-i18n="b_row_dti">DTI limit (</span><span id="dtiMultiple">6</span><span data-i18n="b_row_dti_suffix">× income)</span></span>
+              <span class="amt" id="valDTI">$0</span>
+            </div>
+            <div class="constraint" id="rowLVR">
+              <span class="name" data-i18n="b_row_lvr">Deposit / LVR limit</span>
+              <span class="amt" id="valLVR">$0</span>
+            </div>
+            <div class="constraint" id="rowServ">
+              <span class="name"><span data-i18n="b_row_serv">Affordability (stress-tested at</span> <span id="testRateLabel">7.5%</span><span data-i18n="b_row_serv_suffix">)</span></span>
+              <span class="amt" id="valServ">$0</span>
+            </div>
+          </div>
+
+          <p class="receipt-note" data-i18n="b_receipt_note">Your borrowing power is set by whichever limit above is lowest — that's the one highlighted. Real bank decisions also weigh credit history, employment and other factors.</p>
+        </div>
+
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/mortgage-payment-calculator.html" data-i18n="b_next_btn">See repayments on this amount →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="b_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="b_insight_placeholder">Fill in the fields above to see which limit controls your borrowing power and how a bigger deposit would change it.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="b_compare_h2">Compare scenarios</h2>
+      <p class="compare-intro" data-i18n="b_compare_intro">See how a bigger deposit or paying down existing debt would shift your borrowing power.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="b_compare_col_scenario">Scenario</th>
+              <th data-i18n="b_compare_col_maxloan">Max loan</th>
+              <th data-i18n="b_compare_col_binding">Binding limit</th>
+              <th data-i18n="b_compare_col_diff">Difference vs current</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="compare-row-current">
+              <td data-i18n="m_compare_row_current">Current</td>
+              <td id="cmpCurrentLoan">$0</td>
+              <td id="cmpCurrentBinding">—</td>
+              <td id="cmpCurrentDiff">—</td>
+            </tr>
+            <tr>
+              <td data-i18n="m_compare_row_deposit">Bigger deposit (+$30k)</td>
+              <td id="cmpDepositLoan">$0</td>
+              <td id="cmpDepositBinding">—</td>
+              <td id="cmpDepositDiff">$0</td>
+            </tr>
+            <tr>
+              <td data-i18n="b_compare_row_lessdebt">Less existing debt (−$10k)</td>
+              <td id="cmpDebtLoan">$0</td>
+              <td id="cmpDebtBinding">—</td>
+              <td id="cmpDebtDiff">$0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="b_compare_note">"Binding limit" shows which of the three tests (DTI, deposit/LVR, or affordability) sets the ceiling for that scenario — reducing debt only helps if affordability is your binding limit.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="b_assumptions_source_value">Reserve Bank of New Zealand debt-to-income and loan-to-value ratio restrictions; typical major-bank affordability stress-test rates.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n-html="b_assumptions_method_value">Takes the lowest of three limits: DTI (6x/7x gross income), LVR (deposit ÷ minimum deposit %), and serviceability (30-year loan at a stress-tested rate against your monthly surplus).</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="b_assumptions_included_value">DTI, LVR/deposit, and a standard affordability stress test.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="b_assumptions_excluded_value">Credit history, employment type and stability, existing bank relationship, and each bank's individual lending policy — all of which affect real approval decisions on top of these three tests.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="b_h2">The three limits explained</h2>
+      <h3 data-i18n="b_h3_1">1. Debt-to-income (DTI)</h3>
+      <p data-i18n="b_p1">Since 1 July 2024, the Reserve Bank restricts how much of each bank's lending can go to borrowers above a DTI of 6 (owner-occupiers) or 7 (investors) — where DTI is your total debt (including the new mortgage) divided by your gross annual income. Banks can still approve a small share of loans above this "speed limit," but 6x or 7x functions as the practical ceiling for most borrowers.</p>
+      <h3 data-i18n="b_h3_2">2. Loan-to-value ratio (LVR) / deposit</h3>
+      <p data-i18n="b_p2">This is simply how much deposit you have relative to the purchase price. Standard settings expect at least 20% deposit for owner-occupiers and around 30-35% for investors, though banks can lend a portion of their books to borrowers below this. New-build properties are usually exempt from LVR restrictions, which is why many first-home buyers look at new builds with smaller deposits.</p>
+      <h3 data-i18n="b_h3_3">3. Serviceability (can you actually afford it?)</h3>
+      <p data-i18n="b_p3">Banks don't lend at today's rate — they "stress test" your ability to pay at a higher rate (often around 1-2.5% above the advertised rate, commonly landing near 7-7.5% currently) to make sure you'd cope if rates rise. This calculator applies a 7.5% test rate to your monthly surplus after living costs and other debts.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="b_faq_q1">What is the DTI rule for mortgages in NZ?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="b_faq_a1">Since July 2024, the RBNZ restricts most bank lending above a DTI of 6x gross income for owner-occupiers, or 7x for investors. A small share of lending can go above this, but 6x/7x is the effective ceiling for most borrowers.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="b_faq_q2">How much deposit do I need?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="b_faq_a2">Standard settings expect at least 20% for owner-occupiers and 30-35% for investors, though some lending is available below this threshold. New builds are typically exempt from LVR restrictions.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="b_faq_q3">Gross or net income — which matters?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="b_faq_a3">Both. DTI limits use gross (before-tax) income. Separately, your bank tests affordability using your net income, expenses and other debts, usually stress-tested at a higher interest rate than you'd actually pay.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/mortgage-payment-calculator.html" data-i18n="rl_mortgage">Mortgage payment calculator</a>
+        <a href="/take-home-pay-calculator.html" data-i18n="rl_takehome">Take-home pay calculator</a>
+        <a href="/monthly-budget-calculator.html" data-i18n="rl_budget">Monthly budget calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div><div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const grossIncome = document.getElementById('grossIncome');
+  const netIncome = document.getElementById('netIncome');
+  const existingDebt = document.getElementById('existingDebt');
+  const debtRepay = document.getElementById('debtRepay');
+  const expenses = document.getElementById('expenses');
+  const deposit = document.getElementById('deposit');
+  const buyerSeg = document.getElementById('buyerSeg');
+  const shareBtn = document.getElementById('shareBtn');
+  let buyerType = 'occupier';
+  const TEST_RATE = 7.5;
+
+  buyerSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    buyerSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    buyerType = btn.dataset.v;
+    calc();
+  });
+
+  [grossIncome, netIncome, existingDebt, debtRepay, expenses, deposit].forEach(el=>{
+    el.addEventListener('input', calc);
+  });
+
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({
+      buyer: buyerType, gross: Math.round(num(grossIncome.value,0)), net: Math.round(num(netIncome.value,0)),
+      debt: Math.round(num(existingDebt.value,0)), debtrepay: Math.round(num(debtRepay.value,0)),
+      expenses: Math.round(num(expenses.value,0)), deposit: Math.round(num(deposit.value,0)),
+    });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('gross')) grossIncome.value = p.get('gross');
+    if(p.has('net')) netIncome.value = p.get('net');
+    if(p.has('debt')) existingDebt.value = p.get('debt');
+    if(p.has('debtrepay')) debtRepay.value = p.get('debtrepay');
+    if(p.has('expenses')) expenses.value = p.get('expenses');
+    if(p.has('deposit')) deposit.value = p.get('deposit');
+    if(p.has('buyer')){
+      buyerType = p.get('buyer')==='investor' ? 'investor' : 'occupier';
+      buyerSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===buyerType));
+    }
+  }
+
+  function computeLoan(gi, ed, dep, ni, ex, dr, type){
+    const dtiMultiple = type==='investor' ? 7 : 6;
+    const minDepositPct = type==='investor' ? 0.35 : 0.20;
+    const maxLoanDTI = Math.max(0, dtiMultiple*gi - ed);
+    const maxLoanLVR = dep>0 ? dep * (1-minDepositPct)/minDepositPct : 0;
+    const surplus = Math.max(0, ni - ex - dr);
+    const i = (TEST_RATE/100)/12, n = 30*12;
+    const maxLoanServ = surplus>0 ? surplus * (1-Math.pow(1+i,-n))/i : 0;
+    const minVal = Math.min(maxLoanDTI, maxLoanLVR, maxLoanServ);
+    const binding = maxLoanDTI===minVal ? 'DTI' : (maxLoanLVR===minVal ? 'LVR' : 'Serv');
+    return { maxLoanDTI, maxLoanLVR, maxLoanServ, minVal, binding };
+  }
+
+  function bindingLabel(key){
+    return key==='DTI' ? t('b_binding_dti') : (key==='LVR' ? t('b_binding_lvr') : t('b_binding_serv'));
+  }
+
+  function calc(){
+    const gi = num(grossIncome.value,0);
+    const ni = num(netIncome.value,0);
+    const ed = num(existingDebt.value,0);
+    const dr = num(debtRepay.value,0);
+    const ex = num(expenses.value,0);
+    const dep = num(deposit.value,0);
+
+    const r = computeLoan(gi, ed, dep, ni, ex, dr, buyerType);
+    const dtiMultiple = buyerType==='investor' ? 7 : 6;
+
+    document.getElementById('dtiMultiple').textContent = dtiMultiple;
+    document.getElementById('testRateLabel').textContent = TEST_RATE.toFixed(1) + '%';
+    document.getElementById('valDTI').textContent = fmt(r.maxLoanDTI);
+    document.getElementById('valLVR').textContent = fmt(r.maxLoanLVR);
+    document.getElementById('valServ').textContent = fmt(r.maxLoanServ);
+
+    ['rowDTI','rowLVR','rowServ'].forEach(id=>document.getElementById(id).classList.remove('binding'));
+    const bindingRow = r.binding==='DTI' ? 'rowDTI' : (r.binding==='LVR' ? 'rowLVR' : 'rowServ');
+    document.getElementById(bindingRow).classList.add('binding');
+
+    document.getElementById('outMaxLoan').textContent = fmt(r.minVal);
+    document.getElementById('outDepositEcho').textContent = fmt(dep);
+    document.getElementById('outPurchasePower').textContent = fmt(r.minVal + dep);
+
+    // ---- Insight panel ----
+    const insightEl = document.getElementById('insightText');
+    if(gi > 0){
+      const depositScenario = computeLoan(gi, ed, dep+30000, ni, ex, dr, buyerType);
+      const depositDelta = depositScenario.minVal - r.minVal;
+      const multiple = r.minVal>0 ? (r.minVal/gi) : 0;
+      insightEl.innerHTML = t('b_insight_template')
+        .replace('{loan}', fmt(r.minVal))
+        .replace('{binding}', bindingLabel(r.binding))
+        .replace('{multiple}', multiple.toFixed(1))
+        .replace('{depositdelta}', fmt(Math.abs(depositDelta)));
+    } else {
+      insightEl.innerHTML = t('b_insight_placeholder');
+    }
+
+    // ---- Scenario comparison ----
+    document.getElementById('cmpCurrentLoan').textContent = fmt(r.minVal);
+    document.getElementById('cmpCurrentBinding').textContent = bindingLabel(r.binding);
+
+    const depScenario = computeLoan(gi, ed, dep+30000, ni, ex, dr, buyerType);
+    document.getElementById('cmpDepositLoan').textContent = fmt(depScenario.minVal);
+    document.getElementById('cmpDepositBinding').textContent = bindingLabel(depScenario.binding);
+    document.getElementById('cmpDepositDiff').textContent = '+' + fmt(depScenario.minVal - r.minVal);
+
+    const debtScenario = computeLoan(gi, Math.max(0,ed-10000), dep, ni, ex, dr, buyerType);
+    document.getElementById('cmpDebtLoan').textContent = fmt(debtScenario.minVal);
+    document.getElementById('cmpDebtBinding').textContent = bindingLabel(debtScenario.binding);
+    document.getElementById('cmpDebtDiff').textContent = '+' + fmt(debtScenario.minVal - r.minVal);
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', calc);
+})();
+</script>
+</body>
+</html>

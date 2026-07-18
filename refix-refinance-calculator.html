@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refix or Break Your Mortgage? NZ Refinance Calculator 2026 | KiwiSums</title>
+<meta name="description" content="Work out whether breaking your fixed mortgage early to refix at a lower rate makes financial sense, weighing the break fee against the interest you'd save.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/refix-refinance-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Refix / Refinance Calculator NZ — KiwiSums">
+<meta property="og:description" content="See whether breaking your fixed mortgage early is worth it.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/refix-refinance-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"Refix / Refinance Calculator","item":"https://www.kiwisums.co.nz/refix-refinance-calculator.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What is a mortgage break fee?","acceptedAnswer":{"@type":"Answer","text":"A break fee (also called an early repayment charge) is what a bank charges when you end a fixed-rate mortgage before the term is up. It's based on the bank's economic cost of unwinding the wholesale funding they arranged for your loan, driven by the difference between wholesale interest rates when you fixed and wholesale rates now — not simply the difference in the rates advertised to customers, which is why only your bank can quote it precisely."}},
+    {"@type":"Question","name":"When is it worth breaking a fixed mortgage to refix?","acceptedAnswer":{"@type":"Answer","text":"Generally when the interest you'd save by refixing at a lower rate for your remaining term is greater than the break fee plus any admin costs. This is most likely to make sense when rates have fallen significantly since you fixed and you have a reasonable amount of time left on your current term — breaking with only a few months left rarely saves enough to justify it."}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="rf_eyebrow">Housing · Refix</span>
+      <h1 style="margin-top:10px;" data-i18n="rf_h1">Refix / refinance calculator</h1>
+      <p class="lede" data-i18n="rf_lede">See whether breaking your current fixed mortgage early to refix at a lower rate is likely to pay off.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field">
+          <label for="balance" data-i18n="rf_label_balance">Remaining loan balance</label>
+          <input type="number" id="balance" value="500000" min="0" step="5000">
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="currentRate" data-i18n="rf_label_currentrate">Current fixed rate</label><input type="number" id="currentRate" value="6.50" min="0" max="15" step="0.01"></div>
+          <div class="field"><label for="newRate" data-i18n="rf_label_newrate">New rate available</label><input type="number" id="newRate" value="5.29" min="0" max="15" step="0.01"></div>
+        </div>
+        <div class="field">
+          <label for="monthsRemaining" data-i18n="rf_label_monthsremaining">Months left on current fix</label>
+          <input type="number" id="monthsRemaining" value="18" min="1" max="60" step="1">
+        </div>
+        <div class="field">
+          <label for="breakFee"><span data-i18n="rf_label_breakfee">Break fee</span> <span class="hint" data-i18n="rf_hint_breakfee">editable estimate</span></label>
+          <input type="number" id="breakFee" value="4538" min="0" step="50">
+        </div>
+        <div class="callout" data-i18n="rf_callout">
+          Break fees are based on wholesale rate movements your bank tracks internally, not the retail rates advertised to customers — only your bank can quote an exact figure. The default above is a rough estimate; ask your bank for the real number before deciding.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" id="verdictLabel">Net benefit of switching</div>
+          <div class="receipt-total" id="outNet">$0</div>
+
+          <div class="receipt-lines">
+            <div class="receipt-line"><span class="k" data-i18n="rf_line_interestsaved">Interest saved by refixing</span><span class="v" id="outInterestSaved">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="rf_line_breakfee">Break fee</span><span class="v" id="outBreakFee">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="rf_line_monthlysaving">Monthly interest saving</span><span class="v" id="outMonthlySaving">$0</span></div>
+          </div>
+          <p class="receipt-note" data-i18n="rf_receipt_note">Compares interest cost only over your remaining fixed months — doesn't include any admin or legal fees some refinances involve, or the effect of refixing for a different total term than your original.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/mortgage-payment-calculator.html" data-i18n="rf_next_btn">Compare to a fresh mortgage →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="rf_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="rf_insight_placeholder">See the break-even break fee — the amount your bank would need to quote before switching stops being worth it.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="rf_compare_h2">Compare time remaining</h2>
+      <p class="compare-intro" data-i18n="rf_compare_intro">The months left on your current fix is one of the biggest levers in this decision — see how the verdict shifts.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="rf_compare_col_scenario">Scenario</th>
+              <th data-i18n="rf_compare_col_verdict">Verdict</th>
+              <th data-i18n="rf_compare_col_net">Net amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="cmpShorterLabel">6 months less</td>
+              <td id="cmpShorterVerdict">—</td>
+              <td id="cmpShorterNet">$0</td>
+            </tr>
+            <tr class="compare-row-current">
+              <td id="cmpCurrentLabel">Current</td>
+              <td id="cmpCurrentVerdict">—</td>
+              <td id="cmpCurrentNet">$0</td>
+            </tr>
+            <tr>
+              <td id="cmpLongerLabel">6 months more</td>
+              <td id="cmpLongerVerdict">—</td>
+              <td id="cmpLongerNet">$0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note" data-i18n="rf_compare_note">More months remaining means more time for the interest saving to outweigh the break fee — that's why switching tends to make more sense earlier in a fixed term than near the end of it.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n-html="rf_assumptions_source_value">Break fee is a rough estimate based on the retail rate gap — banks calculate real break fees from wholesale swap rate movements, which aren't publicly available. Always confirm the real figure with your bank.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n="rf_assumptions_method_value">Net benefit = (monthly interest saving × months remaining) − break fee. Monthly interest saving is the gap between your current and new rate applied to your remaining balance.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="rf_assumptions_included_value">Interest cost difference over your remaining fixed months, minus the break fee.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="rf_assumptions_excluded_value">Admin or legal fees some refinances involve, and any effect of refixing for a different total term than your original loan.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="rf_h2_1">How break fees actually work</h2>
+      <p data-i18n="rf_p1">A break fee isn't simply the gap between your old and new retail rates — it's the bank's estimate of what it costs them to unwind the wholesale funding arrangement they made when you fixed. That's driven by wholesale swap rates, which move differently to the retail rates banks advertise to customers, so a rough estimate based on retail rates (like the default in this calculator) can be meaningfully off in either direction. Always get an exact quote from your bank before committing.</p>
+      <p data-i18n="rf_p2">Even with an exact break fee, the decision usually comes down to how much time is left on your current fix and how big the rate gap is. A large rate drop with a year or more remaining often clears the break fee comfortably; a small rate drop with only a few months left rarely does.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="rf_faq_q1">What is a mortgage break fee?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="rf_faq_a1">What a bank charges to end a fixed-rate mortgage early, based on their economic cost of unwinding the wholesale funding for your loan — driven by wholesale rate movements, not the retail rate gap, which is why only your bank can quote it precisely.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="rf_faq_q2">When is it worth breaking a fixed mortgage?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="rf_faq_a2">Generally when the interest saved by refixing lower exceeds the break fee plus any admin costs. This is most likely when rates have fallen significantly and you have meaningful time left on your term — a few months left rarely saves enough to be worth it.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/mortgage-payment-calculator.html" data-i18n="rl_mortgage">Mortgage payment calculator</a>
+        <a href="/how-much-can-i-borrow-calculator.html" data-i18n="rl_borrow">How much can I borrow?</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div><div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js"></script>
+<script src="/js/i18n.js"></script>
+<script>
+(function(){
+  const balance = document.getElementById('balance');
+  const currentRate = document.getElementById('currentRate');
+  const newRate = document.getElementById('newRate');
+  const monthsRemaining = document.getElementById('monthsRemaining');
+  const breakFee = document.getElementById('breakFee');
+  const verdictLabel = document.getElementById('verdictLabel');
+  const shareBtn = document.getElementById('shareBtn');
+  let breakFeeManuallyEdited = false;
+
+  breakFee.addEventListener('input', function(){ breakFeeManuallyEdited = true; calc(); });
+  [balance, currentRate, newRate, monthsRemaining].forEach(el=>el.addEventListener('input', function(){
+    if(!breakFeeManuallyEdited) updateDefaultBreakFee();
+    calc();
+  }));
+
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({
+      balance: Math.round(num(balance.value,0)), currentrate: num(currentRate.value,0),
+      newrate: num(newRate.value,0), months: Math.round(num(monthsRemaining.value,0)),
+      breakfee: Math.round(num(breakFee.value,0)),
+    });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('balance')) balance.value = p.get('balance');
+    if(p.has('currentrate')) currentRate.value = p.get('currentrate');
+    if(p.has('newrate')) newRate.value = p.get('newrate');
+    if(p.has('months')) monthsRemaining.value = p.get('months');
+    if(p.has('breakfee')){ breakFee.value = p.get('breakfee'); breakFeeManuallyEdited = true; }
+  }
+
+  function updateDefaultBreakFee(){
+    const bal = num(balance.value,0);
+    const cur = num(currentRate.value,0);
+    const nw = num(newRate.value,0);
+    const months = num(monthsRemaining.value,0);
+    const est = bal * Math.max(0, cur-nw)/100 * 0.5 * (months/12);
+    breakFee.value = Math.round(est);
+  }
+
+  function runScenario(bal, cur, nw, months, fee){
+    const monthlyInterestCurrent = bal*cur/100/12;
+    const monthlyInterestNew = bal*nw/100/12;
+    const monthlySaving = monthlyInterestCurrent - monthlyInterestNew;
+    const totalSaving = monthlySaving * months;
+    const net = totalSaving - fee;
+    return { monthlySaving, totalSaving, net };
+  }
+
+  function calc(){
+    const bal = num(balance.value,0);
+    const cur = num(currentRate.value,0);
+    const nw = num(newRate.value,0);
+    const months = num(monthsRemaining.value,0);
+    const fee = num(breakFee.value,0);
+
+    const r = runScenario(bal, cur, nw, months, fee);
+    verdictLabel.textContent = r.net >= 0 ? t('rf_verdict_worth') : t('rf_verdict_notworth');
+    document.getElementById('outNet').textContent = fmt(Math.abs(r.net));
+    document.getElementById('outInterestSaved').textContent = fmt(r.totalSaving);
+    document.getElementById('outBreakFee').textContent = fmt(fee);
+    document.getElementById('outMonthlySaving').textContent = fmt(r.monthlySaving);
+
+    // ---- Insight panel ----
+    const insightEl = document.getElementById('insightText');
+    const breakEvenFee = r.totalSaving;
+    insightEl.innerHTML = t('rf_insight_template')
+      .replace('{verdict}', r.net>=0 ? t('rf_worth_lower') : t('rf_notworth_lower'))
+      .replace('{net}', fmt(Math.abs(r.net)))
+      .replace('{breakeven}', fmt(Math.max(0,breakEvenFee)));
+
+    // ---- Scenario comparison ----
+    document.getElementById('cmpCurrentLabel').textContent = t('rf_compare_current_label').replace('{months}', months);
+    document.getElementById('cmpCurrentVerdict').textContent = r.net>=0 ? t('rf_worth_lower') : t('rf_notworth_lower');
+    document.getElementById('cmpCurrentNet').textContent = (r.net>=0?'+':'−') + fmt(Math.abs(r.net));
+
+    const shorterMonths = Math.max(1, months-6);
+    const rShorter = runScenario(bal, cur, nw, shorterMonths, fee);
+    document.getElementById('cmpShorterLabel').textContent = t('rf_compare_shorter_label').replace('{months}', shorterMonths);
+    document.getElementById('cmpShorterVerdict').textContent = rShorter.net>=0 ? t('rf_worth_lower') : t('rf_notworth_lower');
+    document.getElementById('cmpShorterNet').textContent = (rShorter.net>=0?'+':'−') + fmt(Math.abs(rShorter.net));
+
+    const longerMonths = Math.min(60, months+6);
+    const rLonger = runScenario(bal, cur, nw, longerMonths, fee);
+    document.getElementById('cmpLongerLabel').textContent = t('rf_compare_longer_label').replace('{months}', longerMonths);
+    document.getElementById('cmpLongerVerdict').textContent = rLonger.net>=0 ? t('rf_worth_lower') : t('rf_notworth_lower');
+    document.getElementById('cmpLongerNet').textContent = (rLonger.net>=0?'+':'−') + fmt(Math.abs(rLonger.net));
+  }
+
+  loadFromUrl();
+  if(!breakFeeManuallyEdited) updateDefaultBreakFee();
+  calc();
+  document.addEventListener('languagechange', calc);
+})();
+</script>
+</body>
+</html>
