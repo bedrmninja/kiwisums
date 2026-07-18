@@ -123,6 +123,10 @@
         <div class="field">
           <label for="yieldKwh"><span data-i18n="se_label_yield">Generation yield</span> <span class="hint" data-i18n="se_hint_yield">kWh per kW per year</span></label>
           <input type="number" id="yieldKwh" value="1300" min="0" step="50">
+          <div class="seg" id="earningsPeriodSeg" style="max-width:200px; margin-top:10px;">
+            <button type="button" data-v="annual" class="active" data-i18n="ss_seg_annual">Annual</button>
+            <button type="button" data-v="monthly" data-i18n="ss_seg_monthly">Monthly</button>
+          </div>
         </div>
         <div class="field">
           <label for="selfConsumption"><span data-i18n="se_label_selfconsumption">Self-consumption</span> <span class="hint" id="scHint">65%</span></label>
@@ -141,10 +145,6 @@
         <div class="receipt">
           <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
           <span class="stamp" data-i18n="common_estimate">Estimate</span>
-          <div class="seg" id="earningsPeriodSeg" style="max-width:200px; margin-bottom:16px;">
-            <button type="button" data-v="annual" class="active" data-i18n="ss_seg_annual">Annual</button>
-            <button type="button" data-v="monthly" data-i18n="ss_seg_monthly">Monthly</button>
-          </div>
           <div class="receipt-total-label" id="earningsLabel" data-i18n="se_receipt_label">Annual export earnings</div>
           <div class="receipt-total" id="outEarnings">$0</div>
 
