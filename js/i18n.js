@@ -2351,7 +2351,7 @@ const T = {
   se_receipt_note: { en:"Export earnings are a bonus, not the main event — self-consumed power is worth 2-4x more per kWh than exported power at typical NZ retail vs buy-back rates.",
     ko:"판매 수익은 보너스이지 주된 이점이 아닙니다 — 일반적인 뉴질랜드 소매 대 매입 단가를 기준으로 자가 소비 전력은 수출 전력보다 kWh당 2~4배의 가치를 가집니다.",
     zh:"售电收益是额外奖励,而非主要收益——按新西兰典型的零售价与回购价对比,自用电力每kWh的价值是出售电力的2-4倍。" },
-  se_next_btn: { en:"Heating your home too? Check heat pump running costs →", ko:"난방도 필요하신가요? 히트펌프 운영비 확인하기 →", zh:"也需要供暖?查看热泵运行成本 →" },
+  se_next_btn: { en:"Check heat pump running costs →", ko:"난방도 필요하신가요? 히트펌프 운영비 확인하기 →", zh:"也需要供暖?查看热泵运行成本 →" },
   se_h2_1: { en:"Export earnings are a bonus, not the main event", ko:"판매 수익은 보너스이지 주된 이점이 아닙니다", zh:"售电收益是额外奖励,而非主要收益" },
   se_p1: { en:"It's tempting to think of solar export as a mini income stream, and it genuinely is one — but it's worth keeping in perspective. At a typical 10c/kWh buy-back rate against a 33c/kWh retail rate, every kWh you export earns you roughly a third of what the same kWh would have saved you if used directly. Shopping around for a better buy-back rate is worthwhile once you've got a system installed, since the gap between retailers can be meaningful, but it shouldn't be the deciding factor in choosing a system size or an installer.",
     ko:"태양광 수출을 소규모 수입원으로 생각하기 쉽고, 실제로도 그렇습니다 — 하지만 균형 잡힌 시각이 필요합니다. 일반적인 10센트/kWh 매입 단가와 33센트/kWh 소매 요금을 비교하면, 수출하는 매 kWh는 직접 사용했을 때 절감할 수 있었던 금액의 약 3분의 1만 벌어들입니다. 시스템 설치 후 더 나은 매입 단가를 찾아보는 것은 소매업체 간 격차가 상당할 수 있으므로 가치가 있지만, 시스템 규모나 설치업체 선택의 결정적 요인이 되어서는 안 됩니다.",
