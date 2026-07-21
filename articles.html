@@ -4,23 +4,33 @@
 <meta charset="UTF-8">
 <script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Does Solar Increase Home Value? NZ Calculator 2026 | KiwiSums</title>
-<meta name="description" content="Estimate how much solar panels could add to your NZ home's value, and compare that added equity to what the system actually cost.">
-<link rel="canonical" href="https://www.kiwisums.co.nz/solar-home-value-calculator.html">
+<title>Articles & Guides | KiwiSums</title>
+<meta name="description" content="Plain-English guides and explainers on mortgage rates, solar payback, and the economic forces behind your money decisions in New Zealand.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/articles.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Solar & Home Value Calculator NZ | KiwiSums">
-<meta property="og:description" content="See how much solar could add to your home's value.">
-<meta property="og:url" content="https://www.kiwisums.co.nz/solar-home-value-calculator.html">
+<meta property="og:title" content="Articles & Guides | KiwiSums">
+<meta property="og:description" content="Plain-English guides and explainers on mortgage rates, solar payback, and the economic forces behind your money decisions.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/articles.html">
+<meta property="og:locale" content="en_NZ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},{"@type":"ListItem","position":2,"name":"Solar Home Value Calculator","item":"https://www.kiwisums.co.nz/solar-home-value-calculator.html"}]}
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"Articles","item":"https://www.kiwisums.co.nz/articles.html"}
+  ]
+}
 </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does solar increase a house's value in NZ?","acceptedAnswer":{"@type":"Answer","text":"NZ research suggests solar adds approximately 3-4% to residential property value on average — on a $700,000 home, that's roughly $21,000-$28,000 in added equity. This isn't guaranteed for every property or market, and the uplift tends to be more reliable for owned (not leased) systems in good working condition with reasonable remaining panel life."}},{"@type":"Question","name":"Is the value added by solar the same as the money saved on power bills?","acceptedAnswer":{"@type":"Answer","text":"No — they're two separate benefits that both come from the same investment. Bill savings accrue to you every year you live in the home, while the property value uplift is only realised if and when you sell. A buyer is effectively paying upfront for a share of those future bill savings, which is part of why the value uplift is smaller than the system's full replacement cost."}}]}
-</script>
+
+<!-- Google AdSense: uncomment once your site is approved and you have a publisher ID.
+     Replace ca-pub-XXXXXXXXXXXXXXXX with your real ID. See README-ADS.md for setup steps.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
 </head>
 <body>
 
@@ -121,139 +131,49 @@
 <main id="main">
   <div class="wrap">
     <div style="padding-top:32px;">
-      <span class="eyebrow" data-i18n="shv_eyebrow">Solar · Home value</span>
-      <h1 style="margin-top:10px;" data-i18n="shv_h1">Solar & home value calculator</h1>
-      <p class="lede" data-i18n="shv_lede">See how much solar panels could add to your home's value, and how that compares to what the system cost.</p>
-    </div>
-
-    <form class="calc-layout" id="calcForm" onsubmit="return false;">
-      <div class="panel">
-        <div class="field">
-          <label for="homeValue" data-i18n="shv_label_homevalue">Current estimated home value</label>
-          <input type="number" id="homeValue" value="700000" min="0" step="10000">
-        </div>
-        <div class="field">
-          <label for="upliftPct"><span data-i18n="shv_label_uplift">Estimated value uplift</span> <span class="hint" id="upliftHint">3.5%</span></label>
-          <input type="range" id="upliftPct" min="0" max="6" step="0.5" value="3.5">
-        </div>
-        <div class="field">
-          <label for="systemCost" data-i18n="shv_label_systemcost">Solar system cost</label>
-          <input type="number" id="systemCost" value="14000" min="0" step="500">
-        </div>
-        <div class="callout" data-i18n="shv_callout">
-          Value uplift is only realised when you sell — it's a separate benefit from the ongoing bill savings you get every year you live there. Owned systems in good condition typically add more value than leased ones.
-        </div>
-      </div>
-
-      <div>
-        <div class="receipt">
-          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
-          <span class="stamp" data-i18n="common_estimate">Estimate</span>
-          <div class="receipt-total-label" data-i18n="shv_receipt_label">Estimated added home value</div>
-          <div class="receipt-total" id="outUplift">$0</div>
-
-          <div class="receipt-lines">
-            <div class="receipt-line"><span class="k" data-i18n="shv_line_systemcost">System cost</span><span class="v" id="outSystemCost">$0</span></div>
-            <div class="receipt-line"><span class="k" data-i18n="shv_line_netequity">Net equity gain vs cost</span><span class="v" id="outNetEquity">$0</span></div>
-          </div>
-          <p class="receipt-note" data-i18n="shv_receipt_note">Based on NZ research suggesting a 3-4% average uplift — actual results vary by market, buyer preferences, and the system's age and condition at time of sale.</p>
-        </div>
-        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="/solar-battery-calculator.html" data-i18n="shv_next_btn">Thinking about adding a battery too? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
-        </div>
-        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
-      </div>
-    </form>
-  </div>
-
-  <div class="wrap">
-    <div class="insight-panel" id="insightPanel">
-      <h2 data-i18n="shv_insight_h2">What this means for you</h2>
-      <p id="insightText" data-i18n-html="shv_insight_placeholder">See how the added value compares to the system cost, and how sensitive the result is to the uplift percentage.</p>
+      <span class="eyebrow" data-i18n="articles_eyebrow">Articles</span>
+      <h1 style="margin-top:10px;" data-i18n="articles_h1">Guides & explainers</h1>
+      <p class="lede" data-i18n="articles_lede">Deep dives on the numbers behind your money decisions — mortgage rates, solar payback, and the economic forces that move them.</p>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="compare-panel">
-      <h2 data-i18n="shv_compare_h2">Compare uplift estimates</h2>
-      <p class="compare-intro" data-i18n="shv_compare_intro">3-4% is a research-based average, not a guarantee — see the range between a conservative and optimistic estimate.</p>
-      <div class="compare-table-wrap">
-        <table class="compare-table" id="compareTable">
-          <thead>
-            <tr>
-              <th data-i18n="shv_compare_col_scenario">Scenario</th>
-              <th data-i18n="shv_compare_col_uplift">Uplift %</th>
-              <th data-i18n="shv_compare_col_value">Added value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-i18n="shv_compare_row_conservative">Conservative</td>
-              <td>2%</td>
-              <td id="cmpConservativeValue">$0</td>
-            </tr>
-            <tr class="compare-row-current">
-              <td data-i18n="m_compare_row_current">Current</td>
-              <td id="cmpCurrentUplift">3.5%</td>
-              <td id="cmpCurrentValue">$0</td>
-            </tr>
-            <tr>
-              <td data-i18n="shv_compare_row_optimistic">Optimistic</td>
-              <td>5%</td>
-              <td id="cmpOptimisticValue">$0</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="compare-note" data-i18n="shv_compare_note">Even the optimistic estimate is well short of most systems' full replacement cost — value uplift is a bonus on top of bill savings, not a way to fully recoup your investment through resale alone.</p>
-    </div>
-  </div>
-
-  <div class="wrap">
-    <details class="assumptions-panel" id="assumptionsPanel">
-      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
-      <div class="assumptions-grid">
-        <div>
-          <strong data-i18n="m_assumptions_source_label">Data source</strong>
-          <p data-i18n="shv_assumptions_source_value">NZ property research suggesting a 3-4% average value uplift for homes with solar, adjusted here to a 2-5% range to reflect market uncertainty.</p>
-        </div>
-        <div>
-          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
-          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
-        </div>
-        <div>
-          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
-          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
-        </div>
-        <div>
-          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
-          <p data-i18n="shv_assumptions_method_value">Added value = home value × uplift %. Net equity gain = added value − system cost.</p>
-        </div>
-        <div>
-          <strong data-i18n="m_assumptions_included_label">Included</strong>
-          <p data-i18n="shv_assumptions_included_value">Estimated property value uplift compared against your solar system's installed cost.</p>
-        </div>
-        <div>
-          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
-          <p data-i18n="shv_assumptions_excluded_value">Ongoing bill savings (see the solar savings calculator), real estate agent fees on sale, and buyer-specific preferences that can push actual results above or below this range.</p>
-        </div>
-      </div>
-    </details>
-  </div>
-
-  <div class="ad-wrap wrap">
-    <div class="ad-slot ad-banner">
-      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
-      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
-    </div>
-  </div>
-
-  <section class="article-tile-section">
+  <section class="section-tight">
     <div class="wrap">
-      <h2 data-i18n="common_relatedreading_h2">Related reading</h2>
-      <div class="article-tile-grid">
-        <a class="article-tile" href="/is-solar-really-worth-it.html">
+      <div class="articles-toolbar">
+        <div class="articles-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="articleSearch" data-i18n-placeholder="articles_search_placeholder" data-i18n-aria-label="articles_search_aria" placeholder="Search articles…" aria-label="Search articles">
+        </div>
+        <div class="seg articles-filter" id="articleFilterSeg">
+          <button type="button" data-v="all" class="active" data-i18n="articles_filter_all">All</button>
+          <button type="button" data-v="housing" data-i18n="navcat_housing">Housing</button>
+          <button type="button" data-v="solar" data-i18n="navcat_solar">Solar</button>
+          <button type="button" data-v="economy" data-i18n="articles_filter_economy">Economy</button>
+        </div>
+      </div>
+
+      <p class="articles-count" id="articlesCount"></p>
+
+      <div class="article-tile-grid cols-3" id="articleGrid">
+        <a class="article-tile" data-category="economy" href="/ocr-rate-hike-what-it-means.html">
+          <img class="thumb" src="/images/articles/rbnz-ocr-hero.jpg" alt="" loading="lazy">
+          <div class="body">
+            <span class="tag" data-i18n="ocr_eyebrow">Economy · Explainer</span>
+            <h3 data-i18n="ocr_h1">What does the OCR rate hike mean for you?</h3>
+            <p data-i18n="ocr_tile_excerpt">The Reserve Bank just lifted the OCR to 3.50% — what it means for your mortgage, savings and everyday costs.</p>
+            <span class="go" data-i18n="common_readarticle">Read article →</span>
+          </div>
+        </a>
+        <a class="article-tile" data-category="housing" href="/fixed-vs-floating-mortgage-rate.html">
+          <img class="thumb" src="/images/articles/fixedvsfloating.jpg" alt="" loading="lazy">
+          <div class="body">
+            <span class="tag" data-i18n="fvf_eyebrow">Housing · Explainer</span>
+            <h3 data-i18n="fvf_h1">Fixed vs floating: how to choose your mortgage rate</h3>
+            <p data-i18n="fvf_tile_excerpt">Locking in feels safer, but floating has real advantages too. Here's how to decide which fits you.</p>
+            <span class="go" data-i18n="common_readarticle">Read article →</span>
+          </div>
+        </a>
+        <a class="article-tile" data-category="solar" href="/is-solar-really-worth-it.html">
           <img class="thumb" src="/images/articles/solarworth.jpg" alt="" loading="lazy">
           <div class="body">
             <span class="tag" data-i18n="isw_eyebrow">Solar · Explainer</span>
@@ -262,7 +182,7 @@
             <span class="go" data-i18n="common_readarticle">Read article →</span>
           </div>
         </a>
-        <a class="article-tile" href="/nz-vs-australia-residential-solar.html">
+        <a class="article-tile" data-category="solar" href="/nz-vs-australia-residential-solar.html">
           <img class="thumb" src="/images/articles/solaragainstaud.jpg" alt="" loading="lazy">
           <div class="body">
             <span class="tag" data-i18n="nzau_eyebrow">Solar · Comparison</span>
@@ -272,43 +192,8 @@
           </div>
         </a>
       </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="wrap prose">
-      <h2 data-i18n="shv_h2_1">Two different benefits, one investment</h2>
-      <p data-i18n="shv_p1">Solar delivers value in two distinct ways that are easy to conflate: the bill savings you bank every year you live in the home, and the resale premium a buyer might pay because they're inheriting those future savings too. NZ research points to roughly a 3-4% uplift in property value on average — meaningful, but well short of the full replacement cost of a system, since a buyer is really only paying for a discounted share of future savings, adjusted for the system's remaining useful life and any perceived risk.</p>
-      <p data-i18n="shv_p2">In practice this means solar rarely "pays for itself twice" — once through bill savings and again in full through resale value — but the combination of both benefits still makes it a genuinely strong long-term investment for most NZ homeowners who stay put for several years.</p>
-
-      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-q"><span data-i18n="shv_faq_q1">Does solar increase a house's value in NZ?</span> <span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="shv_faq_a1">NZ research suggests solar adds roughly 3-4% to property value on average — on a $700,000 home, that's about $21,000-$28,000. This isn't guaranteed for every property and tends to be more reliable for owned systems in good condition.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q"><span data-i18n="shv_faq_q2">Is the value added the same as the money saved on bills?</span> <span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="shv_faq_a2">No — bill savings accrue every year you live there, while the value uplift is only realised if you sell. A buyer is effectively paying upfront for a share of future savings, which is why the uplift is smaller than the system's full cost.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="ad-wrap wrap">
-    <div class="ad-slot ad-incontent">
-      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
-      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
-    </div>
-  </div>
-
-  <section class="section-tight">
-    <div class="wrap">
-      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
-      <div class="related-links" style="margin-top:14px;">
-        <a href="/solar-payback-calculator.html" data-i18n="rl_solarpayback">Solar payback calculator</a>
-        <a href="/mortgage-payment-calculator.html" data-i18n="rl_mortgage">Mortgage payment calculator</a>
-      </div>
+      <p class="articles-empty" id="articleNoResults" data-i18n="articles_no_results" hidden>No articles match your search — try a different keyword or category.</p>
     </div>
   </section>
 </main>
@@ -334,62 +219,47 @@
 <script src="/js/i18n.js"></script>
 <script>
 (function(){
-  const homeValue = document.getElementById('homeValue');
-  const upliftPct = document.getElementById('upliftPct');
-  const upliftHint = document.getElementById('upliftHint');
-  const systemCost = document.getElementById('systemCost');
-  const shareBtn = document.getElementById('shareBtn');
+  const searchInput = document.getElementById('articleSearch');
+  const filterSeg = document.getElementById('articleFilterSeg');
+  const grid = document.getElementById('articleGrid');
+  const noResults = document.getElementById('articleNoResults');
+  const countLabel = document.getElementById('articlesCount');
+  const tiles = [...grid.querySelectorAll('.article-tile')];
+  const totalCount = tiles.length;
+  let category = 'all';
 
-  [homeValue, upliftPct, systemCost].forEach(el=>el.addEventListener('input', calc));
-
-  shareBtn.addEventListener('click', function(){
-    const params = new URLSearchParams({
-      value: Math.round(num(homeValue.value,0)), uplift: num(upliftPct.value,3.5), cost: Math.round(num(systemCost.value,0)),
+  function applyFilters(){
+    const q = searchInput.value.trim().toLowerCase();
+    let visible = 0;
+    tiles.forEach(function(tile){
+      const matchesCategory = category === 'all' || tile.dataset.category === category;
+      const matchesSearch = !q || tile.textContent.toLowerCase().indexOf(q) !== -1;
+      const show = matchesCategory && matchesSearch;
+      tile.style.display = show ? '' : 'none';
+      if(show) visible++;
     });
-    const url = location.origin + location.pathname + '?' + params.toString();
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+    noResults.hidden = visible !== 0;
+    grid.hidden = visible === 0;
+    countLabel.textContent = t('articles_count').replace('{n}', visible).replace('{total}', totalCount);
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+
+  filterSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    filterSeg.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    category = btn.dataset.v;
+    applyFilters();
   });
 
-  function loadFromUrl(){
-    const p = new URLSearchParams(location.search);
-    if(p.has('value')) homeValue.value = p.get('value');
-    if(p.has('uplift')) upliftPct.value = p.get('uplift');
-    if(p.has('cost')) systemCost.value = p.get('cost');
-  }
+  document.addEventListener('languagechange', function(){
+    searchInput.placeholder = t('articles_search_placeholder');
+    searchInput.setAttribute('aria-label', t('articles_search_aria'));
+    applyFilters();
+  });
 
-  function calc(){
-    const value = num(homeValue.value, 0);
-    const pct = num(upliftPct.value, 3.5);
-    upliftHint.textContent = pct.toFixed(1) + '%';
-    const cost = num(systemCost.value, 0);
-    const uplift = value * pct/100;
-
-    document.getElementById('outUplift').textContent = fmt(uplift);
-    document.getElementById('outSystemCost').textContent = fmt(cost);
-    document.getElementById('outNetEquity').textContent = fmt(uplift - cost);
-
-    // ---- Insight panel ----
-    const insightEl = document.getElementById('insightText');
-    const netEquity = uplift - cost;
-    insightEl.innerHTML = t('shv_insight_template')
-      .replace('{uplift}', fmt(uplift))
-      .replace('{pct}', pct.toFixed(1))
-      .replace(/\{netdirection\}/g, netEquity>=0 ? t('shv_exceeds') : t('shv_belowcost'))
-      .replace('{net}', fmt(Math.abs(netEquity)));
-
-    // ---- Scenario comparison ----
-    document.getElementById('cmpConservativeValue').textContent = fmt(value*0.02);
-    document.getElementById('cmpCurrentUplift').textContent = pct.toFixed(1)+'%';
-    document.getElementById('cmpCurrentValue').textContent = fmt(uplift);
-    document.getElementById('cmpOptimisticValue').textContent = fmt(value*0.05);
-  }
-
-  loadFromUrl();
-  calc();
-  document.addEventListener('languagechange', calc);
+  applyFilters();
 })();
 </script>
 </body>

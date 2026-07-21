@@ -100,17 +100,16 @@
     });
   }
 
-  // Dark mode toggle
-  var themeBtn = document.getElementById('themeToggle');
-  if(themeBtn){
-    themeBtn.addEventListener('click', function(){
-      var current = document.documentElement.getAttribute('data-theme') || 'light';
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('kiwisums_theme', next); } catch(e){}
-      document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
-    });
-  }
+  // Dark mode toggle — delegated so it works for any number of instances
+  // (e.g. header + mobile menu), regardless of when they're added to the DOM.
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.theme-toggle')) return;
+    var current = document.documentElement.getAttribute('data-theme') || 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('kiwisums_theme', next); } catch(e){}
+    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
+  });
 })();
 
 // ---- Formatting helpers used by every calculator page ----

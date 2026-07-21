@@ -298,10 +298,23 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   .nav-toggle span::after{ position:absolute; top:6px; }
 }
 
+.nav-links-utility{ display:none; }
+
 @media (max-width:480px){
   .wrap{ padding:0 18px; }
   .nav{ padding:10px 14px; }
   .nav-links{ inset:74px 12px auto 12px; padding:10px 16px; }
+}
+
+/* Below 448px: fold the language selector and theme toggle into the hamburger menu
+   to free up header space on very narrow screens. */
+@media (max-width:448px){
+  .nav-right > .lang-toggle,
+  .nav-right > .theme-toggle{ display:none; }
+  .nav-links-utility{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    width:100%; padding:15px 2px; border-top:1px solid var(--line);
+  }
 }
 
 /* ---------- Hero ---------- */
@@ -397,6 +410,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   font-size:.95rem; font-weight:700; color:var(--ink); margin-bottom:8px;
 }
 .field label .hint{ font-weight:500; color:var(--muted); font-size:.82rem; }
+.field-reset-link{
+  background:none; border:none; padding:0; margin-top:8px; font-size:.8rem; font-weight:600;
+  color:var(--primary-dark); cursor:pointer; text-decoration:underline; font-family:inherit;
+}
+.field-reset-link:hover{ color:var(--primary); }
 .field input[type=number], .field input[type=text], .field select{
   width:100%; padding:14px 16px; border:2px solid var(--line); border-radius:var(--radius-sm);
   font-family:"Inter",sans-serif; font-size:1.1rem; background:var(--bg); color:var(--ink);
@@ -406,10 +424,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 @media (max-width:480px){ .field-row{ grid-template-columns:1fr; } }
 
-.seg{ display:flex; background:var(--bg); border-radius:100px; padding:5px; gap:4px; }
+.seg{ display:flex; flex-wrap:wrap; background:var(--bg); border-radius:100px; padding:5px; gap:4px; }
 .seg button{
   flex:1; background:transparent; border:none; padding:11px 8px; border-radius:100px; font-size:13px; font-weight:700;
   color:var(--ink-soft); cursor:pointer; font-family:inherit; transition:background .15s ease, color .15s ease;
+  white-space:nowrap;
 }
 .seg button.active{ background:var(--primary); color:#fff; }
 
@@ -542,7 +561,7 @@ input[type=range]{
    Reserve space up front so ads don't cause layout shift once live.
    Swap the placeholder <div class="ad-slot"> contents for your
    <ins class="adsbygoogle">…</ins> unit — see README-ADS.md. */
-.ad-wrap{ padding:8px 0; }
+.ad-wrap{ padding-top:8px; padding-bottom:8px; }
 .ad-slot{
   max-width:var(--maxw); margin:0 auto; min-height:100px;
   display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
@@ -911,6 +930,22 @@ input[type=range]{ transition:accent-color .2s ease; }
   .share-bar, .toc, .ad-wrap{ display:none !important; }
 }
 
+/* ---------- Metric comparison bars (NZ vs AUS article) ---------- */
+.metric-bar-sublabel{ font-size:.82rem; color:var(--muted); margin-bottom:14px; font-weight:600; }
+.metric-bar-row{ display:grid; grid-template-columns:104px 1fr 64px; align-items:center; gap:12px; margin-bottom:14px; }
+.metric-bar-label{ font-weight:700; font-size:.9rem; color:var(--ink-soft); }
+.metric-bar-track{ background:var(--bg); border-radius:100px; height:14px; overflow:hidden; }
+.metric-bar-fill{ height:100%; border-radius:100px; transition:width .3s ease; }
+.metric-bar-fill.aus{ background:var(--blue); }
+.metric-bar-fill.nz{ background:var(--primary); }
+html[data-theme="dark"] .metric-bar-fill.aus{ background:var(--blue-dark); }
+html[data-theme="dark"] .metric-bar-fill.nz{ background:var(--primary-dark); }
+.metric-bar-value{ font-weight:700; text-align:right; font-family:"Inter",sans-serif; color:var(--ink); }
+@media (max-width:480px){
+  .metric-bar-row{ grid-template-columns:76px 1fr 54px; gap:8px; }
+  .metric-bar-label{ font-size:.8rem; }
+}
+
 /* ---------- Article tiles (2-up "related reading" cards on calculator pages) ---------- */
 .article-tile-section{ padding:8px 0 40px; }
 .article-tile-section > .wrap > h2{ font-size:1.15rem; margin-bottom:16px; }
@@ -939,3 +974,27 @@ input[type=range]{ transition:accent-color .2s ease; }
 }
 .article-tile.placeholder:hover{ transform:none; box-shadow:none; }
 .article-tile.placeholder .go{ color:var(--muted); }
+
+/* ---------- Article tiles: 3-up variant (articles hub) ---------- */
+.article-tile-grid.cols-3{ grid-template-columns:repeat(3,1fr); }
+@media (max-width:900px){ .article-tile-grid.cols-3{ grid-template-columns:1fr 1fr; } }
+@media (max-width:700px){ .article-tile-grid.cols-3{ grid-template-columns:1fr; } }
+
+/* ---------- Articles hub: search + filter toolbar ---------- */
+.articles-toolbar{
+  display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; margin-bottom:28px;
+}
+.articles-search{ position:relative; flex:1; min-width:220px; max-width:360px; }
+.articles-search svg{
+  position:absolute; left:15px; top:50%; transform:translateY(-50%); width:17px; height:17px;
+  color:var(--muted); pointer-events:none;
+}
+.articles-search input{
+  width:100%; padding:12px 16px 12px 42px; border:2px solid var(--line); border-radius:100px;
+  font-family:"Inter",sans-serif; font-size:.95rem; background:var(--surface); color:var(--ink);
+}
+.articles-search input:focus{ outline:none; border-color:var(--primary); }
+.articles-search input::placeholder{ color:var(--muted); }
+.articles-filter{ flex-wrap:wrap; }
+.articles-empty{ text-align:center; color:var(--muted); padding:48px 0; font-size:1rem; }
+.articles-count{ font-size:.85rem; color:var(--muted); margin-bottom:18px; }
