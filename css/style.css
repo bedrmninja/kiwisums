@@ -862,8 +862,14 @@ input[type=range]{ transition:accent-color .2s ease; }
 }
 .article-figure img{ width:100%; display:block; }
 .article-figure figcaption{
-  padding:12px 18px; font-size:.85rem; color:var(--muted); font-family:"Inter",sans-serif;
+  padding:12px 18px 4px; font-size:.85rem; color:var(--muted); font-family:"Inter",sans-serif;
 }
+.article-figure .photo-credit{
+  display:block; padding:0 18px 12px; font-size:.85rem; color:var(--muted); font-family:"Inter",sans-serif;
+}
+.article-figure .photo-credit a{ color:inherit; text-decoration:underline; }
+.article-figure .photo-credit a:hover{ color:var(--ink-soft); }
+.article-figure figcaption:last-child{ padding-bottom:12px; }
 
 .toc{
   background:var(--surface); border-radius:var(--radius); box-shadow:var(--shadow);
