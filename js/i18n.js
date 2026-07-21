@@ -2856,7 +2856,7 @@ const T = {
   fvf_byline_updated: { en:"Updated 19 July 2026", ko:"2026년 7월 19일 업데이트", zh:"更新于2026年7月19日" },
   fvf_byline_readtime: { en:"7 min read", ko:"읽는 시간 7분", zh:"阅读需7分钟" },
 
-  fvf_fig_alt: { en:"Summy the KiwiSums mascot weighing up fixed vs floating mortgage rates", ko:"고정금리와 변동금리를 저울질하는 KiwiSums 마스코트 서미", zh:"KiwiSums吉祥物Summy正在权衡固定利率与浮动利率" },
+  fvf_fig_alt: { en:"Aerial view of Queenstown and Lake Wakatipu, New Zealand", ko:"뉴질랜드 퀸스타운과 와카티푸 호수 항공 사진", zh:"新西兰皇后镇与瓦卡蒂普湖航拍图" },
   fvf_fig_caption: { en:"Most Kiwi borrowers eventually mix both — the trick is knowing what proportion suits you.",
     ko:"대부분의 뉴질랜드 대출자는 결국 두 가지를 혼합해서 사용합니다 — 핵심은 자신에게 맞는 비율을 아는 것입니다.",
     zh:"大多数新西兰借款人最终都会两者兼用——关键在于找到适合自己的比例。" },
