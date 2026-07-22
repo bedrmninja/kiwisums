@@ -153,7 +153,7 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
 .site-header{
   background:transparent;
   position:sticky; top:0; z-index:40;
-  padding-top:14px;
+  padding-top:14px; padding-left:24px; padding-right:24px;
 }
 .nav{
   display:flex; align-items:center; justify-content:space-between;
@@ -249,7 +249,10 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   .theme-toggle{ width:34px; height:34px; }
   .theme-toggle svg{ width:17px; height:17px; }
   .nav-links{
-    position:fixed; inset:78px 16px auto 16px; background:var(--surface); flex-direction:column;
+    /* .nav's backdrop-filter makes it the containing block for this fixed panel,
+       so these insets are relative to .nav's own (already page-inset) edges — 0
+       here means "flush with the nav pill", not "flush with the viewport". */
+    position:fixed; inset:78px 0 auto 0; background:var(--surface); flex-direction:column;
     align-items:stretch; padding:12px 20px; gap:0; transform:translateY(-8px);
     opacity:0; pointer-events:none; transition:opacity .18s ease, transform .18s ease;
     border-radius:20px; box-shadow:var(--shadow); overflow-y:auto; max-height:calc(100vh - 100px);
@@ -302,8 +305,9 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 
 @media (max-width:480px){
   .wrap{ padding:0 18px; }
+  .site-header{ padding-left:18px; padding-right:18px; }
   .nav{ padding:10px 14px; }
-  .nav-links{ inset:74px 12px auto 12px; padding:10px 16px; }
+  .nav-links{ inset:74px 0 auto 0; padding:10px 16px; }
 }
 
 /* Below 448px: fold the language selector and theme toggle into the hamburger menu
@@ -996,5 +1000,6 @@ html[data-theme="dark"] .metric-bar-fill.nz{ background:var(--primary-dark); }
 .articles-search input:focus{ outline:none; border-color:var(--primary); }
 .articles-search input::placeholder{ color:var(--muted); }
 .articles-filter{ flex-wrap:wrap; }
+.articles-filter button{ min-width:60px; }
 .articles-empty{ text-align:center; color:var(--muted); padding:48px 0; font-size:1rem; }
 .articles-count{ font-size:.85rem; color:var(--muted); margin-bottom:18px; }
