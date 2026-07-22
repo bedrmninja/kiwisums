@@ -54,6 +54,46 @@
     if(e.key === 'Escape') closeAllGroups();
   });
 
+  // Number inputs: replace native up/down spinner with -/+ stepper buttons
+  document.querySelectorAll('.field input[type=number]').forEach(function(input){
+    if(input.closest('.number-stepper')) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'number-stepper';
+    input.parentNode.insertBefore(wrap, input);
+
+    var minusBtn = document.createElement('button');
+    minusBtn.type = 'button';
+    minusBtn.className = 'num-step num-step-minus';
+    minusBtn.setAttribute('aria-label', 'Decrease');
+    minusBtn.textContent = '−';
+
+    var plusBtn = document.createElement('button');
+    plusBtn.type = 'button';
+    plusBtn.className = 'num-step num-step-plus';
+    plusBtn.setAttribute('aria-label', 'Increase');
+    plusBtn.textContent = '+';
+
+    wrap.appendChild(input);
+    wrap.appendChild(minusBtn);
+    wrap.appendChild(plusBtn);
+
+    function stepValue(dir){
+      var stepAmt = parseFloat(input.step) || 1;
+      var minVal = input.min !== '' ? parseFloat(input.min) : -Infinity;
+      var maxVal = input.max !== '' ? parseFloat(input.max) : Infinity;
+      var cur = parseFloat(input.value);
+      if(!isFinite(cur)) cur = 0;
+      var next = cur + dir * stepAmt;
+      next = Math.min(maxVal, Math.max(minVal, next));
+      next = Math.round(next * 1e6) / 1e6;
+      input.value = next;
+      input.dispatchEvent(new Event('input', { bubbles:true }));
+      input.dispatchEvent(new Event('change', { bubbles:true }));
+    }
+    minusBtn.addEventListener('click', function(){ stepValue(-1); });
+    plusBtn.addEventListener('click', function(){ stepValue(1); });
+  });
+
   // ---- Micro-animations (skipped entirely for prefers-reduced-motion) ----
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

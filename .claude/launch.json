@@ -4,8 +4,9 @@
     {
       "name": "kiwisums-static",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8000"],
-      "port": 8000
+      "runtimeArgs": [".claude/serve.py"],
+      "port": 8000,
+      "autoPort": true
     }
   ]
 }
