@@ -480,6 +480,7 @@
       const series100 = buildBalanceSeries(B0, annualRate, pmt+100, months, 20);
       const series250 = buildBalanceSeries(B0, annualRate, pmt+250, months, 20);
       const series500 = buildBalanceSeries(B0, annualRate, pmt+500, months, 20);
+      const isMobileChart = window.matchMedia('(max-width:600px)').matches;
       renderLineChart(chartCard, {
         years: seriesCurrent.map(p=>p.m),
         series: [
@@ -489,9 +490,11 @@
           { label:t('cc_chart_legend_plus250'), color:'#9B7FE0', darkColor:'#BBA5F2', values: series250.map(p=>p.v) },
           { label:t('cc_chart_legend_plus500'), color:'#C9860B', darkColor:'#FFD79A', values: series500.map(p=>p.v) },
         ],
-        yFormatFn: fmt,
+        yFormatFn: isMobileChart ? fmtShort : fmt,
         xLabelFn: (m)=> t('cc_chart_month_label').replace('{m}', m),
-        xLabelEvery: Math.max(1, Math.ceil(seriesCurrent.length/6)),
+        xLabelEvery: Math.max(1, Math.ceil(seriesCurrent.length / (isMobileChart ? 4 : 6))),
+        width: isMobileChart ? 340 : 680,
+        padL: isMobileChart ? 40 : 58,
       });
     } else {
       chartCard.innerHTML = '';
@@ -555,6 +558,7 @@
   calc();
   document.addEventListener('languagechange', calc);
   document.addEventListener('themechange', calc);
+  window.matchMedia('(max-width:600px)').addEventListener('change', calc);
 })();
 </script>
 </body>

@@ -431,6 +431,7 @@
   function draw(){
     const card = document.getElementById('ocrChartCard');
     if(!card) return;
+    const isMobileChart = window.matchMedia('(max-width:600px)').matches;
     renderLineChart(card, {
       years: points,
       series: [
@@ -439,16 +440,19 @@
       ],
       yFormatFn: (v)=> v.toFixed(1) + '%',
       xLabelFn: (i)=> quarters[i],
-      xLabelEvery: 1,
+      xLabelEvery: isMobileChart ? 2 : 1,
       step: 1,
       niceMin: 0,
       niceMax: 7,
       markerIndex: points.length - 1,
+      width: isMobileChart ? 340 : 680,
+      padL: isMobileChart ? 32 : 58,
     });
   }
   draw();
   document.addEventListener('themechange', draw);
   document.addEventListener('languagechange', draw);
+  window.matchMedia('(max-width:600px)').addEventListener('change', draw);
 
   // ---- Share bar ----
   const shareUrl = location.origin + location.pathname;

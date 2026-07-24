@@ -443,15 +443,18 @@
     const yearPoints = []; for(let y=0; y<=yrs; y++) yearPoints.push(y);
     const evSeries = yearPoints.map(y => runScenario(evP, petrolP, annualKm, y, elec, petrolFuel).evTotal);
     const petrolSeries = yearPoints.map(y => runScenario(evP, petrolP, annualKm, y, elec, petrolFuel).petrolTotal);
+    const isMobileChart = window.matchMedia('(max-width:600px)').matches;
     renderLineChart(document.getElementById('chartCard'), {
       years: yearPoints,
       series: [
         { label:t('ev_chart_legend_petrol'), color:'#E0693F', darkColor:'#F0855C', values: petrolSeries },
         { label:t('ev_chart_legend_ev'), color:'#2FA36B', darkColor:'#4ED393', values: evSeries },
       ],
-      yFormatFn: fmt,
+      yFormatFn: isMobileChart ? fmtShort : fmt,
       xLabelFn: (y)=> t('ev_chart_year_label').replace('{y}', y),
-      xLabelEvery: 1,
+      xLabelEvery: isMobileChart ? Math.max(1, Math.ceil(yearPoints.length/5)) : 1,
+      width: isMobileChart ? 340 : 680,
+      padL: isMobileChart ? 40 : 58,
       markerIndex: breakEvenYear && breakEvenYear<=yrs ? breakEvenYear : null,
     });
 
@@ -477,6 +480,7 @@
   calc();
   document.addEventListener('languagechange', calc);
   document.addEventListener('themechange', calc);
+  window.matchMedia('(max-width:600px)').addEventListener('change', calc);
 })();
 </script>
 </body>

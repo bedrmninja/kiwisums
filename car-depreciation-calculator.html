@@ -437,14 +437,17 @@
     // ---- Chart ----
     const yearPoints = []; for(let y=0; y<=yrs; y++) yearPoints.push(y);
     const valueSeries = yearPoints.map(y => P*Math.pow(1-r, y));
+    const isMobileChart = window.matchMedia('(max-width:600px)').matches;
     renderLineChart(document.getElementById('chartCard'), {
       years: yearPoints,
       series: [
         { label:t('cd_chart_legend_value'), color:'#2FA36B', darkColor:'#4ED393', values: valueSeries },
       ],
-      yFormatFn: fmt,
+      yFormatFn: isMobileChart ? fmtShort : fmt,
       xLabelFn: (y)=> t('cd_year_label').replace('{y}', y),
-      xLabelEvery: Math.max(1, Math.ceil(yearPoints.length/8)),
+      xLabelEvery: Math.max(1, Math.ceil(yearPoints.length / (isMobileChart ? 5 : 8))),
+      width: isMobileChart ? 340 : 680,
+      padL: isMobileChart ? 40 : 58,
     });
 
     // ---- Insight panel ----
@@ -471,6 +474,7 @@
   calc();
   document.addEventListener('languagechange', calc);
   document.addEventListener('themechange', calc);
+  window.matchMedia('(max-width:600px)').addEventListener('change', calc);
 })();
 </script>
 </body>

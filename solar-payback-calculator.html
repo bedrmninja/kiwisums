@@ -429,15 +429,18 @@
     const yearPoints = []; for(let y=0; y<=25; y++) yearPoints.push(y);
     const savingsSeries = cumulativeSavingsSeries(savingsYr1, infl);
     const costSeries = yearPoints.map(()=>cost);
+    const isMobileChart = window.matchMedia('(max-width:600px)').matches;
     renderLineChart(document.getElementById('chartCard'), {
       years: yearPoints,
       series: [
         { label:t('sp_chart_legend_savings'), color:'#2FA36B', darkColor:'#4ED393', values: savingsSeries },
         { label:t('sp_chart_legend_cost'), color:'#E0693F', darkColor:'#F0855C', values: costSeries },
       ],
-      yFormatFn: fmt,
+      yFormatFn: isMobileChart ? fmtShort : fmt,
       xLabelFn: (y)=> t('sp_chart_year_label').replace('{y}', y),
-      xLabelEvery: 5,
+      xLabelEvery: isMobileChart ? 10 : 5,
+      width: isMobileChart ? 340 : 680,
+      padL: isMobileChart ? 40 : 58,
       markerIndex: r.paidBack ? r.years : null,
     });
 
@@ -462,6 +465,7 @@
   calc();
   document.addEventListener('languagechange', calc);
   document.addEventListener('themechange', calc);
+  window.matchMedia('(max-width:600px)').addEventListener('change', calc);
 })();
 </script>
 </body>

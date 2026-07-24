@@ -487,13 +487,16 @@
     fundSeries.sort((a,b) => (a.isActive?1:0) - (b.isActive?1:0));
     fundSeries.forEach(s => { s.width = s.isActive ? 3.5 : 2; });
 
+    const isMobileChart = window.matchMedia('(max-width:600px)').matches;
     renderLineChart(document.getElementById('chartCard'), {
       years: yearPoints,
       series: fundSeries,
-      yFormatFn: fmt,
+      yFormatFn: isMobileChart ? fmtShort : fmt,
       xLabelFn: (y)=> t('ks_chart_age_label').replace('{age}', age0+y),
-      xLabelEvery: Math.max(1, Math.ceil(yearPoints.length/6)),
+      xLabelEvery: Math.max(1, Math.ceil(yearPoints.length / (isMobileChart ? 4 : 6))),
       step: 25000,
+      width: isMobileChart ? 340 : 680,
+      padL: isMobileChart ? 40 : 58,
     });
 
     // ---- Insight panel ----
@@ -552,6 +555,7 @@
   calc();
   document.addEventListener('languagechange', calc);
   document.addEventListener('themechange', calc);
+  window.matchMedia('(max-width:600px)').addEventListener('change', calc);
 })();
 </script>
 </body>

@@ -483,15 +483,18 @@
     if(maxMonths > 0){
       const seriesAva = simulateSeries(debts, extra, 'avalanche', maxMonths, 20);
       const seriesSnow = simulateSeries(debts, extra, 'snowball', maxMonths, 20);
+      const isMobileChart = window.matchMedia('(max-width:600px)').matches;
       renderLineChart(chartCard, {
         years: seriesAva.map(p=>p.m),
         series: [
           { label:t('dpo_chart_legend_avalanche'), color:'#2FA36B', darkColor:'#4ED393', values: seriesAva.map(p=>p.v) },
           { label:t('dpo_chart_legend_snowball'), color:'#E0693F', darkColor:'#F0855C', values: seriesSnow.map(p=>p.v) },
         ],
-        yFormatFn: fmt,
+        yFormatFn: isMobileChart ? fmtShort : fmt,
         xLabelFn: (m)=> t('dpo_chart_month_label').replace('{m}', m),
-        xLabelEvery: Math.max(1, Math.ceil(seriesAva.length/6)),
+        xLabelEvery: Math.max(1, Math.ceil(seriesAva.length / (isMobileChart ? 4 : 6))),
+        width: isMobileChart ? 340 : 680,
+        padL: isMobileChart ? 40 : 58,
       });
     } else {
       chartCard.innerHTML = '';
@@ -544,6 +547,7 @@
   calc();
   document.addEventListener('languagechange', calc);
   document.addEventListener('themechange', calc);
+  window.matchMedia('(max-width:600px)').addEventListener('change', calc);
 })();
 </script>
 </body>

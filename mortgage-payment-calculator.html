@@ -583,15 +583,18 @@
     // ---- Chart ----
     const amort = amortizationSeries(P, i, freq, years, payment);
     const yearPoints = []; for(let y=0; y<=years; y++) yearPoints.push(y);
+    const isMobileChart = window.matchMedia('(max-width:600px)').matches;
     renderLineChart(document.getElementById('chartCard'), {
       years: yearPoints,
       series: [
         { label:t('m_chart_legend_principal'), color:'#2FA36B', darkColor:'#4ED393', values: amort.principalSeries },
         { label:t('m_chart_legend_interest'), color:'#E0693F', darkColor:'#F0855C', values: amort.interestSeries },
       ],
-      yFormatFn: fmt,
+      yFormatFn: isMobileChart ? fmtShort : fmt,
       xLabelFn: (y)=> t('m_chart_year_label').replace('{y}', y),
-      xLabelEvery: Math.max(1, Math.ceil(yearPoints.length/8)),
+      xLabelEvery: Math.max(1, Math.ceil(yearPoints.length / (isMobileChart ? 5 : 8))),
+      width: isMobileChart ? 340 : 680,
+      padL: isMobileChart ? 40 : 58,
     });
 
     // ---- Contextual insight panel ----
@@ -651,6 +654,7 @@
   calc();
   document.addEventListener('languagechange', calc);
   document.addEventListener('themechange', calc);
+  window.matchMedia('(max-width:600px)').addEventListener('change', calc);
 })();
 </script>
 </body>
