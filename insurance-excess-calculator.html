@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Excess Calculator NZ 2026 | KiwiSums</title>
+<meta name="description" content="See how choosing a higher or lower insurance excess trades off against your premium, and how many claim-free years it takes to break even.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/insurance-excess-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Insurance Excess Calculator NZ — KiwiSums">
+<meta property="og:description" content="See how a higher or lower excess trades off against your premium.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/insurance-excess-calculator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=7">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"Insurance Excess Calculator","item":"https://www.kiwisums.co.nz/insurance-excess-calculator.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How does excess affect my premium?","acceptedAnswer":{"@type":"Answer","text":"A higher excess generally lowers your premium, since you're taking on more of the cost of small claims yourself. A lower excess raises your premium but reduces what you pay out of pocket at claim time."}},
+    {"@type":"Question","name":"Should I choose a higher excess?","acceptedAnswer":{"@type":"Answer","text":"If you rarely claim and can comfortably afford the excess out of pocket, a higher excess with a lower ongoing premium often works out ahead."}},
+    {"@type":"Question","name":"What happens if I can't afford my excess when I claim?","acceptedAnswer":{"@type":"Answer","text":"Most insurers require the excess to be paid before or as part of settling a claim — if you can't cover it, the claim may be delayed or reduced."}}
+  ]
+}
+</script>
+
+<!-- Google AdSense: uncomment once your site is approved and you have a publisher ID.
+     Replace ca-pub-XXXXXXXXXXXXXXXX with your real ID. See README-ADS.md for setup steps.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="/">
+      <img class="brand-mark" src="/images/summy.png" alt="KiwiSums logo">
+      <span class="brand-text">
+        <span class="brand-name">KiwiSums</span>
+        <span class="brand-tagline">Money, worked out</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <div class="nav-group" data-group="housing">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Property</button>
+          <div class="nav-dropdown">
+            <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
+            <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
+            <a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a>
+            <a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a>
+            <a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="car">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Car</button>
+          <div class="nav-dropdown">
+            <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
+            <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
+            <a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a>
+            <a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a>
+            <a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="solar">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_solar">Solar</button>
+          <div class="nav-dropdown">
+            <a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a>
+            <a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a>
+            <a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a>
+            <a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a>
+            <a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a>
+            <a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a>
+            <a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a>
+            <a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="spending">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Expense</button>
+          <div class="nav-dropdown">
+            <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
+            <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
+            <a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a>
+            <a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a>
+            <a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a>
+            <a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">Buy Now Pay Later cost</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="earning">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Income</button>
+          <div class="nav-dropdown">
+            <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
+            <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
+            <a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a>
+            <a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a>
+            <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
+          </div>
+        </div>
+        <div class="nav-group" data-group="insurance">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_insurance">Insurance</button>
+          <div class="nav-dropdown">
+            <a href="/life-insurance-cover-calculator.html" data-i18n="nav_lifecover">Life insurance cover</a>
+            <a href="/income-protection-insurance-calculator.html" data-i18n="nav_incomeprotection">Income protection</a>
+            <a href="/house-contents-insurance-calculator.html" data-i18n="nav_housecontents">House &amp; contents</a>
+            <a href="/car-insurance-cost-calculator.html" data-i18n="nav_carinsurance">Car insurance cost</a>
+            <a href="/health-insurance-cost-calculator.html" data-i18n="nav_healthinsurance">Health insurance cost</a>
+            <a href="/insurance-excess-calculator.html" data-i18n="nav_insuranceexcess">Insurance excess</a>
+          </div>
+        </div>
+        <a class="nav-single" href="/articles.html" data-i18n="nav_articles">Guides</a>
+        </div>
+      <div class="nav-group settings-group">
+        <button class="nav-group-btn settings-btn" type="button" aria-label="Settings" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 13.09H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+        <div class="nav-dropdown settings-dropdown">
+          <div class="settings-row">
+            <span class="settings-label" data-i18n="common_language">Language</span>
+            <div class="lang-toggle" role="group" aria-label="Language">
+            <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+            <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+            <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+          </div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label" data-i18n="common_theme">Dark mode</span>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          </div>
+        </div>
+      </div>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div style="padding-top:32px;">
+      <span class="eyebrow" data-i18n="iec_eyebrow">Insurance · Excess</span>
+      <h1 style="margin-top:10px;" data-i18n="iec_h1">Insurance excess calculator</h1>
+      <p class="lede" data-i18n="iec_lede">See how choosing a higher or lower excess trades off against your premium — and how many claim-free years it takes to break even.</p>
+    </div>
+
+    <form class="calc-layout" id="calcForm" onsubmit="return false;">
+      <div class="panel">
+        <div class="field">
+          <label for="premium" data-i18n="iec_label_premium">Current annual premium</label>
+          <input type="number" id="premium" value="1200" min="0" step="50">
+        </div>
+
+        <div class="field">
+          <label for="currentExcess" data-i18n="iec_label_currentexcess">Current excess</label>
+          <input type="number" id="currentExcess" value="500" min="0" step="50">
+        </div>
+
+        <div class="field">
+          <label for="newExcess" data-i18n="iec_label_newexcess">New excess you're considering</label>
+          <input type="number" id="newExcess" value="1000" min="0" step="50">
+        </div>
+
+        <div class="field">
+          <label for="sensitivity"><span data-i18n="iec_label_sensitivity">Assumed premium change per $100 of excess</span> <span class="hint" data-i18n="iec_hint_sensitivity">typical range is 2-4%</span></label>
+          <input type="number" id="sensitivity" value="3" min="0" max="20" step="0.5">
+        </div>
+
+        <div class="callout" data-i18n="iec_callout">
+          This uses a simplified straight-line assumption for how excess affects premium — real insurer pricing isn't perfectly linear, so treat this as a starting point for the conversation with your insurer, not an exact quote.
+        </div>
+      </div>
+
+      <div>
+        <div class="receipt">
+          <img class="summy-corner" src="/images/summy_insurancelost.png?v=1" alt="" aria-hidden="true">
+          <span class="stamp" data-i18n="common_estimate">Estimate</span>
+          <div class="receipt-total-label" data-i18n="iec_receipt_label">Estimated new premium</div>
+          <div class="receipt-total" id="outNewPremium">$0</div>
+
+          <div class="receipt-lines">
+            <div class="receipt-line"><span class="k" data-i18n="iec_line_savings">Annual savings</span><span class="v" id="outSavings">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="iec_line_extrarisk">Extra you'd pay per claim</span><span class="v" id="outExtraRisk">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="iec_line_breakeven">Break-even (claim-free years needed)</span><span class="v" id="outBreakeven">—</span></div>
+          </div>
+          <p class="receipt-note" data-i18n="iec_receipt_note">Break-even years = extra excess you'd pay per claim ÷ annual premium savings. If you claim more often than that, the higher excess likely isn't worth it.</p>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="/house-contents-insurance-calculator.html" data-i18n="iec_next_btn">Check house & contents insurance too →</a>
+          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+        </div>
+        <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="wrap">
+    <div class="insight-panel" id="insightPanel">
+      <h2 data-i18n="iec_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="iec_insight_placeholder">Fill in the fields above to see how the excess change affects your premium.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="compare-panel">
+      <h2 data-i18n="iec_compare_h2">Compare excess levels</h2>
+      <p class="compare-intro" data-i18n="iec_compare_intro">See the estimated premium at a few common excess levels.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table" id="compareTable">
+          <thead>
+            <tr>
+              <th data-i18n="iec_compare_col_excess">Excess</th>
+              <th data-i18n="iec_compare_col_premium">Estimated premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>$250</td><td id="cmp250">$0</td></tr>
+            <tr><td>$500</td><td id="cmp500">$0</td></tr>
+            <tr><td>$1,000</td><td id="cmp1000">$0</td></tr>
+            <tr><td>$2,000</td><td id="cmp2000">$0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <details class="assumptions-panel" id="assumptionsPanel">
+      <summary data-i18n="m_assumptions_summary">Assumptions & sources</summary>
+      <div class="assumptions-grid">
+        <div>
+          <strong data-i18n="m_assumptions_source_label">Data source</strong>
+          <p data-i18n="iec_assumptions_source_value">A simplified, generalised model of how excess levels typically relate to premium pricing across NZ general insurance policies.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
+          <p data-i18n="m_assumptions_effective_value">1 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_reviewed_label">Last reviewed</strong>
+          <p data-i18n="m_assumptions_reviewed_value">17 July 2026</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_method_label">Methodology</strong>
+          <p data-i18n="iec_assumptions_method_value">New premium = current premium × (1 − (excess change ÷ 100) × sensitivity %). Break-even years = extra excess per claim ÷ annual savings.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_included_label">Included</strong>
+          <p data-i18n="iec_assumptions_included_value">A straight-line estimate of premium change and a simple break-even calculation.</p>
+        </div>
+        <div>
+          <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
+          <p data-i18n="iec_assumptions_excluded_value">Your actual insurer's specific pricing curve (which is rarely perfectly linear), how often you're likely to claim, and any policy minimums or maximums on excess.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-banner">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adbanner">Banner ad slot — replace with your AdSense unit (see README-ADS.md)</span>
+    </div>
+  </div>
+
+  <section class="article-tile-section">
+    <div class="wrap">
+      <h2 data-i18n="common_relatedreading_h2">Related reading</h2>
+      <div class="article-tile-grid">
+        <a class="article-tile" href="/how-much-insurance-do-you-need-nz.html">
+          <img class="thumb" src="/images/articles/insurance-family-protection.jpg" alt="" loading="lazy">
+          <div class="body">
+            <span class="tag" data-i18n="hmi_eyebrow">Insurance · Explainer</span>
+            <h3 data-i18n="hmi_h1">How much insurance do you actually need in NZ?</h3>
+            <p data-i18n="hmi_tile_excerpt">Life, income protection, health, house and car cover all compete for the same budget — here's how to prioritise.</p>
+            <span class="go" data-i18n="common_readarticle">Read article →</span>
+          </div>
+        </a>
+        <a class="article-tile" href="/private-health-insurance-vs-public-nz.html">
+          <img class="thumb" src="/images/articles/private-health-insurance-nz.jpg" alt="" loading="lazy">
+          <div class="body">
+            <span class="tag" data-i18n="phi_eyebrow">Insurance · Comparison</span>
+            <h3 data-i18n="phi_h1">Is private health insurance worth it in NZ?</h3>
+            <p data-i18n="phi_tile_excerpt">Weighing private cover against NZ's public health system — what you actually gain, and what it costs.</p>
+            <span class="go" data-i18n="common_readarticle">Read article →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <h2 data-i18n="iec_h2_1">How does excess affect your premium?</h2>
+      <p data-i18n="iec_p1">A higher excess means you cover more of a small claim yourself, so the insurer takes on less risk and charges a lower premium in exchange. It's most beneficial for people who rarely claim and could comfortably cover the excess out of pocket if needed.</p>
+
+      <h2 data-i18n="iec_h2_2">Should you choose a higher excess?</h2>
+      <p data-i18n="iec_p2">It depends on your claims frequency and your cash buffer. If the annual premium savings would outweigh the extra cost over the time you'd realistically expect between claims, a higher excess can make sense. If a large excess would strain your finances at claim time, a lower excess and higher premium may be the safer trade.</p>
+
+      <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="iec_faq_q1">How does excess affect my premium?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="iec_faq_a1">A higher excess generally lowers your premium, since you're taking on more of the cost of small claims yourself. A lower excess raises your premium but reduces what you pay out of pocket at claim time.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="iec_faq_q2">Should I choose a higher excess?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="iec_faq_a2">If you rarely claim and can comfortably afford the excess out of pocket, a higher excess with a lower ongoing premium often works out ahead. If you'd struggle to cover a large excess at claim time, a lower excess may be the safer choice even at a higher premium.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="iec_faq_q3">What happens if I can't afford my excess when I claim?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="iec_faq_a3">Most insurers require the excess to be paid before or as part of settling a claim — if you can't cover it, the claim may be delayed or reduced. This is why it's worth setting an excess you could genuinely afford in a worst-case scenario, not just the one that minimises your premium.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ad-wrap wrap">
+    <div class="ad-slot ad-incontent">
+      <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+      <span data-i18n="common_adincontent">In-content ad slot — replace with your AdSense unit</span>
+    </div>
+  </div>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
+      <div class="related-links" style="margin-top:14px;">
+        <a href="/house-contents-insurance-calculator.html" data-i18n="rl_housecontents">House & contents insurance calculator</a>
+        <a href="/car-insurance-cost-calculator.html" data-i18n="rl_carinsurance">Car insurance cost calculator</a>
+        <a href="/health-insurance-cost-calculator.html" data-i18n="rl_healthinsurance">Health insurance cost calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png" alt="KiwiSums logo"> KiwiSums</a>
+      <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
+    </div>
+    <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
+    <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div>
+    <div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
+    <div><h4 data-i18n="footer_insurance">Insurance</h4><ul><li><a href="/life-insurance-cover-calculator.html" data-i18n="nav_lifecover">Life insurance cover</a></li><li><a href="/income-protection-insurance-calculator.html" data-i18n="nav_incomeprotection">Income protection</a></li><li><a href="/house-contents-insurance-calculator.html" data-i18n="nav_housecontents">House &amp; contents</a></li><li><a href="/car-insurance-cost-calculator.html" data-i18n="nav_carinsurance">Car insurance cost</a></li><li><a href="/health-insurance-cost-calculator.html" data-i18n="nav_healthinsurance">Health insurance cost</a></li><li><a href="/insurance-excess-calculator.html" data-i18n="nav_insuranceexcess">Insurance excess</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
+    <span><a href="/privacy-policy.html" data-i18n="footer_privacy">Privacy policy</a> · <a href="/trust.html" data-i18n="trust_footer_link">Why trust us</a> · <a href="/methodology.html" data-i18n="meth_footer_link">Methodology</a> · <a href="/sources.html" data-i18n="src_footer_link">Sources</a> · <span data-i18n="footer_rateschecked">Rates last checked July 2026</span></span>
+  </div>
+</footer>
+
+<script src="/js/site.js?v=5"></script>
+<script src="/js/i18n.js?v=3"></script>
+<script>
+(function(){
+  const premium = document.getElementById('premium');
+  const currentExcess = document.getElementById('currentExcess');
+  const newExcess = document.getElementById('newExcess');
+  const sensitivity = document.getElementById('sensitivity');
+
+  [premium, currentExcess, newExcess, sensitivity].forEach(el=>el.addEventListener('input', calc));
+
+  function computeNewPremium(prem, curExc, nExc, sens){
+    const delta = nExc - curExc;
+    const changePct = -(delta/100) * (sens/100);
+    const newPrem = Math.max(0, prem * (1 + changePct));
+    return { newPrem, delta, savings: prem - newPrem };
+  }
+
+  function calc(){
+    const prem = num(premium.value, 0);
+    const curExc = num(currentExcess.value, 0);
+    const nExc = num(newExcess.value, 0);
+    const sens = num(sensitivity.value, 3);
+
+    const r = computeNewPremium(prem, curExc, nExc, sens);
+
+    document.getElementById('outNewPremium').textContent = fmt(r.newPrem);
+    document.getElementById('outSavings').textContent = (r.savings>=0?'':'−') + fmt(Math.abs(r.savings));
+    document.getElementById('outExtraRisk').textContent = fmt(Math.max(0, r.delta));
+
+    const breakevenEl = document.getElementById('outBreakeven');
+    const insightEl = document.getElementById('insightText');
+    if(r.savings > 0 && r.delta > 0){
+      const years = r.delta / r.savings;
+      breakevenEl.textContent = years.toFixed(1);
+      insightEl.innerHTML = t('iec_insight_template_save')
+        .replace('{newexcess}', nExc.toLocaleString('en-NZ'))
+        .replace('{savings}', fmt(r.savings))
+        .replace('{years}', years.toFixed(1));
+    } else if(r.savings < 0){
+      breakevenEl.textContent = t('iec_breakeven_na');
+      insightEl.innerHTML = t('iec_insight_template_cost')
+        .replace('{newexcess}', nExc.toLocaleString('en-NZ'))
+        .replace('{savings}', fmt(Math.abs(r.savings)));
+    } else {
+      breakevenEl.textContent = t('iec_breakeven_na');
+      insightEl.innerHTML = t('iec_insight_placeholder');
+    }
+
+    [250, 500, 1000, 2000].forEach(function(exc){
+      const rr = computeNewPremium(prem, curExc, exc, sens);
+      document.getElementById('cmp'+exc).textContent = fmt(rr.newPrem);
+    });
+  }
+
+  const shareBtn = document.getElementById('shareBtn');
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({
+      premium: Math.round(num(premium.value,0)), currentexcess: Math.round(num(currentExcess.value,0)),
+      newexcess: Math.round(num(newExcess.value,0)), sensitivity: num(sensitivity.value,3),
+    });
+    const url = location.origin + location.pathname + '?' + params.toString();
+    navigator.clipboard.writeText(url).then(function(){
+      shareBtn.textContent = t('common_linkcopied');
+      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
+    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
+  });
+
+  function loadFromUrl(){
+    const p = new URLSearchParams(location.search);
+    if(p.has('premium')) premium.value = p.get('premium');
+    if(p.has('currentexcess')) currentExcess.value = p.get('currentexcess');
+    if(p.has('newexcess')) newExcess.value = p.get('newexcess');
+    if(p.has('sensitivity')) sensitivity.value = p.get('sensitivity');
+  }
+
+  loadFromUrl();
+  calc();
+  document.addEventListener('languagechange', calc);
+})();
+</script>
+</body>
+</html>

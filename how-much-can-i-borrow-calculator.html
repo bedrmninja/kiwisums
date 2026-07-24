@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style.css?v=7">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -52,7 +52,7 @@
 <header class="site-header">
   <nav class="nav">
     <a class="brand" href="/">
-      <img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo">
+      <img class="brand-mark" src="/images/summy.png" alt="KiwiSums logo">
       <span class="brand-text">
         <span class="brand-name">KiwiSums</span>
         <span class="brand-tagline">Money, worked out</span>
@@ -61,7 +61,7 @@
     <div class="nav-right">
       <div class="nav-links">
         <div class="nav-group" data-group="housing">
-          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Housing</button>
+          <button class="nav-group-btn" type="button" data-i18n="navcat_housing">Property</button>
           <div class="nav-dropdown">
             <a href="/mortgage-payment-calculator.html" data-i18n="nav_mortgage">Mortgage</a>
             <a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a>
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="nav-group" data-group="car">
-          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Motoring</button>
+          <button class="nav-group-btn" type="button" data-i18n="navcat_car">Car</button>
           <div class="nav-dropdown">
             <a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a>
             <a href="/car-running-cost-calculator.html" data-i18n="nav_carrunning">Car running cost</a>
@@ -94,7 +94,7 @@
           </div>
         </div>
         <div class="nav-group" data-group="spending">
-          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Spending</button>
+          <button class="nav-group-btn" type="button" data-i18n="navcat_spending">Expense</button>
           <div class="nav-dropdown">
             <a href="/monthly-budget-calculator.html" data-i18n="nav_budget">Monthly budget</a>
             <a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a>
@@ -105,7 +105,7 @@
           </div>
         </div>
         <div class="nav-group" data-group="earning">
-          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Earning</button>
+          <button class="nav-group-btn" type="button" data-i18n="navcat_earning">Income</button>
           <div class="nav-dropdown">
             <a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a>
             <a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a>
@@ -114,16 +114,41 @@
             <a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a>
           </div>
         </div>
+        <div class="nav-group" data-group="insurance">
+          <button class="nav-group-btn" type="button" data-i18n="navcat_insurance">Insurance</button>
+          <div class="nav-dropdown">
+            <a href="/life-insurance-cover-calculator.html" data-i18n="nav_lifecover">Life insurance cover</a>
+            <a href="/income-protection-insurance-calculator.html" data-i18n="nav_incomeprotection">Income protection</a>
+            <a href="/house-contents-insurance-calculator.html" data-i18n="nav_housecontents">House &amp; contents</a>
+            <a href="/car-insurance-cost-calculator.html" data-i18n="nav_carinsurance">Car insurance cost</a>
+            <a href="/health-insurance-cost-calculator.html" data-i18n="nav_healthinsurance">Health insurance cost</a>
+            <a href="/insurance-excess-calculator.html" data-i18n="nav_insuranceexcess">Insurance excess</a>
+          </div>
+        </div>
+        <a class="nav-single" href="/articles.html" data-i18n="nav_articles">Guides</a>
+        </div>
+      <div class="nav-group settings-group">
+        <button class="nav-group-btn settings-btn" type="button" aria-label="Settings" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 3 13.09H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </button>
+        <div class="nav-dropdown settings-dropdown">
+          <div class="settings-row">
+            <span class="settings-label" data-i18n="common_language">Language</span>
+            <div class="lang-toggle" role="group" aria-label="Language">
+            <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
+            <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
+            <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
+          </div>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label" data-i18n="common_theme">Dark mode</span>
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          </div>
+        </div>
       </div>
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button class="lang-btn active" data-lang="en"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg></span>EN</button>
-        <button class="lang-btn" data-lang="ko"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg></span>KO</button>
-        <button class="lang-btn" data-lang="zh"><span class="flag"><svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg></span>中文</button>
-      </div>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-      </button>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
     </div>
   </nav>
@@ -153,19 +178,42 @@
         </div>
 
         <div class="field">
-          <label for="netIncome"><span data-i18n="b_label_net">Net monthly take-home pay</span> <span class="hint" data-i18n="b_hint_net">combined, after tax</span></label>
-          <input type="number" id="netIncome" value="8600" min="0" step="50">
+          <label data-i18n="b_label_earners">Income earners</label>
+          <div class="seg" id="earnersSeg" style="max-width:160px;">
+            <button type="button" data-v="1" data-i18n="b_seg_earner1">1</button>
+            <button type="button" data-v="2" class="active" data-i18n="b_seg_earner2">2</button>
+          </div>
         </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label for="existingDebt"><span data-i18n="b_label_existingdebt">Existing debt &amp; credit limits</span> <span class="hint" data-i18n="b_hint_existingdebt">loans + card limits</span></label>
-            <input type="number" id="existingDebt" value="15000" min="0" step="500">
+        <div class="field">
+          <label data-i18n="b_label_dependants">Dependants</label>
+          <div class="seg" id="dependantsSeg" style="max-width:320px;">
+            <button type="button" data-v="0" class="active" data-i18n="b_seg_dep0">0</button>
+            <button type="button" data-v="1" data-i18n="b_seg_dep1">1</button>
+            <button type="button" data-v="2" data-i18n="b_seg_dep2">2</button>
+            <button type="button" data-v="3" data-i18n="b_seg_dep3">3</button>
+            <button type="button" data-v="4" data-i18n="b_seg_dep4plus">4+</button>
           </div>
-          <div class="field">
-            <label for="debtRepay" data-i18n="b_label_debtrepay">Other monthly debt repayments</label>
-            <input type="number" id="debtRepay" value="300" min="0" step="10">
-          </div>
+        </div>
+
+        <div class="field">
+          <label for="netIncome"><span data-i18n="b_label_net">Net monthly take-home pay</span> <span class="hint" id="netHint" data-i18n="b_hint_net_auto">estimated from your income — edit if you know the real figure</span></label>
+          <input type="number" id="netIncome" value="8600" min="0" step="50">
+          <button type="button" class="field-reset-link" id="resetNetBtn" data-i18n="b_reset_net" hidden>Use estimate instead</button>
+        </div>
+
+        <div class="field">
+          <label for="otherDebt"><span data-i18n="b_label_otherdebt">Other outstanding debt</span> <span class="hint" data-i18n="b_hint_otherdebt">loans, hire purchase, etc</span></label>
+          <input type="number" id="otherDebt" value="8000" min="0" step="500">
+        </div>
+        <div class="field">
+          <label for="ccLimit"><span data-i18n="b_label_cclimit">Credit card / overdraft limits</span> <span class="hint" data-i18n="b_hint_cclimit">even if paid off monthly</span></label>
+          <input type="number" id="ccLimit" value="10000" min="0" step="500">
+        </div>
+
+        <div class="field">
+          <label for="debtRepay" data-i18n="b_label_debtrepay">Other monthly debt repayments</label>
+          <input type="number" id="debtRepay" value="300" min="0" step="10">
         </div>
 
         <div class="field">
@@ -174,39 +222,46 @@
         </div>
 
         <div class="field">
+          <label for="propertyCosts"><span data-i18n="b_label_propertycosts">Expected property costs / month</span> <span class="hint" data-i18n="b_hint_propertycosts">rates, insurance, body corp — optional</span></label>
+          <input type="number" id="propertyCosts" value="350" min="0" step="25">
+        </div>
+
+        <div class="field">
           <label for="deposit" data-i18n="b_label_deposit">Deposit you have available</label>
           <input type="number" id="deposit" value="120000" min="0" step="1000">
         </div>
 
         <div class="callout amber" data-i18n-html="b_callout">
-          Not sure of your take-home pay? Check the <a href="/take-home-pay-calculator.html">take-home pay calculator</a> first.
+          We've estimated your net pay from your gross income, assuming a 3.5% KiwiSaver rate and no student loan, split evenly across your earners. If your real take-home pay is different — a student loan, secondary tax code, or uneven income split — enter it directly, or check the <a href="/take-home-pay-calculator.html">take-home pay calculator</a> for precision.
         </div>
       </div>
 
       <div>
         <div class="receipt">
-          <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
+          <img class="summy-corner" src="/images/summy_propertyvalue.png?v=1" alt="" aria-hidden="true">
           <span class="stamp" data-i18n="common_estimate">Estimate</span>
           <div class="receipt-total-label" data-i18n="b_receipt_label">Estimated borrowing power</div>
           <div class="receipt-total" id="outMaxLoan">$0</div>
-          <p style="font-size:.85rem; color:var(--muted); margin-top:-4px;"><span data-i18n="b_plusdeposit">Plus your deposit of</span> <span id="outDepositEcho" class="mono">$0</span> ≈ <strong id="outPurchasePower">$0</strong> <span data-i18n="b_purchaseprice">purchase price</span></p>
+          <p class="receipt-sublabel" data-i18n="b_receipt_sublabel" style="font-size:.85rem; color:var(--muted); margin:2px 0 0;">Based on the most restrictive estimate below.</p>
+          <p style="font-size:.85rem; color:var(--muted); margin-top:6px;"><span data-i18n="b_plusdeposit">Plus your deposit of</span> <span id="outDepositEcho" class="mono">$0</span> ≈ <strong id="outPurchasePower">$0</strong> <span data-i18n="b_purchaseprice">purchase price</span></p>
 
           <div style="margin-top:18px;">
             <div class="constraint" id="rowDTI">
-              <span class="name"><span data-i18n="b_row_dti">DTI limit (</span><span id="dtiMultiple">6</span><span data-i18n="b_row_dti_suffix">× income)</span></span>
+              <span class="name"><span data-i18n="b_row_dti">DTI benchmark</span> <span class="paren-group">(<span id="dtiMultiple">6</span><span data-i18n="b_row_dti_suffix">× income)</span></span> <span class="binding-tag" id="tagDTI" data-i18n="b_binding_tag" hidden>Limiting factor</span></span>
               <span class="amt" id="valDTI">$0</span>
             </div>
             <div class="constraint" id="rowLVR">
-              <span class="name" data-i18n="b_row_lvr">Deposit / LVR limit</span>
+              <span class="name"><span id="lvrLabel">80% LVR benchmark</span> <span class="binding-tag" id="tagLVR" data-i18n="b_binding_tag" hidden>Limiting factor</span></span>
               <span class="amt" id="valLVR">$0</span>
             </div>
             <div class="constraint" id="rowServ">
-              <span class="name"><span data-i18n="b_row_serv">Affordability (stress-tested at</span> <span id="testRateLabel">7.5%</span><span data-i18n="b_row_serv_suffix">)</span></span>
+              <span class="name"><span class="jargon" tabindex="0"><span data-i18n="b_row_serv">Estimated affordability</span> <span class="paren-group">(<span id="testRateLabel">7.5</span><span data-i18n="b_row_serv_suffix">% test rate, 30-year term)</span></span><span class="jargon-tip" data-i18n="b_servrate_tip">We use a 7.5% test rate to estimate affordability. Banks use their own servicing rates, expense assumptions and lending criteria — this is a simplified estimate, not a bank's actual test.</span></span> <span class="binding-tag" id="tagServ" data-i18n="b_binding_tag" hidden>Limiting factor</span></span>
               <span class="amt" id="valServ">$0</span>
             </div>
           </div>
 
-          <p class="receipt-note" data-i18n="b_receipt_note">Your borrowing power is set by whichever limit above is lowest — that's the one highlighted. Real bank decisions also weigh credit history, employment and other factors.</p>
+          <p class="receipt-note" id="limitingFactorNote"></p>
+          <p class="receipt-note" data-i18n="b_receipt_note">Real bank decisions also weigh credit history, employment and other factors on top of these three tests.</p>
         </div>
 
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -354,12 +409,12 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div>
-      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png?v=2" alt="KiwiSums logo"> KiwiSums</a>
+      <a class="brand" href="/" style="color:#fff;"><img class="brand-mark" src="/images/summy.png" alt="KiwiSums logo"> KiwiSums</a>
       <p style="color:#B9CDC2; margin-top:12px; max-width:34ch;" data-i18n="footer_tagline">Plain-English money calculators for New Zealand. Estimates only — not financial advice.</p>
     </div>
     <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
     <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div><div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
-    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+    <div><h4 data-i18n="footer_insurance">Insurance</h4><ul><li><a href="/life-insurance-cover-calculator.html" data-i18n="nav_lifecover">Life insurance cover</a></li><li><a href="/income-protection-insurance-calculator.html" data-i18n="nav_incomeprotection">Income protection</a></li><li><a href="/house-contents-insurance-calculator.html" data-i18n="nav_housecontents">House &amp; contents</a></li><li><a href="/car-insurance-cost-calculator.html" data-i18n="nav_carinsurance">Car insurance cost</a></li><li><a href="/health-insurance-cost-calculator.html" data-i18n="nav_healthinsurance">Health insurance cost</a></li><li><a href="/insurance-excess-calculator.html" data-i18n="nav_insuranceexcess">Insurance excess</a></li></ul></div><div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
   </div>
   <div class="wrap footer-bottom">
     <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
@@ -367,20 +422,67 @@
   </div>
 </footer>
 
-<script src="/js/site.js"></script>
-<script src="/js/i18n.js"></script>
+<script src="/js/site.js?v=5"></script>
+<script src="/js/i18n.js?v=3"></script>
 <script>
 (function(){
   const grossIncome = document.getElementById('grossIncome');
   const netIncome = document.getElementById('netIncome');
-  const existingDebt = document.getElementById('existingDebt');
+  const otherDebt = document.getElementById('otherDebt');
+  const ccLimit = document.getElementById('ccLimit');
   const debtRepay = document.getElementById('debtRepay');
   const expenses = document.getElementById('expenses');
+  const propertyCosts = document.getElementById('propertyCosts');
   const deposit = document.getElementById('deposit');
   const buyerSeg = document.getElementById('buyerSeg');
+  const earnersSeg = document.getElementById('earnersSeg');
+  const dependantsSeg = document.getElementById('dependantsSeg');
+  const resetNetBtn = document.getElementById('resetNetBtn');
   const shareBtn = document.getElementById('shareBtn');
   let buyerType = 'occupier';
+  let earners = 2;
+  let dependants = 0;
+  let netManuallySet = false;
   const TEST_RATE = 7.5;
+  const DEPENDANT_MONTHLY_COST = 300;
+  const CC_MIN_REPAY_RATE = 0.03;
+
+  // ---- PAYE / ACC / KiwiSaver estimate (same 2026/27 rates as the take-home pay calculator) ----
+  const BRACKETS = [
+    {limit:15600, rate:0.105},
+    {limit:53500, rate:0.175},
+    {limit:78100, rate:0.30},
+    {limit:180000, rate:0.33},
+    {limit:Infinity, rate:0.39},
+  ];
+  const ACC_RATE = 0.0175, ACC_CAP = 156641, KS_RATE = 0.035;
+
+  function payeTax(gross){
+    let tax = 0, prevLimit = 0;
+    for(const b of BRACKETS){
+      if(gross > prevLimit){
+        const taxable = Math.min(gross, b.limit) - prevLimit;
+        tax += taxable * b.rate;
+        prevLimit = b.limit;
+      } else break;
+    }
+    return tax;
+  }
+
+  function estimateMonthlyNet(grossHousehold, numEarners){
+    const perEarner = Math.max(0, grossHousehold) / numEarners;
+    const tax = payeTax(perEarner);
+    const acc = Math.min(perEarner, ACC_CAP) * ACC_RATE;
+    const ks = perEarner * KS_RATE;
+    const netPerEarner = Math.max(0, perEarner - tax - acc - ks);
+    return (netPerEarner * numEarners) / 12;
+  }
+
+  function autoUpdateNet(){
+    if(netManuallySet) return;
+    const est = estimateMonthlyNet(num(grossIncome.value,0), earners);
+    netIncome.value = Math.round(est/50)*50;
+  }
 
   buyerSeg.addEventListener('click', function(e){
     const btn = e.target.closest('button'); if(!btn) return;
@@ -390,15 +492,52 @@
     calc();
   });
 
-  [grossIncome, netIncome, existingDebt, debtRepay, expenses, deposit].forEach(el=>{
+  earnersSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    earnersSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    earners = num(btn.dataset.v,2);
+    autoUpdateNet();
+    calc();
+  });
+
+  dependantsSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    dependantsSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    dependants = num(btn.dataset.v,0);
+    calc();
+  });
+
+  grossIncome.addEventListener('input', function(){
+    autoUpdateNet();
+    calc();
+  });
+
+  netIncome.addEventListener('input', function(){
+    netManuallySet = true;
+    resetNetBtn.hidden = false;
+    calc();
+  });
+
+  resetNetBtn.addEventListener('click', function(){
+    netManuallySet = false;
+    resetNetBtn.hidden = true;
+    autoUpdateNet();
+    calc();
+  });
+
+  [otherDebt, ccLimit, debtRepay, expenses, propertyCosts, deposit].forEach(el=>{
     el.addEventListener('input', calc);
   });
 
   shareBtn.addEventListener('click', function(){
     const params = new URLSearchParams({
       buyer: buyerType, gross: Math.round(num(grossIncome.value,0)), net: Math.round(num(netIncome.value,0)),
-      debt: Math.round(num(existingDebt.value,0)), debtrepay: Math.round(num(debtRepay.value,0)),
-      expenses: Math.round(num(expenses.value,0)), deposit: Math.round(num(deposit.value,0)),
+      otherdebt: Math.round(num(otherDebt.value,0)), cclimit: Math.round(num(ccLimit.value,0)),
+      debtrepay: Math.round(num(debtRepay.value,0)), expenses: Math.round(num(expenses.value,0)),
+      propertycosts: Math.round(num(propertyCosts.value,0)), deposit: Math.round(num(deposit.value,0)),
+      earners: earners, dependants: dependants,
     });
     const url = location.origin + location.pathname + '?' + params.toString();
     navigator.clipboard.writeText(url).then(function(){
@@ -410,23 +549,39 @@
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);
     if(p.has('gross')) grossIncome.value = p.get('gross');
-    if(p.has('net')) netIncome.value = p.get('net');
-    if(p.has('debt')) existingDebt.value = p.get('debt');
+    if(p.has('otherdebt')) otherDebt.value = p.get('otherdebt');
+    if(p.has('cclimit')) ccLimit.value = p.get('cclimit');
     if(p.has('debtrepay')) debtRepay.value = p.get('debtrepay');
     if(p.has('expenses')) expenses.value = p.get('expenses');
+    if(p.has('propertycosts')) propertyCosts.value = p.get('propertycosts');
     if(p.has('deposit')) deposit.value = p.get('deposit');
     if(p.has('buyer')){
       buyerType = p.get('buyer')==='investor' ? 'investor' : 'occupier';
       buyerSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===buyerType));
     }
+    if(p.has('earners')){
+      earners = p.get('earners')==='1' ? 1 : 2;
+      earnersSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===String(earners)));
+    }
+    if(p.has('dependants')){
+      dependants = clamp(num(p.get('dependants'),0), 0, 4);
+      dependantsSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===String(dependants)));
+    }
+    if(p.has('net')){
+      netIncome.value = p.get('net');
+      netManuallySet = true;
+      resetNetBtn.hidden = false;
+    } else {
+      autoUpdateNet();
+    }
   }
 
-  function computeLoan(gi, ed, dep, ni, ex, dr, type){
+  function computeLoan(gi, od, cc, dep, ni, ex, dr, pc, deps, type){
     const dtiMultiple = type==='investor' ? 7 : 6;
     const minDepositPct = type==='investor' ? 0.35 : 0.20;
-    const maxLoanDTI = Math.max(0, dtiMultiple*gi - ed);
+    const maxLoanDTI = Math.max(0, dtiMultiple*gi - od - cc);
     const maxLoanLVR = dep>0 ? dep * (1-minDepositPct)/minDepositPct : 0;
-    const surplus = Math.max(0, ni - ex - dr);
+    const surplus = Math.max(0, ni - ex - dr - pc - deps*DEPENDANT_MONTHLY_COST - cc*CC_MIN_REPAY_RATE);
     const i = (TEST_RATE/100)/12, n = 30*12;
     const maxLoanServ = surplus>0 ? surplus * (1-Math.pow(1+i,-n))/i : 0;
     const minVal = Math.min(maxLoanDTI, maxLoanLVR, maxLoanServ);
@@ -438,41 +593,58 @@
     return key==='DTI' ? t('b_binding_dti') : (key==='LVR' ? t('b_binding_lvr') : t('b_binding_serv'));
   }
 
+  function constraintLabel(key){
+    return key==='DTI' ? t('b_constraint_dti') : (key==='LVR' ? t('b_constraint_lvr') : t('b_constraint_serv'));
+  }
+
   function calc(){
     const gi = num(grossIncome.value,0);
     const ni = num(netIncome.value,0);
-    const ed = num(existingDebt.value,0);
+    const od = num(otherDebt.value,0);
+    const cc = num(ccLimit.value,0);
     const dr = num(debtRepay.value,0);
     const ex = num(expenses.value,0);
+    const pc = num(propertyCosts.value,0);
     const dep = num(deposit.value,0);
 
-    const r = computeLoan(gi, ed, dep, ni, ex, dr, buyerType);
+    const r = computeLoan(gi, od, cc, dep, ni, ex, dr, pc, dependants, buyerType);
     const dtiMultiple = buyerType==='investor' ? 7 : 6;
+    const minDepositPct = buyerType==='investor' ? 0.35 : 0.20;
+    const lvrPct = Math.round((1-minDepositPct)*100);
 
     document.getElementById('dtiMultiple').textContent = dtiMultiple;
-    document.getElementById('testRateLabel').textContent = TEST_RATE.toFixed(1) + '%';
+    document.getElementById('lvrLabel').textContent = t('b_row_lvr_template').replace('{pct}', lvrPct);
+    document.getElementById('testRateLabel').textContent = TEST_RATE.toFixed(1);
     document.getElementById('valDTI').textContent = fmt(r.maxLoanDTI);
     document.getElementById('valLVR').textContent = fmt(r.maxLoanLVR);
     document.getElementById('valServ').textContent = fmt(r.maxLoanServ);
 
     ['rowDTI','rowLVR','rowServ'].forEach(id=>document.getElementById(id).classList.remove('binding'));
+    ['tagDTI','tagLVR','tagServ'].forEach(id=>document.getElementById(id).hidden = true);
     const bindingRow = r.binding==='DTI' ? 'rowDTI' : (r.binding==='LVR' ? 'rowLVR' : 'rowServ');
+    const bindingTag = r.binding==='DTI' ? 'tagDTI' : (r.binding==='LVR' ? 'tagLVR' : 'tagServ');
     document.getElementById(bindingRow).classList.add('binding');
+    document.getElementById(bindingTag).hidden = false;
 
     document.getElementById('outMaxLoan').textContent = fmt(r.minVal);
     document.getElementById('outDepositEcho').textContent = fmt(dep);
     document.getElementById('outPurchasePower').textContent = fmt(r.minVal + dep);
 
+    document.getElementById('limitingFactorNote').innerHTML = gi>0
+      ? t('b_limiting_factor_template').replace('{factor}', constraintLabel(r.binding))
+      : '';
+
     // ---- Insight panel ----
     const insightEl = document.getElementById('insightText');
     if(gi > 0){
-      const depositScenario = computeLoan(gi, ed, dep+30000, ni, ex, dr, buyerType);
+      const depositScenario = computeLoan(gi, od, cc, dep+30000, ni, ex, dr, pc, dependants, buyerType);
       const depositDelta = depositScenario.minVal - r.minVal;
       const multiple = r.minVal>0 ? (r.minVal/gi) : 0;
-      insightEl.innerHTML = t('b_insight_template')
+      const templateKey = r.binding==='LVR' ? 'b_insight_lvr' : (r.binding==='DTI' ? 'b_insight_dti' : 'b_insight_serv');
+      insightEl.innerHTML = t(templateKey)
         .replace('{loan}', fmt(r.minVal))
-        .replace('{binding}', bindingLabel(r.binding))
         .replace('{multiple}', multiple.toFixed(1))
+        .replace('{newpurchase}', fmt(depositScenario.minVal + dep+30000))
         .replace('{depositdelta}', fmt(Math.abs(depositDelta)));
     } else {
       insightEl.innerHTML = t('b_insight_placeholder');
@@ -482,12 +654,12 @@
     document.getElementById('cmpCurrentLoan').textContent = fmt(r.minVal);
     document.getElementById('cmpCurrentBinding').textContent = bindingLabel(r.binding);
 
-    const depScenario = computeLoan(gi, ed, dep+30000, ni, ex, dr, buyerType);
+    const depScenario = computeLoan(gi, od, cc, dep+30000, ni, ex, dr, pc, dependants, buyerType);
     document.getElementById('cmpDepositLoan').textContent = fmt(depScenario.minVal);
     document.getElementById('cmpDepositBinding').textContent = bindingLabel(depScenario.binding);
     document.getElementById('cmpDepositDiff').textContent = '+' + fmt(depScenario.minVal - r.minVal);
 
-    const debtScenario = computeLoan(gi, Math.max(0,ed-10000), dep, ni, ex, dr, buyerType);
+    const debtScenario = computeLoan(gi, Math.max(0,od-10000), cc, dep, ni, ex, dr, pc, dependants, buyerType);
     document.getElementById('cmpDebtLoan').textContent = fmt(debtScenario.minVal);
     document.getElementById('cmpDebtBinding').textContent = bindingLabel(debtScenario.binding);
     document.getElementById('cmpDebtDiff').textContent = '+' + fmt(debtScenario.minVal - r.minVal);

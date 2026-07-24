@@ -1,4 +1,42 @@
 // KiwiSums — shared site behaviour
+
+// ---- "Sums calculated" counter — real accumulative count of calculator-page visits ----
+// Backed by Abacus (abacus.jasoncameron.dev), a free keyless hit-counter service: calculator
+// pages call /hit (increments the shared global total), every other page calls /get
+// (reads the total without incrementing) so the number displayed is always the same
+// site-wide running count.
+(function(){
+  var header = document.querySelector('.site-header');
+  if(!header) return;
+
+  var bar = document.createElement('div');
+  bar.className = 'visitor-counter';
+  bar.innerHTML = '<div class="visitor-counter-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg><span><strong id="visitorCount">0</strong> sums calculated by Kiwis, and counting</span></div>';
+  header.insertAdjacentElement('afterend', bar);
+
+  var countEl = document.getElementById('visitorCount');
+  var NAMESPACE = 'kiwisums-nz';
+  var KEY = 'calculator-visits';
+  var isCalculatorPage = /-calculator\.html$/.test(location.pathname);
+  var endpoint = 'https://abacus.jasoncameron.dev/' + (isCalculatorPage ? 'hit' : 'get') + '/' + NAMESPACE + '/' + KEY;
+
+  function render(n){
+    countEl.textContent = Number(n).toLocaleString('en-NZ');
+    try { localStorage.setItem('kiwisums_visit_count', String(n)); } catch(e){}
+  }
+
+  // Show the last known count immediately so the number doesn't flash to 0 while the
+  // network request is in flight.
+  try {
+    var cached = localStorage.getItem('kiwisums_visit_count');
+    if(cached) render(Number(cached));
+  } catch(e){}
+
+  fetch(endpoint).then(function(r){ return r.json(); }).then(function(data){
+    if(typeof data.value === 'number') render(data.value);
+  }).catch(function(){ /* offline or service unavailable — keep showing the cached value */ });
+})();
+
 (function(){
   // Mobile nav toggle
   var toggle = document.querySelector('.nav-toggle');
@@ -7,6 +45,9 @@
     toggle.addEventListener('click', function(){
       links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', links.classList.contains('open'));
+      // Opening the mobile menu should close the settings dropdown (a sibling
+      // panel outside .nav-links), so the two don't overlap on small screens.
+      if(links.classList.contains('open')) closeAllGroups();
     });
   }
 
@@ -46,12 +87,58 @@
       if(!wasOpen){
         group.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
+        // The settings cog sits outside .nav-links, so opening it on a small
+        // screen should close the mobile menu panel rather than overlap it.
+        if(group.classList.contains('settings-group') && links){
+          links.classList.remove('open');
+          if(toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
       }
     });
   });
   document.addEventListener('click', closeAllGroups);
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape') closeAllGroups();
+  });
+
+  // Number inputs: replace native up/down spinner with -/+ stepper buttons
+  document.querySelectorAll('.field input[type=number]').forEach(function(input){
+    if(input.closest('.number-stepper')) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'number-stepper';
+    input.parentNode.insertBefore(wrap, input);
+
+    var minusBtn = document.createElement('button');
+    minusBtn.type = 'button';
+    minusBtn.className = 'num-step num-step-minus';
+    minusBtn.setAttribute('aria-label', 'Decrease');
+    minusBtn.textContent = '−';
+
+    var plusBtn = document.createElement('button');
+    plusBtn.type = 'button';
+    plusBtn.className = 'num-step num-step-plus';
+    plusBtn.setAttribute('aria-label', 'Increase');
+    plusBtn.textContent = '+';
+
+    wrap.appendChild(input);
+    wrap.appendChild(minusBtn);
+    wrap.appendChild(plusBtn);
+
+    function stepValue(dir){
+      var stepAmt = parseFloat(input.step) || 1;
+      var minVal = input.min !== '' ? parseFloat(input.min) : -Infinity;
+      var maxVal = input.max !== '' ? parseFloat(input.max) : Infinity;
+      var cur = parseFloat(input.value);
+      if(!isFinite(cur)) cur = 0;
+      var next = cur + dir * stepAmt;
+      next = Math.min(maxVal, Math.max(minVal, next));
+      next = Math.round(next * 1e6) / 1e6;
+      input.value = next;
+      input.dispatchEvent(new Event('input', { bubbles:true }));
+      input.dispatchEvent(new Event('change', { bubbles:true }));
+    }
+    minusBtn.addEventListener('click', function(){ stepValue(-1); });
+    plusBtn.addEventListener('click', function(){ stepValue(1); });
   });
 
   // ---- Micro-animations (skipped entirely for prefers-reduced-motion) ----
@@ -100,17 +187,16 @@
     });
   }
 
-  // Dark mode toggle
-  var themeBtn = document.getElementById('themeToggle');
-  if(themeBtn){
-    themeBtn.addEventListener('click', function(){
-      var current = document.documentElement.getAttribute('data-theme') || 'light';
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('kiwisums_theme', next); } catch(e){}
-      document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
-    });
-  }
+  // Dark mode toggle — delegated so it works for any number of instances
+  // (e.g. header + mobile menu), regardless of when they're added to the DOM.
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.theme-toggle')) return;
+    var current = document.documentElement.getAttribute('data-theme') || 'light';
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('kiwisums_theme', next); } catch(e){}
+    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
+  });
 })();
 
 // ---- Formatting helpers used by every calculator page ----
@@ -118,15 +204,28 @@ const NZD = new Intl.NumberFormat('en-NZ', { style:'currency', currency:'NZD', m
 const NZD2 = new Intl.NumberFormat('en-NZ', { style:'currency', currency:'NZD', maximumFractionDigits:2 });
 function fmt(n){ if(!isFinite(n)) return '$0'; return NZD.format(Math.round(n)); }
 function fmt2(n){ if(!isFinite(n)) return '$0.00'; return NZD2.format(n); }
+// Abbreviated currency for tight spaces (e.g. mobile chart axes): $610k, $1.2m
+function fmtShort(n){
+  if(!isFinite(n)) return '$0';
+  const sign = n < 0 ? '-' : '';
+  const abs = Math.abs(n);
+  if(abs >= 1000000) return sign + '$' + (Math.round(abs/100000)/10) + 'm';
+  if(abs >= 1000) return sign + '$' + Math.round(abs/1000) + 'k';
+  return sign + '$' + Math.round(abs);
+}
 function pct(n, dp){ dp = dp===undefined?1:dp; return (isFinite(n)?n:0).toFixed(dp) + '%'; }
 function clamp(n,min,max){ return Math.max(min, Math.min(max, n)); }
 function num(v, fallback){ const n = parseFloat(v); return isFinite(n) ? n : (fallback||0); }
 
 // ---- Shared line-chart renderer (theme-aware SVG, 1-4 series, optional vertical marker, hover tooltip) ----
 // Usage: renderLineChart(containerEl, config)
-// config: { years:[...], series:[{label,color,darkColor,values:[...],width}], yFormatFn, xLabelFn, xLabelEvery, markerIndex, step }
+// config: { years:[...], series:[{label,color,darkColor,values:[...],width}], yFormatFn, xLabelFn, xLabelEvery, markerIndex, step, width, height, padL }
+// width/height/padL default to a desktop-friendly canvas; pass smaller values (e.g. on
+// narrow viewports) to make axis text and dots render larger relative to the container,
+// since the SVG scales uniformly from viewBox units based on the container's pixel width.
 function renderLineChart(container, config){
-  const W = 680, H = 300, padL = 58, padR = 16, padT = 16, padB = 32;
+  const W = config.width || 680, H = config.height || 300;
+  const padL = config.padL != null ? config.padL : 58, padR = 16, padT = 16, padB = 32;
   const chartW = W - padL - padR, chartH = H - padT - padB;
   const dark = document.documentElement.getAttribute('data-theme') === 'dark';
   const gridColor = dark ? '#2A332C' : '#E4E9E1';
@@ -156,7 +255,13 @@ function renderLineChart(container, config){
 
   let xlabels = '';
   years.forEach((yr,i)=>{
-    if(config.xLabelEvery && i % config.xLabelEvery !== 0 && i !== n) return;
+    const isFinal = i === n;
+    const isRegular = !config.xLabelEvery || i % config.xLabelEvery === 0;
+    if(!isRegular && !isFinal) return;
+    // The final label always renders (even off-interval) so the chart's end point is
+    // labelled — but skip a regular label that lands right next to it, since two labels
+    // a single step apart collide, especially on the narrower mobile canvas.
+    if(isRegular && !isFinal && (n - i) <= Math.floor((config.xLabelEvery||1)/2)) return;
     xlabels += `<text x="${xPos(i).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="11" fill="${textColor}" font-family="Inter,sans-serif">${xLabelFn(yr)}</text>`;
   });
 
