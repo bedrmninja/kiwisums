@@ -362,7 +362,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 .hero-flex{ display:flex; align-items:center; justify-content:space-between; gap:32px; }
 .hero-copy{ flex:1; min-width:0; }
 .summy-hero{
-  width:300px; height:300px; object-fit:contain; flex-shrink:0;
+  width:400px; height:400px; object-fit:contain; flex-shrink:0;
   filter:drop-shadow(0 12px 22px rgba(30,42,34,.16));
 }
 @media (max-width:760px){

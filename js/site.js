@@ -204,15 +204,28 @@ const NZD = new Intl.NumberFormat('en-NZ', { style:'currency', currency:'NZD', m
 const NZD2 = new Intl.NumberFormat('en-NZ', { style:'currency', currency:'NZD', maximumFractionDigits:2 });
 function fmt(n){ if(!isFinite(n)) return '$0'; return NZD.format(Math.round(n)); }
 function fmt2(n){ if(!isFinite(n)) return '$0.00'; return NZD2.format(n); }
+// Abbreviated currency for tight spaces (e.g. mobile chart axes): $610k, $1.2m
+function fmtShort(n){
+  if(!isFinite(n)) return '$0';
+  const sign = n < 0 ? '-' : '';
+  const abs = Math.abs(n);
+  if(abs >= 1000000) return sign + '$' + (Math.round(abs/100000)/10) + 'm';
+  if(abs >= 1000) return sign + '$' + Math.round(abs/1000) + 'k';
+  return sign + '$' + Math.round(abs);
+}
 function pct(n, dp){ dp = dp===undefined?1:dp; return (isFinite(n)?n:0).toFixed(dp) + '%'; }
 function clamp(n,min,max){ return Math.max(min, Math.min(max, n)); }
 function num(v, fallback){ const n = parseFloat(v); return isFinite(n) ? n : (fallback||0); }
 
 // ---- Shared line-chart renderer (theme-aware SVG, 1-4 series, optional vertical marker, hover tooltip) ----
 // Usage: renderLineChart(containerEl, config)
-// config: { years:[...], series:[{label,color,darkColor,values:[...],width}], yFormatFn, xLabelFn, xLabelEvery, markerIndex, step }
+// config: { years:[...], series:[{label,color,darkColor,values:[...],width}], yFormatFn, xLabelFn, xLabelEvery, markerIndex, step, width, height, padL }
+// width/height/padL default to a desktop-friendly canvas; pass smaller values (e.g. on
+// narrow viewports) to make axis text and dots render larger relative to the container,
+// since the SVG scales uniformly from viewBox units based on the container's pixel width.
 function renderLineChart(container, config){
-  const W = 680, H = 300, padL = 58, padR = 16, padT = 16, padB = 32;
+  const W = config.width || 680, H = config.height || 300;
+  const padL = config.padL != null ? config.padL : 58, padR = 16, padT = 16, padB = 32;
   const chartW = W - padL - padR, chartH = H - padT - padB;
   const dark = document.documentElement.getAttribute('data-theme') === 'dark';
   const gridColor = dark ? '#2A332C' : '#E4E9E1';
@@ -242,7 +255,13 @@ function renderLineChart(container, config){
 
   let xlabels = '';
   years.forEach((yr,i)=>{
-    if(config.xLabelEvery && i % config.xLabelEvery !== 0 && i !== n) return;
+    const isFinal = i === n;
+    const isRegular = !config.xLabelEvery || i % config.xLabelEvery === 0;
+    if(!isRegular && !isFinal) return;
+    // The final label always renders (even off-interval) so the chart's end point is
+    // labelled — but skip a regular label that lands right next to it, since two labels
+    // a single step apart collide, especially on the narrower mobile canvas.
+    if(isRegular && !isFinal && (n - i) <= Math.floor((config.xLabelEvery||1)/2)) return;
     xlabels += `<text x="${xPos(i).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="11" fill="${textColor}" font-family="Inter,sans-serif">${xLabelFn(yr)}</text>`;
   });
 
