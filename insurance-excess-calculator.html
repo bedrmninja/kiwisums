@@ -4,23 +4,43 @@
 <meta charset="UTF-8">
 <script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solar Savings Calculator NZ 2026 — Savings vs No Solar | KiwiSums</title>
-<meta name="description" content="See how much a solar power system could save you on your power bill each year in NZ, compared to not having solar at all.">
-<link rel="canonical" href="https://www.kiwisums.co.nz/solar-savings-calculator.html">
+<title>Insurance Excess Calculator NZ 2026 | KiwiSums</title>
+<meta name="description" content="See how choosing a higher or lower insurance excess trades off against your premium, and how many claim-free years it takes to break even.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/insurance-excess-calculator.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Solar Savings Calculator NZ | KiwiSums">
-<meta property="og:description" content="See how much solar could save you on your power bill each year.">
-<meta property="og:url" content="https://www.kiwisums.co.nz/solar-savings-calculator.html">
+<meta property="og:title" content="Insurance Excess Calculator NZ — KiwiSums">
+<meta property="og:description" content="See how a higher or lower excess trades off against your premium.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/insurance-excess-calculator.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css?v=6">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},{"@type":"ListItem","position":2,"name":"Solar Savings Calculator","item":"https://www.kiwisums.co.nz/solar-savings-calculator.html"}]}
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"Insurance Excess Calculator","item":"https://www.kiwisums.co.nz/insurance-excess-calculator.html"}
+  ]
+}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much can solar save on an NZ power bill?","acceptedAnswer":{"@type":"Answer","text":"For a typical home with a mid-sized system and a $200/month power bill, annual bill reduction is commonly $1,500-$2,000, with solar covering 70-80% of usage during daylight hours. The exact figure depends heavily on your self-consumption rate — using power while the sun is out saves far more than exporting it for buy-back credit."}},{"@type":"Question","name":"Why does self-consumption matter more than total generation?","acceptedAnswer":{"@type":"Answer","text":"Because of the gap between retail and buy-back rates. Power you use yourself saves you the full retail rate (around 33 cents per kWh in 2026), while power you export only earns the buy-back rate (typically 8-12 cents per kWh) — roughly a third of the value. Two systems generating the same total power can produce very different savings depending on how much is self-consumed versus exported."}}]}
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How does excess affect my premium?","acceptedAnswer":{"@type":"Answer","text":"A higher excess generally lowers your premium, since you're taking on more of the cost of small claims yourself. A lower excess raises your premium but reduces what you pay out of pocket at claim time."}},
+    {"@type":"Question","name":"Should I choose a higher excess?","acceptedAnswer":{"@type":"Answer","text":"If you rarely claim and can comfortably afford the excess out of pocket, a higher excess with a lower ongoing premium often works out ahead."}},
+    {"@type":"Question","name":"What happens if I can't afford my excess when I claim?","acceptedAnswer":{"@type":"Answer","text":"Most insurers require the excess to be paid before or as part of settling a claim — if you can't cover it, the claim may be delayed or reduced."}}
+  ]
+}
 </script>
+
+<!-- Google AdSense: uncomment once your site is approved and you have a publisher ID.
+     Replace ca-pub-XXXXXXXXXXXXXXXX with your real ID. See README-ADS.md for setup steps.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
 </head>
 <body>
 
@@ -134,31 +154,35 @@
 <main id="main">
   <div class="wrap">
     <div style="padding-top:32px;">
-      <span class="eyebrow" data-i18n="sv_eyebrow">Solar · Savings</span>
-      <h1 style="margin-top:10px;" data-i18n="sv_h1">Solar savings calculator</h1>
-      <p class="lede" data-i18n="sv_lede">See how much a solar system could actually save you on your power bill each year, compared to not having one.</p>
+      <span class="eyebrow" data-i18n="iec_eyebrow">Insurance · Excess</span>
+      <h1 style="margin-top:10px;" data-i18n="iec_h1">Insurance excess calculator</h1>
+      <p class="lede" data-i18n="iec_lede">See how choosing a higher or lower excess trades off against your premium — and how many claim-free years it takes to break even.</p>
     </div>
 
     <form class="calc-layout" id="calcForm" onsubmit="return false;">
       <div class="panel">
         <div class="field">
-          <label for="sizeKw" data-i18n="sv_label_size">System size (kW)</label>
-          <input type="number" id="sizeKw" value="6.6" min="0" step="0.1">
+          <label for="premium" data-i18n="iec_label_premium">Current annual premium</label>
+          <input type="number" id="premium" value="1200" min="0" step="50">
         </div>
+
         <div class="field">
-          <label for="yieldKwh"><span data-i18n="sv_label_yield">Generation yield</span> <span class="hint" data-i18n="sv_hint_yield">kWh per kW per year</span></label>
-          <input type="number" id="yieldKwh" value="1300" min="0" step="50">
+          <label for="currentExcess" data-i18n="iec_label_currentexcess">Current excess</label>
+          <input type="number" id="currentExcess" value="500" min="0" step="50">
         </div>
-        <div class="field-row">
-          <div class="field"><label for="retailPrice" data-i18n="sv_label_retail">Retail price ($/kWh)</label><input type="number" id="retailPrice" value="0.33" min="0" step="0.01"></div>
-          <div class="field"><label for="buybackPrice" data-i18n="sv_label_buyback">Buy-back rate ($/kWh)</label><input type="number" id="buybackPrice" value="0.10" min="0" step="0.01"></div>
-        </div>
+
         <div class="field">
-          <label for="selfConsumption"><span data-i18n="sv_label_selfconsumption">Self-consumption</span> <span class="hint" id="scHint">65%</span></label>
-          <input type="range" id="selfConsumption" min="20" max="95" step="5" value="65">
+          <label for="newExcess" data-i18n="iec_label_newexcess">New excess you're considering</label>
+          <input type="number" id="newExcess" value="1000" min="0" step="50">
         </div>
-        <div class="callout" data-i18n="sv_callout">
-          Self-consumption matters more than total generation — power you use yourself saves the full retail rate, while exported power only earns the much lower buy-back rate. Running appliances during the day lifts your self-consumption rate.
+
+        <div class="field">
+          <label for="sensitivity"><span data-i18n="iec_label_sensitivity">Assumed premium change per $100 of excess</span> <span class="hint" data-i18n="iec_hint_sensitivity">typical range is 2-4%</span></label>
+          <input type="number" id="sensitivity" value="3" min="0" max="20" step="0.5">
+        </div>
+
+        <div class="callout" data-i18n="iec_callout">
+          This uses a simplified straight-line assumption for how excess affects premium — real insurer pricing isn't perfectly linear, so treat this as a starting point for the conversation with your insurer, not an exact quote.
         </div>
       </div>
 
@@ -166,18 +190,18 @@
         <div class="receipt">
           <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
           <span class="stamp" data-i18n="common_estimate">Estimate</span>
-          <div class="receipt-total-label" data-i18n="sv_receipt_label">Estimated annual savings</div>
-          <div class="receipt-total" id="outSavings">$0</div>
+          <div class="receipt-total-label" data-i18n="iec_receipt_label">Estimated new premium</div>
+          <div class="receipt-total" id="outNewPremium">$0</div>
 
           <div class="receipt-lines">
-            <div class="receipt-line"><span class="k" data-i18n="sv_line_generation">Annual generation</span><span class="v" id="outGeneration">0 kWh</span></div>
-            <div class="receipt-line"><span class="k" data-i18n="sv_line_selfused">Self-used (saves retail rate)</span><span class="v" id="outSelfUsed">0 kWh</span></div>
-            <div class="receipt-line"><span class="k" data-i18n="sv_line_exported">Exported (earns buy-back)</span><span class="v" id="outExported">0 kWh</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="iec_line_savings">Annual savings</span><span class="v" id="outSavings">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="iec_line_extrarisk">Extra you'd pay per claim</span><span class="v" id="outExtraRisk">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="iec_line_breakeven">Break-even (claim-free years needed)</span><span class="v" id="outBreakeven">—</span></div>
           </div>
-          <p class="receipt-note" data-i18n="sv_receipt_note">Assumes flat electricity prices — real savings likely grow over time as retail power prices tend to rise a few percent a year.</p>
+          <p class="receipt-note" data-i18n="iec_receipt_note">Break-even years = extra excess you'd pay per claim ÷ annual premium savings. If you claim more often than that, the higher excess likely isn't worth it.</p>
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="/solar-payback-calculator.html" data-i18n="sv_next_btn">Next: how long until it pays for itself? →</a>
+          <a class="btn" href="/house-contents-insurance-calculator.html" data-i18n="iec_next_btn">Check house & contents insurance too →</a>
           <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
@@ -187,44 +211,31 @@
 
   <div class="wrap">
     <div class="insight-panel" id="insightPanel">
-      <h2 data-i18n="sv_insight_h2">What this means for you</h2>
-      <p id="insightText" data-i18n-html="sv_insight_placeholder">See how much more you could save by shifting more usage into daylight hours.</p>
+      <h2 data-i18n="iec_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="iec_insight_placeholder">Fill in the fields above to see how the excess change affects your premium.</p>
     </div>
   </div>
 
   <div class="wrap">
     <div class="compare-panel">
-      <h2 data-i18n="sv_compare_h2">Compare self-consumption levels</h2>
-      <p class="compare-intro" data-i18n="sv_compare_intro">This is the single biggest lever you actually control — see how much savings shift between low and high self-consumption.</p>
+      <h2 data-i18n="iec_compare_h2">Compare excess levels</h2>
+      <p class="compare-intro" data-i18n="iec_compare_intro">See the estimated premium at a few common excess levels.</p>
       <div class="compare-table-wrap">
         <table class="compare-table" id="compareTable">
           <thead>
             <tr>
-              <th data-i18n="sv_compare_col_scenario">Scenario</th>
-              <th data-i18n="sv_compare_col_selfconsumption">Self-consumption</th>
-              <th data-i18n="sv_compare_col_savings">Annual savings</th>
+              <th data-i18n="iec_compare_col_excess">Excess</th>
+              <th data-i18n="iec_compare_col_premium">Estimated premium</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td data-i18n="sv_compare_row_low">Low (away all day)</td>
-              <td>40%</td>
-              <td id="cmpLowSavings">$0</td>
-            </tr>
-            <tr class="compare-row-current">
-              <td data-i18n="m_compare_row_current">Current</td>
-              <td id="cmpCurrentSc">65%</td>
-              <td id="cmpCurrentSavings">$0</td>
-            </tr>
-            <tr>
-              <td data-i18n="sv_compare_row_high">High (home, shifted usage)</td>
-              <td>80%</td>
-              <td id="cmpHighSavings">$0</td>
-            </tr>
+            <tr><td>$250</td><td id="cmp250">$0</td></tr>
+            <tr><td>$500</td><td id="cmp500">$0</td></tr>
+            <tr><td>$1,000</td><td id="cmp1000">$0</td></tr>
+            <tr><td>$2,000</td><td id="cmp2000">$0</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="compare-note" data-i18n="sv_compare_note">Unlike system size or electricity prices, self-consumption is something you can actually influence day to day — timers on appliances and hot water cylinders are the easiest lever.</p>
     </div>
   </div>
 
@@ -234,7 +245,7 @@
       <div class="assumptions-grid">
         <div>
           <strong data-i18n="m_assumptions_source_label">Data source</strong>
-          <p data-i18n="sv_assumptions_source_value">Typical NZ retail electricity and solar buy-back rates from major retailers.</p>
+          <p data-i18n="iec_assumptions_source_value">A simplified, generalised model of how excess levels typically relate to premium pricing across NZ general insurance policies.</p>
         </div>
         <div>
           <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
@@ -246,15 +257,15 @@
         </div>
         <div>
           <strong data-i18n="m_assumptions_method_label">Methodology</strong>
-          <p data-i18n-html="sv_assumptions_method_value">Annual savings = (self-used kWh × retail rate) + (exported kWh × buy-back rate), where generation = system size × yield.</p>
+          <p data-i18n="iec_assumptions_method_value">New premium = current premium × (1 − (excess change ÷ 100) × sensitivity %). Break-even years = extra excess per claim ÷ annual savings.</p>
         </div>
         <div>
           <strong data-i18n="m_assumptions_included_label">Included</strong>
-          <p data-i18n="sv_assumptions_included_value">Retail bill savings from self-consumed power, plus buy-back credits for exported power.</p>
+          <p data-i18n="iec_assumptions_included_value">A straight-line estimate of premium change and a simple break-even calculation.</p>
         </div>
         <div>
           <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
-          <p data-i18n="sv_assumptions_excluded_value">Rising electricity prices over time, panel output degradation, and any fixed daily charges on your power plan.</p>
+          <p data-i18n="iec_assumptions_excluded_value">Your actual insurer's specific pricing curve (which is rarely perfectly linear), how often you're likely to claim, and any policy minimums or maximums on excess.</p>
         </div>
       </div>
     </details>
@@ -271,21 +282,21 @@
     <div class="wrap">
       <h2 data-i18n="common_relatedreading_h2">Related reading</h2>
       <div class="article-tile-grid">
-        <a class="article-tile" href="/is-solar-really-worth-it.html">
-          <img class="thumb" src="/images/articles/solarworth.jpg" alt="" loading="lazy">
+        <a class="article-tile" href="/how-much-insurance-do-you-need-nz.html">
+          <img class="thumb" src="/images/articles/insurance-family-protection.jpg" alt="" loading="lazy">
           <div class="body">
-            <span class="tag" data-i18n="isw_eyebrow">Solar · Explainer</span>
-            <h3 data-i18n="isw_h1">Is solar really worth it?</h3>
-            <p data-i18n="isw_tile_excerpt">Solar panels cost thousands upfront — here's when the payback maths actually works in your favour, and when it doesn't.</p>
+            <span class="tag" data-i18n="hmi_eyebrow">Insurance · Explainer</span>
+            <h3 data-i18n="hmi_h1">How much insurance do you actually need in NZ?</h3>
+            <p data-i18n="hmi_tile_excerpt">Life, income protection, health, house and car cover all compete for the same budget — here's how to prioritise.</p>
             <span class="go" data-i18n="common_readarticle">Read article →</span>
           </div>
         </a>
-        <a class="article-tile" href="/nz-vs-australia-residential-solar.html">
-          <img class="thumb" src="/images/articles/solaragainstaud.jpg" alt="" loading="lazy">
+        <a class="article-tile" href="/private-health-insurance-vs-public-nz.html">
+          <img class="thumb" src="/images/articles/private-health-insurance-nz.jpg" alt="" loading="lazy">
           <div class="body">
-            <span class="tag" data-i18n="nzau_eyebrow">Solar · Comparison</span>
-            <h3 data-i18n="nzau_h1">How does NZ stack up against Australia in residential solar?</h3>
-            <p data-i18n="nzau_tile_excerpt">Australia has one of the highest rooftop solar rates in the world. Here's why NZ lags behind — and whether that's changing.</p>
+            <span class="tag" data-i18n="phi_eyebrow">Insurance · Comparison</span>
+            <h3 data-i18n="phi_h1">Is private health insurance worth it in NZ?</h3>
+            <p data-i18n="phi_tile_excerpt">Weighing private cover against NZ's public health system — what you actually gain, and what it costs.</p>
             <span class="go" data-i18n="common_readarticle">Read article →</span>
           </div>
         </a>
@@ -295,19 +306,25 @@
 
   <section class="section">
     <div class="wrap prose">
-      <h2 data-i18n="sv_h2_1">The self-consumption gap</h2>
-      <p data-i18n="sv_p1">The single biggest lever in your solar savings isn't system size — it's how much of what you generate you actually use in your own home. In 2026, retail electricity runs around 33 cents per kWh, while buy-back rates for exported power sit around 8-12 cents — meaning self-used power is worth roughly three times as much as exported power. Two identical systems can produce very different savings depending purely on when the household is home and using power during daylight hours.</p>
-      <p data-i18n="sv_p2">Simple habits — running the dishwasher, washing machine or hot water cylinder timer during the day rather than the evening — can meaningfully shift this balance in your favour without spending anything extra.</p>
+      <h2 data-i18n="iec_h2_1">How does excess affect your premium?</h2>
+      <p data-i18n="iec_p1">A higher excess means you cover more of a small claim yourself, so the insurer takes on less risk and charges a lower premium in exchange. It's most beneficial for people who rarely claim and could comfortably cover the excess out of pocket if needed.</p>
+
+      <h2 data-i18n="iec_h2_2">Should you choose a higher excess?</h2>
+      <p data-i18n="iec_p2">It depends on your claims frequency and your cash buffer. If the annual premium savings would outweigh the extra cost over the time you'd realistically expect between claims, a higher excess can make sense. If a large excess would strain your finances at claim time, a lower excess and higher premium may be the safer trade.</p>
 
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q"><span data-i18n="sv_faq_q1">How much can solar save on an NZ power bill?</span> <span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="sv_faq_a1">For a typical home with a mid-sized system and a $200/month bill, annual reduction is commonly $1,500-$2,000, with solar covering 70-80% of usage. It depends heavily on self-consumption rate.</p></div>
+          <button class="faq-q"><span data-i18n="iec_faq_q1">How does excess affect my premium?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="iec_faq_a1">A higher excess generally lowers your premium, since you're taking on more of the cost of small claims yourself. A lower excess raises your premium but reduces what you pay out of pocket at claim time.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span data-i18n="sv_faq_q2">Why does self-consumption matter more than generation?</span> <span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="sv_faq_a2">Because self-used power saves the full retail rate (~33c/kWh), while exported power only earns the buy-back rate (8-12c/kWh) — roughly a third of the value. Two systems generating the same total power can save very different amounts.</p></div>
+          <button class="faq-q"><span data-i18n="iec_faq_q2">Should I choose a higher excess?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="iec_faq_a2">If you rarely claim and can comfortably afford the excess out of pocket, a higher excess with a lower ongoing premium often works out ahead. If you'd struggle to cover a large excess at claim time, a lower excess may be the safer choice even at a higher premium.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="iec_faq_q3">What happens if I can't afford my excess when I claim?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="iec_faq_a3">Most insurers require the excess to be paid before or as part of settling a claim — if you can't cover it, the claim may be delayed or reduced. This is why it's worth setting an excess you could genuinely afford in a worst-case scenario, not just the one that minimises your premium.</p></div>
         </div>
       </div>
     </div>
@@ -324,8 +341,9 @@
     <div class="wrap">
       <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
       <div class="related-links" style="margin-top:14px;">
-        <a href="/solar-payback-calculator.html" data-i18n="rl_solarpayback">Solar payback calculator</a>
-        <a href="/solar-battery-calculator.html" data-i18n="rl_solarbattery">Solar battery calculator</a>
+        <a href="/house-contents-insurance-calculator.html" data-i18n="rl_housecontents">House & contents insurance calculator</a>
+        <a href="/car-insurance-cost-calculator.html" data-i18n="rl_carinsurance">Car insurance cost calculator</a>
+        <a href="/health-insurance-cost-calculator.html" data-i18n="rl_healthinsurance">Health insurance cost calculator</a>
       </div>
     </div>
   </section>
@@ -340,7 +358,8 @@
     <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
     <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div>
     <div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
-    <div><h4 data-i18n="footer_insurance">Insurance</h4><ul><li><a href="/life-insurance-cover-calculator.html" data-i18n="nav_lifecover">Life insurance cover</a></li><li><a href="/income-protection-insurance-calculator.html" data-i18n="nav_incomeprotection">Income protection</a></li><li><a href="/house-contents-insurance-calculator.html" data-i18n="nav_housecontents">House &amp; contents</a></li><li><a href="/car-insurance-cost-calculator.html" data-i18n="nav_carinsurance">Car insurance cost</a></li><li><a href="/health-insurance-cost-calculator.html" data-i18n="nav_healthinsurance">Health insurance cost</a></li><li><a href="/insurance-excess-calculator.html" data-i18n="nav_insuranceexcess">Insurance excess</a></li></ul></div><div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+    <div><h4 data-i18n="footer_insurance">Insurance</h4><ul><li><a href="/life-insurance-cover-calculator.html" data-i18n="nav_lifecover">Life insurance cover</a></li><li><a href="/income-protection-insurance-calculator.html" data-i18n="nav_incomeprotection">Income protection</a></li><li><a href="/house-contents-insurance-calculator.html" data-i18n="nav_housecontents">House &amp; contents</a></li><li><a href="/car-insurance-cost-calculator.html" data-i18n="nav_carinsurance">Car insurance cost</a></li><li><a href="/health-insurance-cost-calculator.html" data-i18n="nav_healthinsurance">Health insurance cost</a></li><li><a href="/insurance-excess-calculator.html" data-i18n="nav_insuranceexcess">Insurance excess</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
   </div>
   <div class="wrap footer-bottom">
     <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
@@ -352,20 +371,62 @@
 <script src="/js/i18n.js?v=3"></script>
 <script>
 (function(){
-  const sizeKw = document.getElementById('sizeKw');
-  const yieldKwh = document.getElementById('yieldKwh');
-  const retailPrice = document.getElementById('retailPrice');
-  const buybackPrice = document.getElementById('buybackPrice');
-  const selfConsumption = document.getElementById('selfConsumption');
-  const scHint = document.getElementById('scHint');
+  const premium = document.getElementById('premium');
+  const currentExcess = document.getElementById('currentExcess');
+  const newExcess = document.getElementById('newExcess');
+  const sensitivity = document.getElementById('sensitivity');
+
+  [premium, currentExcess, newExcess, sensitivity].forEach(el=>el.addEventListener('input', calc));
+
+  function computeNewPremium(prem, curExc, nExc, sens){
+    const delta = nExc - curExc;
+    const changePct = -(delta/100) * (sens/100);
+    const newPrem = Math.max(0, prem * (1 + changePct));
+    return { newPrem, delta, savings: prem - newPrem };
+  }
+
+  function calc(){
+    const prem = num(premium.value, 0);
+    const curExc = num(currentExcess.value, 0);
+    const nExc = num(newExcess.value, 0);
+    const sens = num(sensitivity.value, 3);
+
+    const r = computeNewPremium(prem, curExc, nExc, sens);
+
+    document.getElementById('outNewPremium').textContent = fmt(r.newPrem);
+    document.getElementById('outSavings').textContent = (r.savings>=0?'':'−') + fmt(Math.abs(r.savings));
+    document.getElementById('outExtraRisk').textContent = fmt(Math.max(0, r.delta));
+
+    const breakevenEl = document.getElementById('outBreakeven');
+    const insightEl = document.getElementById('insightText');
+    if(r.savings > 0 && r.delta > 0){
+      const years = r.delta / r.savings;
+      breakevenEl.textContent = years.toFixed(1);
+      insightEl.innerHTML = t('iec_insight_template_save')
+        .replace('{newexcess}', nExc.toLocaleString('en-NZ'))
+        .replace('{savings}', fmt(r.savings))
+        .replace('{years}', years.toFixed(1));
+    } else if(r.savings < 0){
+      breakevenEl.textContent = t('iec_breakeven_na');
+      insightEl.innerHTML = t('iec_insight_template_cost')
+        .replace('{newexcess}', nExc.toLocaleString('en-NZ'))
+        .replace('{savings}', fmt(Math.abs(r.savings)));
+    } else {
+      breakevenEl.textContent = t('iec_breakeven_na');
+      insightEl.innerHTML = t('iec_insight_placeholder');
+    }
+
+    [250, 500, 1000, 2000].forEach(function(exc){
+      const rr = computeNewPremium(prem, curExc, exc, sens);
+      document.getElementById('cmp'+exc).textContent = fmt(rr.newPrem);
+    });
+  }
+
   const shareBtn = document.getElementById('shareBtn');
-
-  [sizeKw, yieldKwh, retailPrice, buybackPrice, selfConsumption].forEach(el=>el.addEventListener('input', calc));
-
   shareBtn.addEventListener('click', function(){
     const params = new URLSearchParams({
-      size: num(sizeKw.value,6.6), yield: num(yieldKwh.value,1300), retail: num(retailPrice.value,0.33),
-      buyback: num(buybackPrice.value,0.10), sc: num(selfConsumption.value,65),
+      premium: Math.round(num(premium.value,0)), currentexcess: Math.round(num(currentExcess.value,0)),
+      newexcess: Math.round(num(newExcess.value,0)), sensitivity: num(sensitivity.value,3),
     });
     const url = location.origin + location.pathname + '?' + params.toString();
     navigator.clipboard.writeText(url).then(function(){
@@ -376,52 +437,10 @@
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);
-    if(p.has('size')) sizeKw.value = p.get('size');
-    if(p.has('yield')) yieldKwh.value = p.get('yield');
-    if(p.has('retail')) retailPrice.value = p.get('retail');
-    if(p.has('buyback')) buybackPrice.value = p.get('buyback');
-    if(p.has('sc')) selfConsumption.value = p.get('sc');
-  }
-
-  function savingsAt(sc, size, yld, retail, buyback){
-    const generation = size * yld;
-    const selfUsed = generation * sc/100;
-    const exported = generation - selfUsed;
-    return selfUsed*retail + exported*buyback;
-  }
-
-  function calc(){
-    const size = num(sizeKw.value, 0);
-    const yld = num(yieldKwh.value, 1300);
-    const retail = num(retailPrice.value, 0.33);
-    const buyback = num(buybackPrice.value, 0.10);
-    const sc = num(selfConsumption.value, 65);
-    scHint.textContent = sc + '%';
-
-    const generation = size * yld;
-    const selfUsed = generation * sc/100;
-    const exported = generation - selfUsed;
-    const savings = selfUsed*retail + exported*buyback;
-
-    document.getElementById('outSavings').textContent = fmt(savings);
-    document.getElementById('outGeneration').textContent = Math.round(generation).toLocaleString() + ' kWh';
-    document.getElementById('outSelfUsed').textContent = Math.round(selfUsed).toLocaleString() + ' kWh';
-    document.getElementById('outExported').textContent = Math.round(exported).toLocaleString() + ' kWh';
-
-    // ---- Insight panel ----
-    const insightEl = document.getElementById('insightText');
-    const higherSavings = savingsAt(80, size, yld, retail, buyback);
-    const upside = higherSavings - savings;
-    insightEl.innerHTML = t('sv_insight_template')
-      .replace('{savings}', fmt(savings))
-      .replace('{sc}', sc)
-      .replace('{upside}', fmt(Math.abs(upside)));
-
-    // ---- Scenario comparison ----
-    document.getElementById('cmpLowSavings').textContent = fmt(savingsAt(40, size, yld, retail, buyback));
-    document.getElementById('cmpCurrentSc').textContent = sc + '%';
-    document.getElementById('cmpCurrentSavings').textContent = fmt(savings);
-    document.getElementById('cmpHighSavings').textContent = fmt(savingsAt(80, size, yld, retail, buyback));
+    if(p.has('premium')) premium.value = p.get('premium');
+    if(p.has('currentexcess')) currentExcess.value = p.get('currentexcess');
+    if(p.has('newexcess')) newExcess.value = p.get('newexcess');
+    if(p.has('sensitivity')) sensitivity.value = p.get('sensitivity');
   }
 
   loadFromUrl();

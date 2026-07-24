@@ -25,6 +25,9 @@
   --violet:         #9B7FE0;
   --violet-tint:    #F1ECFC;
   --violet-dark:    #6E4FBD;
+  --teal:           #2FA8A8;
+  --teal-tint:      #E1F5F5;
+  --teal-dark:      #1F7A7A;
   --line:       #E7ECE1;
   --footer-bg:  #1E2A22;
   --nav-bg:     rgba(255,255,255,.85);
@@ -59,6 +62,9 @@ html[data-theme="dark"]{
   --violet:         #BBA5F2;
   --violet-tint:    #241C3A;
   --violet-dark:    #D2C2F8;
+  --teal:           #4FC4C4;
+  --teal-tint:      #16302E;
+  --teal-dark:      #7FDCDC;
   --line:           #2A332D;
   --nav-bg:         rgba(19,25,21,.85);
   --callout-amber-text: #FFD79A;
@@ -155,6 +161,30 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
   position:sticky; top:0; z-index:40;
   padding-top:14px; padding-left:24px; padding-right:24px;
 }
+/* Hangs off the bottom-right of the nav pill (under the settings cog) like a
+   small tab, sharing its glassy background/blur/shadow so it reads as one
+   connected component rather than a separate line of text. The outer element
+   mirrors .nav's max-width/padding so the tab lines up with the pill's right
+   edge instead of the page edge on wide screens. */
+.visitor-counter{
+  display:flex; justify-content:flex-end;
+  max-width:var(--maxw); margin:-1px auto 0; padding:0 24px;
+}
+.visitor-counter-pill{
+  display:flex; align-items:center; gap:6px;
+  margin-right:14px; padding:7px 18px 8px;
+  background:var(--nav-bg); backdrop-filter:blur(10px);
+  border-radius:0 0 14px 14px; box-shadow:0 8px 16px -10px rgba(0,0,0,.22);
+  font-size:.76rem; color:var(--muted); font-weight:600; white-space:nowrap;
+  position:relative; z-index:39;
+}
+.visitor-counter-pill svg{ width:13px; height:13px; color:var(--primary); flex-shrink:0; }
+.visitor-counter-pill strong{ color:var(--ink-soft); font-weight:700; }
+@media (max-width:600px){
+  .visitor-counter{ padding:0 18px; }
+  .visitor-counter-pill{ margin-right:8px; padding:6px 14px 7px; font-size:.68rem; gap:5px; white-space:normal; text-align:center; }
+  .visitor-counter-pill svg{ width:12px; height:12px; }
+}
 .nav{
   display:flex; align-items:center; justify-content:space-between;
   padding:12px 20px; max-width:var(--maxw); margin:0 auto;
@@ -240,6 +270,22 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
 html[data-theme="dark"] .theme-toggle .icon-sun{ display:none; }
 html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 
+/* Settings (language + theme) consolidated into a single cog-icon dropdown, always in the top-right corner regardless of viewport width */
+.settings-btn{
+  width:38px; height:38px; padding:0; border-radius:100px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:var(--bg); color:var(--ink-soft);
+}
+.settings-btn:hover{ background:var(--bg); color:var(--primary-dark); }
+.settings-btn::after{ display:none; }
+.settings-btn svg{ width:19px; height:19px; display:block; }
+.settings-group.open .settings-btn{ color:var(--primary-dark); }
+.settings-dropdown{ left:auto; right:0; transform:translateY(-6px); padding:14px; gap:16px; }
+.settings-group.open .settings-dropdown{ transform:translateY(0); }
+.settings-row{ display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.settings-row .lang-toggle{ flex-shrink:0; }
+.settings-label{ font-size:.85rem; font-weight:700; color:var(--ink); white-space:nowrap; }
+
 @media (max-width:760px){
   .nav{ border-radius:24px; padding:12px 16px; }
   .nav-right{ gap:8px; }
@@ -259,33 +305,35 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   }
   .nav-links.open{ opacity:1; pointer-events:auto; transform:translateY(0); }
 
-  /* Top-level categories become a real accordion: one tap expands, closes the rest */
-  .nav-group{ width:100%; border-top:1px solid var(--line); }
-  .nav-group:first-child{ border-top:none; }
-  .nav-group-btn{
+  /* Top-level categories become a real accordion: one tap expands, closes the rest.
+     Scoped to .nav-links so the always-visible settings cog (a sibling .nav-group
+     outside .nav-links) keeps its desktop dropdown style at every width. */
+  .nav-links .nav-group{ width:100%; border-top:1px solid var(--line); }
+  .nav-links .nav-group:first-child{ border-top:none; }
+  .nav-links .nav-group-btn{
     pointer-events:auto; cursor:pointer; width:100%; text-align:left;
     display:flex; align-items:center; justify-content:space-between;
     padding:15px 2px; font-family:"Plus Jakarta Sans",sans-serif;
     font-size:15px; letter-spacing:normal; text-transform:none;
     color:var(--ink); font-weight:700;
   }
-  .nav-group-btn::after{
+  .nav-links .nav-group-btn::after{
     display:inline-block; width:7px; height:7px; margin-left:8px; margin-top:0;
     border-right:1.5px solid var(--muted); border-bottom:1.5px solid var(--muted);
     transform:rotate(45deg); transition:transform .2s ease; flex-shrink:0;
   }
-  .nav-group.open .nav-group-btn::after{ transform:rotate(225deg); }
-  .nav-dropdown{
+  .nav-links .nav-group.open .nav-group-btn::after{ transform:rotate(225deg); }
+  .nav-links .nav-dropdown{
     position:static; opacity:1; pointer-events:auto; transform:none; box-shadow:none;
     padding:0; min-width:0; background:transparent; gap:0;
     max-height:0; overflow:hidden; transition:max-height .25s ease;
   }
-  .nav-group.open .nav-dropdown{ max-height:640px; }
-  .nav-dropdown a{
+  .nav-links .nav-group.open .nav-dropdown{ max-height:640px; }
+  .nav-links .nav-dropdown a{
     display:block; padding:11px 4px 11px 14px; font-size:14.5px; font-weight:500;
     color:var(--ink-soft); border-radius:8px;
   }
-  .nav-dropdown a:active{ background:var(--bg); }
+  .nav-links .nav-dropdown a:active{ background:var(--bg); }
   .nav-single{
     display:block; width:100%; padding:15px 2px; font-size:15px; font-weight:700; color:var(--ink);
     border-top:1px solid var(--line); margin-top:0;
@@ -301,24 +349,11 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   .nav-toggle span::after{ position:absolute; top:6px; }
 }
 
-.nav-links-utility{ display:none; }
-
 @media (max-width:480px){
   .wrap{ padding:0 18px; }
   .site-header{ padding-left:18px; padding-right:18px; }
   .nav{ padding:10px 14px; }
   .nav-links{ inset:74px 0 auto 0; padding:10px 16px; }
-}
-
-/* Below 448px: fold the language selector and theme toggle into the hamburger menu
-   to free up header space on very narrow screens. */
-@media (max-width:448px){
-  .nav-right > .lang-toggle,
-  .nav-right > .theme-toggle{ display:none; }
-  .nav-links-utility{
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-    width:100%; padding:15px 2px; border-top:1px solid var(--line);
-  }
 }
 
 /* ---------- Hero ---------- */
@@ -415,6 +450,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   font-size:.95rem; font-weight:700; color:var(--ink); margin-bottom:8px;
 }
 .field label .hint{ font-weight:500; color:var(--muted); font-size:.82rem; }
+.field-note{ margin-top:8px; font-size:.82rem; color:var(--muted); line-height:1.5; }
 .field-reset-link{
   background:none; border:none; padding:0; margin-top:8px; font-size:.8rem; font-weight:600;
   color:var(--primary-dark); cursor:pointer; text-decoration:underline; font-family:inherit;
@@ -466,6 +502,9 @@ input[type=number]{ -moz-appearance:textfield; }
 input[type=range]{
   width:100%; accent-color:var(--primary); height:6px;
 }
+input[type=checkbox]{
+  width:16px; height:16px; accent-color:var(--primary); cursor:pointer; flex-shrink:0;
+}
 
 /* ---------- Result panel (signature element) ---------- */
 .receipt{
@@ -497,19 +536,30 @@ input[type=range]{
 /* ---------- Side-by-side comparison cards (e.g. Contractor vs Employee) ---------- */
 .compare-summary{
   background:var(--primary-tint); border-radius:var(--radius-lg); box-shadow:var(--shadow);
-  padding:22px 26px; margin-bottom:16px; text-align:center;
+  padding:22px 26px; margin-bottom:16px; text-align:left;
 }
 .compare-summary .receipt-total-label{ color:var(--primary-dark); }
 .compare-cards{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+/* Each card is narrow (half-width, side by side), so stack label above value
+   rather than a row — a row wraps mid-label and the value ends up floating
+   awkwardly next to the wrapped second line. Both stay left-aligned, and the
+   row padding/gaps are tightened since the stacked layout is already taller
+   per line than the row layout it replaced. */
+.compare-card .receipt-lines{ margin-top:14px; padding:0; background:transparent; }
+.compare-card .receipt-line{
+  flex-direction:column; align-items:flex-start; text-align:left;
+  gap:2px; padding:8px 0;
+}
+.compare-card .receipt-line .v{ font-size:1.02rem; text-align:left; }
 .compare-card{
   position:relative; background:var(--surface); border-radius:var(--radius-lg);
-  box-shadow:var(--shadow); padding:26px 24px; overflow:hidden;
+  box-shadow:var(--shadow); padding:22px 22px; overflow:hidden;
 }
 .compare-card-header{
   font-family:"Inter",sans-serif; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase;
-  color:var(--muted); font-weight:700; margin-bottom:6px;
+  color:var(--muted); font-weight:700; margin-bottom:4px;
 }
-.compare-card-total{ font-size:1.85rem; font-weight:800; margin-bottom:16px; color:var(--ink); }
+.compare-card-total{ font-size:1.85rem; font-weight:800; margin-bottom:8px; color:var(--ink); }
 @media (max-width:700px){ .compare-cards{ grid-template-columns:1fr; } }
 .receipt-note a{ color:var(--primary-dark); }
 
@@ -587,7 +637,8 @@ input[type=range]{
 .site-footer{ background:var(--footer-bg); color:#D9E5DC; margin-top:70px; padding:56px 0 32px; border-radius:40px 40px 0 0; }
 .site-footer a{ color:#D9E5DC; text-decoration-color:rgba(217,229,220,.3); }
 .site-footer a:hover{ color:#fff; }
-.footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:28px; }
+.footer-grid{ display:grid; grid-template-columns:1.4fr repeat(5, 1fr); gap:28px; }
+@media (max-width:1080px){ .footer-grid{ grid-template-columns:1fr 1fr 1fr; } }
 @media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
 .footer-grid h4{ color:#9FB4A5; font-family:"Inter",sans-serif; font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; margin-bottom:14px; font-weight:600; }
 .footer-grid ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; font-size:.96rem; }
@@ -854,6 +905,8 @@ input[type=range]{ transition:accent-color .2s ease; }
   transition:opacity .16s ease, transform .18s cubic-bezier(.22,.61,.36,1);
 }
 .nav-group.open .nav-dropdown{ transform:translateX(-50%) translateY(0) scale(1); }
+.settings-dropdown{ transform:translateY(-6px) scale(.98); transform-origin:top right; }
+.settings-group.open .settings-dropdown{ transform:translateY(0) scale(1); }
 @media (max-width:760px){
   .nav-dropdown{ transform:none; }
   .nav-group.open .nav-dropdown{ transform:none; }
@@ -1021,6 +1074,8 @@ html[data-theme="dark"] .metric-bar-fill.nz{ background:var(--primary-dark); }
 .article-tile .tag[data-i18n="isw_eyebrow"],
 .article-tile .tag[data-i18n="nzau_eyebrow"]{ background:var(--primary-tint); color:var(--primary-dark); }
 .article-tile .tag[data-i18n="ocr_eyebrow"]{ background:var(--bg); color:var(--muted); }
+.article-tile .tag[data-i18n="hmi_eyebrow"],
+.article-tile .tag[data-i18n="phi_eyebrow"]{ background:var(--teal-tint); color:var(--teal-dark); }
 .article-tile h3{ margin:2px 0 0; font-size:1.08rem; color:var(--ink); }
 .article-tile p{ margin:0; font-size:.92rem; color:var(--muted); line-height:1.5; }
 .article-tile .go{ margin-top:auto; padding-top:8px; font-size:.9rem; font-weight:700; color:var(--primary-dark); }

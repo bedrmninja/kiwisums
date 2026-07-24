@@ -4,23 +4,43 @@
 <meta charset="UTF-8">
 <script>(function(){try{var t=localStorage.getItem('kiwisums_theme');if(!t){t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solar Savings Calculator NZ 2026 — Savings vs No Solar | KiwiSums</title>
-<meta name="description" content="See how much a solar power system could save you on your power bill each year in NZ, compared to not having solar at all.">
-<link rel="canonical" href="https://www.kiwisums.co.nz/solar-savings-calculator.html">
+<title>Income Protection Insurance Calculator NZ 2026 | KiwiSums</title>
+<meta name="description" content="Estimate your NZ income protection insurance monthly benefit based on your income, cover percentage, waiting period and benefit period.">
+<link rel="canonical" href="https://www.kiwisums.co.nz/income-protection-insurance-calculator.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Solar Savings Calculator NZ | KiwiSums">
-<meta property="og:description" content="See how much solar could save you on your power bill each year.">
-<meta property="og:url" content="https://www.kiwisums.co.nz/solar-savings-calculator.html">
+<meta property="og:title" content="Income Protection Insurance Calculator NZ — KiwiSums">
+<meta property="og:description" content="Estimate the monthly benefit income protection cover could pay if you couldn't work.">
+<meta property="og:url" content="https://www.kiwisums.co.nz/income-protection-insurance-calculator.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css?v=6">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},{"@type":"ListItem","position":2,"name":"Solar Savings Calculator","item":"https://www.kiwisums.co.nz/solar-savings-calculator.html"}]}
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {"@type":"ListItem","position":1,"name":"KiwiSums","item":"https://www.kiwisums.co.nz/"},
+    {"@type":"ListItem","position":2,"name":"Income Protection Insurance Calculator","item":"https://www.kiwisums.co.nz/income-protection-insurance-calculator.html"}
+  ]
+}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much can solar save on an NZ power bill?","acceptedAnswer":{"@type":"Answer","text":"For a typical home with a mid-sized system and a $200/month power bill, annual bill reduction is commonly $1,500-$2,000, with solar covering 70-80% of usage during daylight hours. The exact figure depends heavily on your self-consumption rate — using power while the sun is out saves far more than exporting it for buy-back credit."}},{"@type":"Question","name":"Why does self-consumption matter more than total generation?","acceptedAnswer":{"@type":"Answer","text":"Because of the gap between retail and buy-back rates. Power you use yourself saves you the full retail rate (around 33 cents per kWh in 2026), while power you export only earns the buy-back rate (typically 8-12 cents per kWh) — roughly a third of the value. Two systems generating the same total power can produce very different savings depending on how much is self-consumed versus exported."}}]}
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How much income protection cover can I get in NZ?","acceptedAnswer":{"@type":"Answer","text":"Most insurers cap cover at around 75% of your gross income, sometimes structured as a mix of agreed value and indemnity cover. The exact maximum and structure varies by insurer and occupation class."}},
+    {"@type":"Question","name":"What affects my income protection premium?","acceptedAnswer":{"@type":"Answer","text":"Age, health, occupation (physical risk), smoking status, the waiting period and benefit period you choose, and whether cover is agreed value or indemnity all move the premium significantly."}},
+    {"@type":"Question","name":"What's a waiting period?","acceptedAnswer":{"@type":"Answer","text":"The time between when you become unable to work and when your income protection payments begin — commonly 4, 8, 13 or 26 weeks. A longer waiting period usually means a lower premium."}}
+  ]
+}
 </script>
+
+<!-- Google AdSense: uncomment once your site is approved and you have a publisher ID.
+     Replace ca-pub-XXXXXXXXXXXXXXXX with your real ID. See README-ADS.md for setup steps.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+-->
 </head>
 <body>
 
@@ -134,31 +154,48 @@
 <main id="main">
   <div class="wrap">
     <div style="padding-top:32px;">
-      <span class="eyebrow" data-i18n="sv_eyebrow">Solar · Savings</span>
-      <h1 style="margin-top:10px;" data-i18n="sv_h1">Solar savings calculator</h1>
-      <p class="lede" data-i18n="sv_lede">See how much a solar system could actually save you on your power bill each year, compared to not having one.</p>
+      <span class="eyebrow" data-i18n="ipc_eyebrow">Insurance · Income protection</span>
+      <h1 style="margin-top:10px;" data-i18n="ipc_h1">Income protection insurance calculator</h1>
+      <p class="lede" data-i18n="ipc_lede">See what monthly benefit income protection cover could pay if you couldn't work — and how the waiting period and benefit period trade off against cost.</p>
     </div>
 
     <form class="calc-layout" id="calcForm" onsubmit="return false;">
       <div class="panel">
         <div class="field">
-          <label for="sizeKw" data-i18n="sv_label_size">System size (kW)</label>
-          <input type="number" id="sizeKw" value="6.6" min="0" step="0.1">
+          <label for="income"><span data-i18n="ipc_label_income">Gross annual income</span> <span class="hint" data-i18n="ipc_hint_income">before tax</span></label>
+          <input type="number" id="income" value="90000" min="0" step="1000">
         </div>
+
         <div class="field">
-          <label for="yieldKwh"><span data-i18n="sv_label_yield">Generation yield</span> <span class="hint" data-i18n="sv_hint_yield">kWh per kW per year</span></label>
-          <input type="number" id="yieldKwh" value="1300" min="0" step="50">
+          <label data-i18n="ipc_label_coverpct">Cover level</label>
+          <div class="seg" id="coverSeg">
+            <button type="button" data-v="50" data-i18n="ipc_seg_50">50%</button>
+            <button type="button" data-v="62.5" data-i18n="ipc_seg_625">62.5%</button>
+            <button type="button" data-v="75" class="active" data-i18n="ipc_seg_75">75%</button>
+          </div>
         </div>
-        <div class="field-row">
-          <div class="field"><label for="retailPrice" data-i18n="sv_label_retail">Retail price ($/kWh)</label><input type="number" id="retailPrice" value="0.33" min="0" step="0.01"></div>
-          <div class="field"><label for="buybackPrice" data-i18n="sv_label_buyback">Buy-back rate ($/kWh)</label><input type="number" id="buybackPrice" value="0.10" min="0" step="0.01"></div>
-        </div>
+
         <div class="field">
-          <label for="selfConsumption"><span data-i18n="sv_label_selfconsumption">Self-consumption</span> <span class="hint" id="scHint">65%</span></label>
-          <input type="range" id="selfConsumption" min="20" max="95" step="5" value="65">
+          <label data-i18n="ipc_label_waiting">Waiting period</label>
+          <div class="seg" id="waitSeg">
+            <button type="button" data-v="4" data-i18n="ipc_seg_wait4">4 weeks</button>
+            <button type="button" data-v="8" class="active" data-i18n="ipc_seg_wait8">8 weeks</button>
+            <button type="button" data-v="13" data-i18n="ipc_seg_wait13">13 weeks</button>
+            <button type="button" data-v="26" data-i18n="ipc_seg_wait26">26 weeks</button>
+          </div>
         </div>
-        <div class="callout" data-i18n="sv_callout">
-          Self-consumption matters more than total generation — power you use yourself saves the full retail rate, while exported power only earns the much lower buy-back rate. Running appliances during the day lifts your self-consumption rate.
+
+        <div class="field">
+          <label data-i18n="ipc_label_benefit">Benefit period</label>
+          <div class="seg" id="benSeg">
+            <button type="button" data-v="2" data-i18n="ipc_seg_ben2">2 years</button>
+            <button type="button" data-v="5" class="active" data-i18n="ipc_seg_ben5">5 years</button>
+            <button type="button" data-v="65" data-i18n="ipc_seg_ben65">To age 65</button>
+          </div>
+        </div>
+
+        <div class="callout" data-i18n="ipc_callout">
+          Most NZ insurers cap cover at around 75% of your income (sometimes split between an "agreed value" and "indemnity" basis). Actual premiums depend heavily on your age, health, occupation and smoking status — this calculator only estimates the benefit amount, with a very rough premium range.
         </div>
       </div>
 
@@ -166,18 +203,19 @@
         <div class="receipt">
           <img class="summy-corner" src="/images/summy_calculating.png?v=2" alt="" aria-hidden="true">
           <span class="stamp" data-i18n="common_estimate">Estimate</span>
-          <div class="receipt-total-label" data-i18n="sv_receipt_label">Estimated annual savings</div>
-          <div class="receipt-total" id="outSavings">$0</div>
+          <div class="receipt-total-label" data-i18n="ipc_receipt_label">Monthly benefit</div>
+          <div class="receipt-total" id="outMonthly">$0</div>
 
           <div class="receipt-lines">
-            <div class="receipt-line"><span class="k" data-i18n="sv_line_generation">Annual generation</span><span class="v" id="outGeneration">0 kWh</span></div>
-            <div class="receipt-line"><span class="k" data-i18n="sv_line_selfused">Self-used (saves retail rate)</span><span class="v" id="outSelfUsed">0 kWh</span></div>
-            <div class="receipt-line"><span class="k" data-i18n="sv_line_exported">Exported (earns buy-back)</span><span class="v" id="outExported">0 kWh</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="ipc_line_annual">Annual benefit</span><span class="v" id="outAnnual">$0</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="ipc_line_waiting">Waiting period</span><span class="v" id="outWaiting">8 weeks</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="ipc_line_benefit">Benefit period</span><span class="v" id="outBenefit">5 years</span></div>
+            <div class="receipt-line"><span class="k" data-i18n="ipc_line_premium">Indicative premium range</span><span class="v" id="outPremium" data-i18n="ipc_premium_range">roughly 1–3% of annual benefit per year</span></div>
           </div>
-          <p class="receipt-note" data-i18n="sv_receipt_note">Assumes flat electricity prices — real savings likely grow over time as retail power prices tend to rise a few percent a year.</p>
+          <p class="receipt-note" data-i18n="ipc_receipt_note">The premium range is a very rough industry guide only — get a personalised quote, as age, health, occupation and smoking status all move the real number significantly.</p>
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="/solar-payback-calculator.html" data-i18n="sv_next_btn">Next: how long until it pays for itself? →</a>
+          <a class="btn" href="/life-insurance-cover-calculator.html" data-i18n="ipc_next_btn">Check your life insurance cover too →</a>
           <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
@@ -187,44 +225,30 @@
 
   <div class="wrap">
     <div class="insight-panel" id="insightPanel">
-      <h2 data-i18n="sv_insight_h2">What this means for you</h2>
-      <p id="insightText" data-i18n-html="sv_insight_placeholder">See how much more you could save by shifting more usage into daylight hours.</p>
+      <h2 data-i18n="ipc_insight_h2">What this means for you</h2>
+      <p id="insightText" data-i18n-html="ipc_insight_placeholder">Fill in the fields above to see your estimated monthly benefit.</p>
     </div>
   </div>
 
   <div class="wrap">
     <div class="compare-panel">
-      <h2 data-i18n="sv_compare_h2">Compare self-consumption levels</h2>
-      <p class="compare-intro" data-i18n="sv_compare_intro">This is the single biggest lever you actually control — see how much savings shift between low and high self-consumption.</p>
+      <h2 data-i18n="ipc_compare_h2">Compare cover levels</h2>
+      <p class="compare-intro" data-i18n="ipc_compare_intro">See how the monthly benefit changes at different cover percentages.</p>
       <div class="compare-table-wrap">
         <table class="compare-table" id="compareTable">
           <thead>
             <tr>
-              <th data-i18n="sv_compare_col_scenario">Scenario</th>
-              <th data-i18n="sv_compare_col_selfconsumption">Self-consumption</th>
-              <th data-i18n="sv_compare_col_savings">Annual savings</th>
+              <th data-i18n="ipc_compare_col_level">Cover level</th>
+              <th data-i18n="ipc_compare_col_monthly">Monthly benefit</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td data-i18n="sv_compare_row_low">Low (away all day)</td>
-              <td>40%</td>
-              <td id="cmpLowSavings">$0</td>
-            </tr>
-            <tr class="compare-row-current">
-              <td data-i18n="m_compare_row_current">Current</td>
-              <td id="cmpCurrentSc">65%</td>
-              <td id="cmpCurrentSavings">$0</td>
-            </tr>
-            <tr>
-              <td data-i18n="sv_compare_row_high">High (home, shifted usage)</td>
-              <td>80%</td>
-              <td id="cmpHighSavings">$0</td>
-            </tr>
+            <tr><td data-i18n="ipc_seg_50">50%</td><td id="cmp50">$0</td></tr>
+            <tr><td data-i18n="ipc_seg_625">62.5%</td><td id="cmp625">$0</td></tr>
+            <tr><td data-i18n="ipc_seg_75">75%</td><td id="cmp75">$0</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="compare-note" data-i18n="sv_compare_note">Unlike system size or electricity prices, self-consumption is something you can actually influence day to day — timers on appliances and hot water cylinders are the easiest lever.</p>
     </div>
   </div>
 
@@ -234,7 +258,7 @@
       <div class="assumptions-grid">
         <div>
           <strong data-i18n="m_assumptions_source_label">Data source</strong>
-          <p data-i18n="sv_assumptions_source_value">Typical NZ retail electricity and solar buy-back rates from major retailers.</p>
+          <p data-i18n="ipc_assumptions_source_value">Typical NZ income protection policy structures (cover percentage caps, waiting and benefit period options) offered by major insurers.</p>
         </div>
         <div>
           <strong data-i18n="m_assumptions_effective_label">Effective date</strong>
@@ -246,15 +270,15 @@
         </div>
         <div>
           <strong data-i18n="m_assumptions_method_label">Methodology</strong>
-          <p data-i18n-html="sv_assumptions_method_value">Annual savings = (self-used kWh × retail rate) + (exported kWh × buy-back rate), where generation = system size × yield.</p>
+          <p data-i18n="ipc_assumptions_method_value">Monthly benefit = gross annual income × cover percentage ÷ 12. Premium range is an illustrative industry rule of thumb, not a quote.</p>
         </div>
         <div>
           <strong data-i18n="m_assumptions_included_label">Included</strong>
-          <p data-i18n="sv_assumptions_included_value">Retail bill savings from self-consumed power, plus buy-back credits for exported power.</p>
+          <p data-i18n="ipc_assumptions_included_value">Benefit amount based on your income and chosen cover percentage.</p>
         </div>
         <div>
           <strong data-i18n="m_assumptions_excluded_label">Not included</strong>
-          <p data-i18n="sv_assumptions_excluded_value">Rising electricity prices over time, panel output degradation, and any fixed daily charges on your power plan.</p>
+          <p data-i18n="ipc_assumptions_excluded_value">Underwriting factors (age, health, occupation, smoking status), tax treatment of the benefit, and insurer-specific policy wording, all of which affect real eligibility and premiums.</p>
         </div>
       </div>
     </details>
@@ -271,21 +295,21 @@
     <div class="wrap">
       <h2 data-i18n="common_relatedreading_h2">Related reading</h2>
       <div class="article-tile-grid">
-        <a class="article-tile" href="/is-solar-really-worth-it.html">
-          <img class="thumb" src="/images/articles/solarworth.jpg" alt="" loading="lazy">
+        <a class="article-tile" href="/how-much-insurance-do-you-need-nz.html">
+          <img class="thumb" src="/images/articles/insurance-family-protection.jpg" alt="" loading="lazy">
           <div class="body">
-            <span class="tag" data-i18n="isw_eyebrow">Solar · Explainer</span>
-            <h3 data-i18n="isw_h1">Is solar really worth it?</h3>
-            <p data-i18n="isw_tile_excerpt">Solar panels cost thousands upfront — here's when the payback maths actually works in your favour, and when it doesn't.</p>
+            <span class="tag" data-i18n="hmi_eyebrow">Insurance · Explainer</span>
+            <h3 data-i18n="hmi_h1">How much insurance do you actually need in NZ?</h3>
+            <p data-i18n="hmi_tile_excerpt">Life, income protection, health, house and car cover all compete for the same budget — here's how to prioritise.</p>
             <span class="go" data-i18n="common_readarticle">Read article →</span>
           </div>
         </a>
-        <a class="article-tile" href="/nz-vs-australia-residential-solar.html">
-          <img class="thumb" src="/images/articles/solaragainstaud.jpg" alt="" loading="lazy">
+        <a class="article-tile" href="/private-health-insurance-vs-public-nz.html">
+          <img class="thumb" src="/images/articles/private-health-insurance-nz.jpg" alt="" loading="lazy">
           <div class="body">
-            <span class="tag" data-i18n="nzau_eyebrow">Solar · Comparison</span>
-            <h3 data-i18n="nzau_h1">How does NZ stack up against Australia in residential solar?</h3>
-            <p data-i18n="nzau_tile_excerpt">Australia has one of the highest rooftop solar rates in the world. Here's why NZ lags behind — and whether that's changing.</p>
+            <span class="tag" data-i18n="phi_eyebrow">Insurance · Comparison</span>
+            <h3 data-i18n="phi_h1">Is private health insurance worth it in NZ?</h3>
+            <p data-i18n="phi_tile_excerpt">Weighing private cover against NZ's public health system — what you actually gain, and what it costs.</p>
             <span class="go" data-i18n="common_readarticle">Read article →</span>
           </div>
         </a>
@@ -295,19 +319,25 @@
 
   <section class="section">
     <div class="wrap prose">
-      <h2 data-i18n="sv_h2_1">The self-consumption gap</h2>
-      <p data-i18n="sv_p1">The single biggest lever in your solar savings isn't system size — it's how much of what you generate you actually use in your own home. In 2026, retail electricity runs around 33 cents per kWh, while buy-back rates for exported power sit around 8-12 cents — meaning self-used power is worth roughly three times as much as exported power. Two identical systems can produce very different savings depending purely on when the household is home and using power during daylight hours.</p>
-      <p data-i18n="sv_p2">Simple habits — running the dishwasher, washing machine or hot water cylinder timer during the day rather than the evening — can meaningfully shift this balance in your favour without spending anything extra.</p>
+      <h2 data-i18n="ipc_h2_1">How much income protection cover can you get?</h2>
+      <p data-i18n="ipc_p1">Most NZ insurers cap income protection at around 75% of your gross income, sometimes with a split between a fixed "agreed value" and an "indemnity" basis assessed at claim time. The idea is to replace most, not all, of your income — insurers want you to retain an incentive to return to work.</p>
+
+      <h2 data-i18n="ipc_h2_2">Waiting period vs benefit period</h2>
+      <p data-i18n="ipc_p2">A longer waiting period (the time between when you stop working and when payments start) generally lowers your premium, since you're covering the short-term gap yourself — often with sick leave or savings. A longer benefit period (how long payments can continue) generally raises it, since the insurer is on the hook for longer.</p>
 
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q"><span data-i18n="sv_faq_q1">How much can solar save on an NZ power bill?</span> <span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="sv_faq_a1">For a typical home with a mid-sized system and a $200/month bill, annual reduction is commonly $1,500-$2,000, with solar covering 70-80% of usage. It depends heavily on self-consumption rate.</p></div>
+          <button class="faq-q"><span data-i18n="ipc_faq_q1">How much income protection cover can I get in NZ?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="ipc_faq_a1">Most insurers cap cover at around 75% of your gross income, sometimes structured as a mix of agreed value and indemnity cover. The exact maximum and structure varies by insurer and occupation class.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q"><span data-i18n="sv_faq_q2">Why does self-consumption matter more than generation?</span> <span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="sv_faq_a2">Because self-used power saves the full retail rate (~33c/kWh), while exported power only earns the buy-back rate (8-12c/kWh) — roughly a third of the value. Two systems generating the same total power can save very different amounts.</p></div>
+          <button class="faq-q"><span data-i18n="ipc_faq_q2">What affects my income protection premium?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="ipc_faq_a2">Age, health, occupation (physical risk), smoking status, the waiting period and benefit period you choose, and whether cover is agreed value or indemnity all move the premium significantly — get a personalised quote for an accurate figure.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span data-i18n="ipc_faq_q3">What's a waiting period?</span> <span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="ipc_faq_a3">The time between when you become unable to work and when your income protection payments begin — commonly 4, 8, 13 or 26 weeks. A longer waiting period usually means a lower premium, since you cover the initial gap yourself.</p></div>
         </div>
       </div>
     </div>
@@ -324,8 +354,9 @@
     <div class="wrap">
       <span class="eyebrow" data-i18n="common_keepgoing">Keep going</span><img class="summy-thumbsup" src="/images/summy_thumbsup.png?v=2" alt="" aria-hidden="true">
       <div class="related-links" style="margin-top:14px;">
-        <a href="/solar-payback-calculator.html" data-i18n="rl_solarpayback">Solar payback calculator</a>
-        <a href="/solar-battery-calculator.html" data-i18n="rl_solarbattery">Solar battery calculator</a>
+        <a href="/life-insurance-cover-calculator.html" data-i18n="rl_lifecover">Life insurance cover calculator</a>
+        <a href="/take-home-pay-calculator.html" data-i18n="rl_takehome">Take-home pay calculator</a>
+        <a href="/monthly-budget-calculator.html" data-i18n="rl_budget">Monthly budget calculator</a>
       </div>
     </div>
   </section>
@@ -340,7 +371,8 @@
     <div><h4 data-i18n="footer_housing">Housing</h4><ul><li><a href="/mortgage-payment-calculator.html" data-i18n="footer_mortgagepayment">Mortgage payment</a></li><li><a href="/how-much-can-i-borrow-calculator.html" data-i18n="nav_borrow">Borrowing power</a></li><li><a href="/rent-vs-buy-calculator.html" data-i18n="nav_rentvsbuy">Rent vs buy</a></li><li><a href="/home-buying-costs-calculator.html" data-i18n="nav_buyingcosts">Home buying costs</a></li><li><a href="/refix-refinance-calculator.html" data-i18n="nav_refix">Refix / refinance</a></li></ul></div>
     <div><h4 data-i18n="footer_car">Motoring</h4><ul><li><a href="/car-finance-calculator.html" data-i18n="nav_carfinance">Car finance</a></li><li><a href="/car-running-cost-calculator.html" data-i18n="footer_runningcosts">Running costs</a></li><li><a href="/car-depreciation-calculator.html" data-i18n="nav_cardepreciation">Car depreciation</a></li><li><a href="/ev-vs-petrol-calculator.html" data-i18n="nav_evvspetrol">EV vs petrol</a></li><li><a href="/car-affordability-calculator.html" data-i18n="nav_caraffordability">Car affordability</a></li></ul></div>
     <div><h4 data-i18n="navcat_solar">Solar</h4><ul><li><a href="/solar-install-cost-calculator.html" data-i18n="nav_solarcost">Install cost</a></li><li><a href="/solar-sizing-calculator.html" data-i18n="nav_solarsizing">System sizing</a></li><li><a href="/solar-savings-calculator.html" data-i18n="nav_solarsavings">Savings</a></li><li><a href="/solar-payback-calculator.html" data-i18n="nav_solarpayback">Payback period</a></li><li><a href="/solar-home-value-calculator.html" data-i18n="nav_solarhomevalue">Home value impact</a></li><li><a href="/solar-battery-calculator.html" data-i18n="nav_solarbattery">Battery storage</a></li><li><a href="/solar-export-earnings-calculator.html" data-i18n="nav_solarexport">Export earnings</a></li><li><a href="/heat-pump-running-cost-calculator.html" data-i18n="nav_heatpump">Heat pump running cost</a></li></ul></div>
-    <div><h4 data-i18n="footer_insurance">Insurance</h4><ul><li><a href="/life-insurance-cover-calculator.html" data-i18n="nav_lifecover">Life insurance cover</a></li><li><a href="/income-protection-insurance-calculator.html" data-i18n="nav_incomeprotection">Income protection</a></li><li><a href="/house-contents-insurance-calculator.html" data-i18n="nav_housecontents">House &amp; contents</a></li><li><a href="/car-insurance-cost-calculator.html" data-i18n="nav_carinsurance">Car insurance cost</a></li><li><a href="/health-insurance-cost-calculator.html" data-i18n="nav_healthinsurance">Health insurance cost</a></li><li><a href="/insurance-excess-calculator.html" data-i18n="nav_insuranceexcess">Insurance excess</a></li></ul></div><div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
+    <div><h4 data-i18n="footer_insurance">Insurance</h4><ul><li><a href="/life-insurance-cover-calculator.html" data-i18n="nav_lifecover">Life insurance cover</a></li><li><a href="/income-protection-insurance-calculator.html" data-i18n="nav_incomeprotection">Income protection</a></li><li><a href="/house-contents-insurance-calculator.html" data-i18n="nav_housecontents">House &amp; contents</a></li><li><a href="/car-insurance-cost-calculator.html" data-i18n="nav_carinsurance">Car insurance cost</a></li><li><a href="/health-insurance-cost-calculator.html" data-i18n="nav_healthinsurance">Health insurance cost</a></li><li><a href="/insurance-excess-calculator.html" data-i18n="nav_insuranceexcess">Insurance excess</a></li></ul></div>
+    <div><h4 data-i18n="footer_money">Money</h4><ul><li><a href="/monthly-budget-calculator.html" data-i18n="footer_monthlybudget">Monthly budget</a></li><li><a href="/gst-calculator.html" data-i18n="nav_gst">GST calculator</a></li><li><a href="/credit-card-payoff-calculator.html" data-i18n="nav_ccpayoff">Credit card payoff</a></li><li><a href="/savings-goal-calculator.html" data-i18n="nav_savingsgoal">Savings goal</a></li><li><a href="/debt-payoff-order-calculator.html" data-i18n="nav_debtorder">Debt payoff order</a></li><li><a href="/bnpl-cost-calculator.html" data-i18n="nav_bnpl">BNPL cost</a></li><li><a href="/take-home-pay-calculator.html" data-i18n="nav_takehome">Take-home pay</a></li><li><a href="/kiwisaver-calculator.html" data-i18n="nav_kiwisaver">KiwiSaver projection</a></li><li><a href="/contractor-vs-employee-calculator.html" data-i18n="nav_contractor">Contractor vs employee</a></li><li><a href="/pay-rise-calculator.html" data-i18n="nav_payrise">Pay rise calculator</a></li><li><a href="/nz-super-kiwisaver-calculator.html" data-i18n="nav_nzsuper">NZ Super + KiwiSaver</a></li></ul></div>
   </div>
   <div class="wrap footer-bottom">
     <span data-i18n="footer_copyright">© 2026 KiwiSums. Figures are estimates for general guidance only, not financial advice.</span>
@@ -352,21 +384,70 @@
 <script src="/js/i18n.js?v=3"></script>
 <script>
 (function(){
-  const sizeKw = document.getElementById('sizeKw');
-  const yieldKwh = document.getElementById('yieldKwh');
-  const retailPrice = document.getElementById('retailPrice');
-  const buybackPrice = document.getElementById('buybackPrice');
-  const selfConsumption = document.getElementById('selfConsumption');
-  const scHint = document.getElementById('scHint');
-  const shareBtn = document.getElementById('shareBtn');
+  const income = document.getElementById('income');
+  const coverSeg = document.getElementById('coverSeg');
+  const waitSeg = document.getElementById('waitSeg');
+  const benSeg = document.getElementById('benSeg');
+  let coverPct = 75;
+  let waiting = 8;
+  let benefit = 5;
 
-  [sizeKw, yieldKwh, retailPrice, buybackPrice, selfConsumption].forEach(el=>el.addEventListener('input', calc));
+  const waitLabels = {4:'ipc_seg_wait4', 8:'ipc_seg_wait8', 13:'ipc_seg_wait13', 26:'ipc_seg_wait26'};
+  const benLabels = {2:'ipc_seg_ben2', 5:'ipc_seg_ben5', 65:'ipc_seg_ben65'};
 
-  shareBtn.addEventListener('click', function(){
-    const params = new URLSearchParams({
-      size: num(sizeKw.value,6.6), yield: num(yieldKwh.value,1300), retail: num(retailPrice.value,0.33),
-      buyback: num(buybackPrice.value,0.10), sc: num(selfConsumption.value,65),
+  coverSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    coverSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    coverPct = num(btn.dataset.v, 75);
+    calc();
+  });
+  waitSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    waitSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    waiting = num(btn.dataset.v, 8);
+    calc();
+  });
+  benSeg.addEventListener('click', function(e){
+    const btn = e.target.closest('button'); if(!btn) return;
+    benSeg.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    benefit = num(btn.dataset.v, 5);
+    calc();
+  });
+
+  income.addEventListener('input', calc);
+
+  function calc(){
+    const inc = num(income.value, 0);
+    const annual = inc * (coverPct/100);
+    const monthly = annual / 12;
+
+    document.getElementById('outMonthly').textContent = fmt(monthly);
+    document.getElementById('outAnnual').textContent = fmt(annual);
+    document.getElementById('outWaiting').textContent = t(waitLabels[waiting]);
+    document.getElementById('outBenefit').textContent = t(benLabels[benefit]);
+
+    const insightEl = document.getElementById('insightText');
+    if(inc > 0){
+      insightEl.innerHTML = t('ipc_insight_template')
+        .replace('{pct}', coverPct)
+        .replace('{monthly}', fmt(monthly))
+        .replace('{waiting}', t(waitLabels[waiting]));
+    } else {
+      insightEl.innerHTML = t('ipc_insight_placeholder');
+    }
+
+    [50, 62.5, 75].forEach(function(pct){
+      const m = (inc * (pct/100)) / 12;
+      document.getElementById('cmp'+String(pct).replace('.','')).textContent = fmt(m);
     });
+  }
+
+  const shareBtn = document.getElementById('shareBtn');
+  shareBtn.addEventListener('click', function(){
+    const params = new URLSearchParams({ income: Math.round(num(income.value,0)), cover: coverPct, wait: waiting, ben: benefit });
     const url = location.origin + location.pathname + '?' + params.toString();
     navigator.clipboard.writeText(url).then(function(){
       shareBtn.textContent = t('common_linkcopied');
@@ -376,52 +457,19 @@
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);
-    if(p.has('size')) sizeKw.value = p.get('size');
-    if(p.has('yield')) yieldKwh.value = p.get('yield');
-    if(p.has('retail')) retailPrice.value = p.get('retail');
-    if(p.has('buyback')) buybackPrice.value = p.get('buyback');
-    if(p.has('sc')) selfConsumption.value = p.get('sc');
-  }
-
-  function savingsAt(sc, size, yld, retail, buyback){
-    const generation = size * yld;
-    const selfUsed = generation * sc/100;
-    const exported = generation - selfUsed;
-    return selfUsed*retail + exported*buyback;
-  }
-
-  function calc(){
-    const size = num(sizeKw.value, 0);
-    const yld = num(yieldKwh.value, 1300);
-    const retail = num(retailPrice.value, 0.33);
-    const buyback = num(buybackPrice.value, 0.10);
-    const sc = num(selfConsumption.value, 65);
-    scHint.textContent = sc + '%';
-
-    const generation = size * yld;
-    const selfUsed = generation * sc/100;
-    const exported = generation - selfUsed;
-    const savings = selfUsed*retail + exported*buyback;
-
-    document.getElementById('outSavings').textContent = fmt(savings);
-    document.getElementById('outGeneration').textContent = Math.round(generation).toLocaleString() + ' kWh';
-    document.getElementById('outSelfUsed').textContent = Math.round(selfUsed).toLocaleString() + ' kWh';
-    document.getElementById('outExported').textContent = Math.round(exported).toLocaleString() + ' kWh';
-
-    // ---- Insight panel ----
-    const insightEl = document.getElementById('insightText');
-    const higherSavings = savingsAt(80, size, yld, retail, buyback);
-    const upside = higherSavings - savings;
-    insightEl.innerHTML = t('sv_insight_template')
-      .replace('{savings}', fmt(savings))
-      .replace('{sc}', sc)
-      .replace('{upside}', fmt(Math.abs(upside)));
-
-    // ---- Scenario comparison ----
-    document.getElementById('cmpLowSavings').textContent = fmt(savingsAt(40, size, yld, retail, buyback));
-    document.getElementById('cmpCurrentSc').textContent = sc + '%';
-    document.getElementById('cmpCurrentSavings').textContent = fmt(savings);
-    document.getElementById('cmpHighSavings').textContent = fmt(savingsAt(80, size, yld, retail, buyback));
+    if(p.has('income')) income.value = p.get('income');
+    if(p.has('cover')){
+      coverPct = num(p.get('cover'), 75);
+      coverSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===String(coverPct)));
+    }
+    if(p.has('wait')){
+      waiting = num(p.get('wait'), 8);
+      waitSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===String(waiting)));
+    }
+    if(p.has('ben')){
+      benefit = num(p.get('ben'), 5);
+      benSeg.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.v===String(benefit)));
+    }
   }
 
   loadFromUrl();

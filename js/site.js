@@ -1,4 +1,42 @@
 // KiwiSums — shared site behaviour
+
+// ---- "Sums calculated" counter — real accumulative count of calculator-page visits ----
+// Backed by Abacus (abacus.jasoncameron.dev), a free keyless hit-counter service: calculator
+// pages call /hit (increments the shared global total), every other page calls /get
+// (reads the total without incrementing) so the number displayed is always the same
+// site-wide running count.
+(function(){
+  var header = document.querySelector('.site-header');
+  if(!header) return;
+
+  var bar = document.createElement('div');
+  bar.className = 'visitor-counter';
+  bar.innerHTML = '<div class="visitor-counter-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg><span><strong id="visitorCount">0</strong> sums calculated by Kiwis, and counting</span></div>';
+  header.insertAdjacentElement('afterend', bar);
+
+  var countEl = document.getElementById('visitorCount');
+  var NAMESPACE = 'kiwisums-nz';
+  var KEY = 'calculator-visits';
+  var isCalculatorPage = /-calculator\.html$/.test(location.pathname);
+  var endpoint = 'https://abacus.jasoncameron.dev/' + (isCalculatorPage ? 'hit' : 'get') + '/' + NAMESPACE + '/' + KEY;
+
+  function render(n){
+    countEl.textContent = Number(n).toLocaleString('en-NZ');
+    try { localStorage.setItem('kiwisums_visit_count', String(n)); } catch(e){}
+  }
+
+  // Show the last known count immediately so the number doesn't flash to 0 while the
+  // network request is in flight.
+  try {
+    var cached = localStorage.getItem('kiwisums_visit_count');
+    if(cached) render(Number(cached));
+  } catch(e){}
+
+  fetch(endpoint).then(function(r){ return r.json(); }).then(function(data){
+    if(typeof data.value === 'number') render(data.value);
+  }).catch(function(){ /* offline or service unavailable — keep showing the cached value */ });
+})();
+
 (function(){
   // Mobile nav toggle
   var toggle = document.querySelector('.nav-toggle');
@@ -7,6 +45,9 @@
     toggle.addEventListener('click', function(){
       links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', links.classList.contains('open'));
+      // Opening the mobile menu should close the settings dropdown (a sibling
+      // panel outside .nav-links), so the two don't overlap on small screens.
+      if(links.classList.contains('open')) closeAllGroups();
     });
   }
 
@@ -46,6 +87,12 @@
       if(!wasOpen){
         group.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
+        // The settings cog sits outside .nav-links, so opening it on a small
+        // screen should close the mobile menu panel rather than overlap it.
+        if(group.classList.contains('settings-group') && links){
+          links.classList.remove('open');
+          if(toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
       }
     });
   });
