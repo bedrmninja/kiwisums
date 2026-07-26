@@ -384,10 +384,15 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   width:400px; height:400px; object-fit:contain; flex-shrink:0;
   filter:drop-shadow(0 12px 22px rgba(30,42,34,.16));
 }
+@media (max-width:768px){
+  .summy-hero{ width:300px; height:300px; }
+}
+@media (max-width:767px){
+  .summy-hero{ width:250px; height:250px; }
+}
 @media (max-width:760px){
   .hero{ padding-top:32px; }
   .hero-flex{ flex-direction:column-reverse; text-align:center; gap:8px; }
-  .summy-hero{ width:195px; height:195px; }
 }
 
 /* ---------- Summy mascot decorations ---------- */
