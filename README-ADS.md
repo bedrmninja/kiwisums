@@ -1,14 +1,19 @@
 # Setting up Google AdSense on KiwiSums
 
-The site is now ad-ready: every page has a labeled, layout-stable placeholder
-where an ad will appear once you're approved. Nothing will show yet — the
-placeholders are just visible dashed boxes so you can see where ads will sit.
+The site is ad-ready: every page has a labeled, layout-stable slot where a
+real ad will appear once you're approved. Each slot currently shows a mock
+ad (a plain grey "Example Co." placeholder card, clearly labelled as not a
+real advertiser) so you can preview how ads sit in the layout — nothing here
+is a real or paying ad, and none of it is clickable to anywhere.
 
 ## What's already in place
 
-- **Ad slots**: a banner slot near the top of every page, and an in-content
-  slot between the FAQ and the "keep going" links. Both reserve their final
-  size in advance so ads won't cause the page to jump around once they load.
+- **Ad slots**: a banner slot, and an in-content slot between the FAQ and
+  the "keep going" links (most calculator/article pages have both; the
+  homepage has only the in-content one). Both reserve their final size in
+  advance so ads won't cause the page to jump around once they load — the
+  mock ad fills that same reserved box, so the real ad will drop in at
+  exactly the same size with no layout shift.
 - **Privacy policy page** (`privacy-policy.html`) — AdSense requires this
   before it will approve any site. **You must edit the bracketed placeholders**
   in that file (`[YOUR CONTACT EMAIL]`, `[DATE]`, analytics tool name) before
@@ -49,24 +54,29 @@ It looks like `pub-1234567890123456`. Update:
   replace `ca-pub-XXXXXXXXXXXXXXXX` with `ca-pub-` + your ID
 
 **6. Create ad units in AdSense and drop in the codes.**
-For each `<div class="ad-slot">` placeholder in the HTML, replace its
-contents with the `<ins class="adsbygoogle">…</ins>` snippet AdSense gives
-you for that unit, for example:
+For each `<div class="ad-slot">`, delete the `<div class="mock-ad">…</div>`
+mock ad inside it and replace it with the `<ins class="adsbygoogle">…</ins>`
+snippet AdSense gives you for that unit — the surrounding `.ad-slot` div and
+its `.ad-label` "Advertisement" text stay exactly as they are, for example:
 
 ```html
 <div class="ad-wrap wrap">
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-1234567890123456"
-       data-ad-slot="1234567890"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <div class="ad-slot ad-banner">
+    <span class="ad-label" data-i18n="common_ad">Advertisement</span>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1234567890123456"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
 </div>
 ```
 
-Do this for each of the 14 ad slots across the 7 pages (banner + in-content
-on each of the 6 calculators, plus banner + in-content on the homepage).
+Every page's ad slots share this exact markup, so a single find-and-replace
+across the HTML files (swap `<div class="mock-ad">...</div>` for the `<ins>`
+snippet) covers the whole site in one pass rather than editing page by page.
 
 **7. Consider Auto ads as a simpler alternative.**
 Instead of manually placing units, AdSense's "Auto ads" feature can place ads
