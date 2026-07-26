@@ -60,6 +60,13 @@ const T = {
   common_adincontent:{ en:"In-content ad slot — replace with your AdSense unit",
                         ko:"본문 내 광고 영역 — AdSense 광고 단위로 교체하세요",
                         zh:"正文广告位 — 请替换为您的 AdSense 广告单元" },
+  common_mockad_title:{ en:"Example Co. — sample advertiser",
+                        ko:"예시 회사 — 샘플 광고주",
+                        zh:"示例公司 — 广告示例" },
+  common_mockad_sub:  { en:"This slot will show a live ad once Google AdSense is connected — not a real advertiser.",
+                        ko:"이 영역은 Google 애드센스 연동 후 실제 광고가 표시됩니다 — 실제 광고주가 아닙니다.",
+                        zh:"连接 Google AdSense 后,此处将显示真实广告——目前并非真实广告主。" },
+  common_mockad_cta:  { en:"Learn more", ko:"자세히 보기", zh:"了解更多" },
   common_estimate:   { en:"Estimate", ko:"추정치", zh:"估算" },
   common_language:   { en:"Language", ko:"언어", zh:"语言" },
   common_theme:      { en:"Dark mode", ko:"다크 모드", zh:"深色模式" },
@@ -4491,6 +4498,14 @@ function applyLanguage(lang){
     b.classList.toggle('active', active);
     b.setAttribute('aria-pressed', active ? 'true' : 'false');
   });
+  var langCode = { en:'EN', ko:'KO', zh:'中文' }[lang] || 'EN';
+  document.querySelectorAll('.settings-lang-code').forEach(function(el){ el.textContent = langCode; });
+  var flagSvg = {
+    en: '<svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#00247d"/><g stroke="#fff" stroke-width="1.6"><path d="M0 0L8 6M8 0L0 6"/></g><g stroke="#cf142b" stroke-width="0.8"><path d="M0 0L8 6M8 0L0 6"/></g><path d="M4 0v6M0 3h8" stroke="#fff" stroke-width="2"/><path d="M4 0v6M0 3h8" stroke="#cf142b" stroke-width="1"/><g fill="#cf142b" stroke="#fff" stroke-width="0.4"><circle cx="14" cy="3" r="1"/><circle cx="17" cy="6" r="1.3"/><circle cx="14" cy="9" r="1"/><circle cx="17.5" cy="10.5" r="0.8"/></g></svg>',
+    ko: '<svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><circle cx="10" cy="7" r="3.2" fill="#cd2e3a"/><path d="M10 3.8a3.2 3.2 0 000 6.4 1.6 1.6 0 010-3.2 1.6 1.6 0 000-3.2z" fill="#0047a0"/><g stroke="#000" stroke-width="0.5"><path d="M2 3h2M2 3.7h2M2 4.4h2"/><path d="M16 3h2M16 3.7h2M16 4.4h2"/><path d="M2 9.6h2M2 10.3h2M2 11h2"/><path d="M16 9.6h2M16 10.3h2M16 11h2"/></g></svg>',
+    zh: '<svg class="flag" viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#de2910"/><g fill="#ffde00"><path d="M4 2l.6 1.85H6.5L5 5l.6 1.85L4 5.7l-1.6 1.15L3 5 1.5 3.85h1.9z"/><circle cx="7.5" cy="1.3" r="0.5"/><circle cx="8.6" cy="2.7" r="0.5"/><circle cx="8.4" cy="4.6" r="0.5"/><circle cx="7.2" cy="5.9" r="0.5"/></g></svg>'
+  }[lang] || '';
+  document.querySelectorAll('.settings-flag').forEach(function(el){ el.innerHTML = flagSvg; });
 
   document.dispatchEvent(new CustomEvent('languagechange', { detail: { lang: lang } }));
 }

@@ -38,7 +38,7 @@
   --radius:     20px;
   --radius-lg:  28px;
   --shadow:     0 2px 6px rgba(30,42,34,.05), 0 14px 34px rgba(30,42,34,.06);
-  --maxw:       1120px;
+  --maxw:       1280px;
 }
 
 html[data-theme="dark"]{
@@ -76,7 +76,7 @@ html[data-theme="dark"]{
 *,*::before,*::after{ box-sizing:border-box; }
 html{
   scroll-behavior:smooth;
-  overflow-y:scroll;
+  overflow-x:hidden; overflow-y:scroll;
   scrollbar-gutter:stable;
   /* Belt-and-suspenders fallback for browsers that don't support
      scrollbar-gutter (older Safari, etc): 100vw includes the scrollbar
@@ -85,7 +85,12 @@ html{
   margin-left:calc(100vw - 100%);
   margin-right:0;
 }
-body{ overflow-x:hidden; }
+/* overflow-x:hidden lives on html, not body: setting it on body makes body a
+   CSS scroll container (an overflow-computed-value quirk — a non-visible
+   overflow-x forces overflow-y to auto too), which silently breaks
+   position:sticky for everything inside it, since sticky then resolves
+   against body's own (never-actually-scrolling) box instead of the real
+   viewport that the user is actually scrolling. */
 body{
   margin:0;
   background:var(--bg);
@@ -158,17 +163,24 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
 /* ---------- Header / nav ---------- */
 .site-header{
   background:transparent;
-  position:sticky; top:0; z-index:40;
+  /* z-index only takes effect on a positioned element — header isn't sticky
+     right now, so without position:relative here its z-index would be inert
+     and the (positioned, sticky) counter below would paint above it instead
+     of behind it wherever the two overlap. */
+  position:relative; z-index:40;
   padding-top:14px; padding-left:24px; padding-right:24px;
 }
 /* Hangs off the bottom-right of the nav pill (under the settings cog) like a
    small tab, sharing its glassy background/blur/shadow so it reads as one
    connected component rather than a separate line of text. The outer element
    mirrors .nav's max-width/padding so the tab lines up with the pill's right
-   edge instead of the page edge on wide screens. */
+   edge instead of the page edge on wide screens.
+   Experiment: this — not the header — is the sticky element, so it's the one
+   that stays pinned while scrolling; the header/nav scrolls away normally. */
 .visitor-counter{
   display:flex; justify-content:flex-end;
   max-width:var(--maxw); margin:-1px auto 0; padding:0 24px;
+  position:sticky; top:0; z-index:39;
 }
 .visitor-counter-pill{
   display:flex; align-items:center; gap:6px;
@@ -181,8 +193,8 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
 .visitor-counter-pill svg{ width:13px; height:13px; color:var(--primary); flex-shrink:0; }
 .visitor-counter-pill strong{ color:var(--ink-soft); font-weight:700; }
 @media (max-width:600px){
-  .visitor-counter{ padding:0 18px; }
-  .visitor-counter-pill{ margin-right:8px; padding:6px 14px 7px; font-size:.68rem; gap:5px; white-space:normal; text-align:center; }
+  .visitor-counter{ justify-content:center; padding:0 18px; }
+  .visitor-counter-pill{ margin-right:0; padding:6px 14px 7px; font-size:.68rem; gap:5px; white-space:normal; text-align:center; }
   .visitor-counter-pill svg{ width:12px; height:12px; }
 }
 .nav{
@@ -270,15 +282,19 @@ p{ margin:0 0 1em; color:var(--ink-soft); }
 html[data-theme="dark"] .theme-toggle .icon-sun{ display:none; }
 html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 
-/* Settings (language + theme) consolidated into a single cog-icon dropdown, always in the top-right corner regardless of viewport width */
+/* Settings (language + theme) consolidated into a single dropdown, always in the top-right
+   corner regardless of viewport width. The trigger shows the current language code instead
+   of a generic icon, so it doubles as an always-visible language indicator. */
 .settings-btn{
-  width:38px; height:38px; padding:0; border-radius:100px;
-  display:inline-flex; align-items:center; justify-content:center;
+  width:auto; min-width:38px; height:38px; padding:0 14px; border-radius:100px;
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
   background:var(--bg); color:var(--ink-soft);
 }
 .settings-btn:hover{ background:var(--bg); color:var(--primary-dark); }
 .settings-btn::after{ display:none; }
-.settings-btn svg{ width:19px; height:19px; display:block; }
+.settings-flag{ display:inline-flex; align-items:center; line-height:1; flex-shrink:0; }
+.settings-flag svg{ display:block; width:16px; height:12px; border-radius:2px; box-shadow:0 0 0 1px rgba(0,0,0,.08); }
+.settings-lang-code{ font-size:.8rem; font-weight:700; letter-spacing:.02em; white-space:nowrap; }
 .settings-group.open .settings-btn{ color:var(--primary-dark); }
 .settings-dropdown{ left:auto; right:0; transform:translateY(-6px); padding:14px; gap:16px; }
 .settings-group.open .settings-dropdown{ transform:translateY(0); }
@@ -286,7 +302,10 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 .settings-row .lang-toggle{ flex-shrink:0; }
 .settings-label{ font-size:.85rem; font-weight:700; color:var(--ink); white-space:nowrap; }
 
-@media (max-width:760px){
+/* 900px, not 760px: at 7 nav categories plus the settings cog, the inline desktop
+   nav has no room to breathe below ~900px and starts clipping/overlapping the cog
+   and hamburger off the right edge of the pill well before 760px. */
+@media (max-width:900px){
   .nav{ border-radius:24px; padding:12px 16px; }
   .nav-right{ gap:8px; }
   .lang-btn{ width:42px; height:24px; font-size:.66rem; }
@@ -366,8 +385,9 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
   filter:drop-shadow(0 12px 22px rgba(30,42,34,.16));
 }
 @media (max-width:760px){
+  .hero{ padding-top:32px; }
   .hero-flex{ flex-direction:column-reverse; text-align:center; gap:8px; }
-  .summy-hero{ width:130px; height:130px; }
+  .summy-hero{ width:195px; height:195px; }
 }
 
 /* ---------- Summy mascot decorations ---------- */
@@ -661,6 +681,36 @@ input[type=checkbox]{
 }
 .ad-slot.ad-banner{ min-height:90px; }
 .ad-slot.ad-incontent{ min-height:250px; max-width:728px; }
+
+/* Mock ad creative — sits inside .ad-slot exactly where the real
+   <ins class="adsbygoogle"> unit will go later (see README-ADS.md step 6),
+   so swapping it out is a straight content replacement with no layout or
+   class changes needed. Deliberately grey/neutral rather than brand-green so
+   it reads visually as "ad", and clearly labelled mock so nobody mistakes it
+   for a real, vetted advertiser. */
+.mock-ad{
+  width:100%; height:100%; display:flex; align-items:center; gap:14px;
+  padding:10px 18px; text-align:left;
+}
+.mock-ad-icon{
+  width:44px; height:44px; border-radius:8px; flex-shrink:0;
+  background:linear-gradient(135deg, #ced3da, #aeb4bd);
+}
+.mock-ad-body{ flex:1; min-width:0; }
+.mock-ad-title{ font-weight:700; color:var(--ink-soft); font-size:.9rem; line-height:1.3; }
+.mock-ad-sub{ font-size:.76rem; color:var(--muted); margin-top:2px; }
+.mock-ad-cta{
+  font-family:"Inter",sans-serif; font-size:.78rem; font-weight:700; color:#fff;
+  background:#8a8f98; padding:8px 16px; border-radius:100px; white-space:nowrap; flex-shrink:0;
+}
+.ad-slot.ad-incontent .mock-ad{ flex-direction:column; text-align:center; justify-content:center; gap:10px; }
+.ad-slot.ad-incontent .mock-ad-icon{ width:64px; height:64px; }
+.ad-slot.ad-incontent .mock-ad-sub{ max-width:42ch; }
+@media (max-width:480px){
+  .mock-ad{ padding:8px 12px; gap:10px; }
+  .mock-ad-icon{ width:36px; height:36px; }
+  .mock-ad-cta{ padding:7px 12px; font-size:.72rem; }
+}
 
 /* ---------- Table ---------- */
 .rates-table{ width:100%; border-collapse:collapse; font-size:.98rem; }

@@ -217,6 +217,16 @@ function pct(n, dp){ dp = dp===undefined?1:dp; return (isFinite(n)?n:0).toFixed(
 function clamp(n,min,max){ return Math.max(min, Math.min(max, n)); }
 function num(v, fallback){ const n = parseFloat(v); return isFinite(n) ? n : (fallback||0); }
 
+// Strips entries from `params` that match `defaults` for the same key, so "copy link to
+// this scenario" only encodes fields the user actually changed — a calculator with a dozen
+// inputs left at their defaults no longer produces a URL listing every single one of them.
+function diffParams(params, defaults){
+  Array.from(params.keys()).forEach(function(k){
+    if(defaults.get(k) === params.get(k)) params.delete(k);
+  });
+  return params;
+}
+
 // ---- Shared line-chart renderer (theme-aware SVG, 1-4 series, optional vertical marker, hover tooltip) ----
 // Usage: renderLineChart(containerEl, config)
 // config: { years:[...], series:[{label,color,darkColor,values:[...],width}], yFormatFn, xLabelFn, xLabelEvery, markerIndex, step, width, height, padL }
