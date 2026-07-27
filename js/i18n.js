@@ -4514,6 +4514,10 @@ window.applyLanguage = applyLanguage;
 function initLang(){
   let saved = 'en';
   try { saved = localStorage.getItem('kiwisums_lang') || 'en'; } catch(e){}
+  try {
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if(urlLang && ['en','ko','zh'].includes(urlLang)) saved = urlLang;
+  } catch(e){}
   applyLanguage(saved);
 }
 
