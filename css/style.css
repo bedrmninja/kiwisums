@@ -393,6 +393,8 @@ html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 @media (max-width:760px){
   .hero{ padding-top:32px; }
   .hero-flex{ flex-direction:column-reverse; text-align:center; gap:8px; }
+  .hero-cta-row{ flex-direction:column; }
+  .hero-cta-row .btn{ width:100%; }
 }
 
 /* ---------- Summy mascot decorations ---------- */
@@ -1165,3 +1167,48 @@ html[data-theme="dark"] .metric-bar-fill.nz{ background:var(--primary-dark); }
 .articles-filter button{ min-width:60px; }
 .articles-empty{ text-align:center; color:var(--muted); padding:48px 0; font-size:1rem; }
 .articles-count{ font-size:.85rem; color:var(--muted); margin-bottom:18px; }
+
+/* Share result panel */
+.share-overlay{
+  position:fixed; inset:0; background:rgba(16,21,18,.55); backdrop-filter:blur(2px);
+  display:flex; align-items:center; justify-content:center; z-index:1000; padding:20px;
+}
+.share-modal{
+  position:relative; background:var(--surface); border-radius:var(--radius-lg);
+  box-shadow:0 20px 60px rgba(0,0,0,.3); max-width:560px; width:100%;
+  padding:20px; max-height:90vh; overflow-y:auto;
+}
+.share-close{
+  position:absolute; top:14px; right:14px; width:36px; height:36px; border-radius:50%;
+  border:none; background:var(--bg); color:var(--ink); font-size:1.4rem; line-height:1;
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+}
+.share-close:hover{ background:var(--line); }
+.share-card-preview{
+  width:100%; border-radius:var(--radius); display:block; margin-bottom:18px;
+  border:1px solid var(--line);
+}
+.share-actions{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.sharepanel-btn{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  border:2px solid var(--line); background:var(--surface); color:var(--ink);
+  border-radius:100px; padding:12px 18px; font-family:"Inter",sans-serif; font-weight:600;
+  font-size:.95rem; cursor:pointer; transition:border-color .15s, transform .1s, background .15s;
+}
+.sharepanel-btn svg{ width:20px; height:20px; flex-shrink:0; }
+.sharepanel-btn:hover{ border-color:var(--primary); }
+.sharepanel-btn:active{ transform:scale(.97); }
+.sharepanel-btn.sharepanel-native{ grid-column:1 / -1; background:var(--primary); border-color:var(--primary); color:#fff; }
+.sharepanel-btn.sharepanel-native:hover{ background:var(--primary-dark); border-color:var(--primary-dark); }
+.sharepanel-btn.sharepanel-fb{ color:#1877F2; }
+.sharepanel-btn.sharepanel-fb:hover{ border-color:#1877F2; background:#EBF3FF; }
+.sharepanel-btn.sharepanel-wa{ color:#25D366; }
+.sharepanel-btn.sharepanel-wa:hover{ border-color:#25D366; background:#E9FBF0; }
+.sharepanel-btn.sharepanel-msg{ color:#8B5CF6; }
+.sharepanel-btn.sharepanel-msg:hover{ border-color:#8B5CF6; background:#F3EEFF; }
+[data-theme="dark"] .sharepanel-btn.sharepanel-fb:hover{ background:rgba(24,119,242,.15); }
+[data-theme="dark"] .sharepanel-btn.sharepanel-wa:hover{ background:rgba(37,211,102,.15); }
+[data-theme="dark"] .sharepanel-btn.sharepanel-msg:hover{ background:rgba(139,92,246,.18); }
+@media (max-width:420px){
+  .share-actions{ grid-template-columns:1fr; }
+}

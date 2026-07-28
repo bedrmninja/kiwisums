@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=23">
+<link rel="stylesheet" href="/css/style.css?v=25">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -251,7 +251,7 @@
 
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/home-buying-costs-calculator.html" data-i18n="m_next_btn">Next: what else will it cost to buy? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -477,7 +477,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=7"></script>
+<script src="/js/i18n.js?v=8"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const loanAmount = document.getElementById('loanAmount');
@@ -487,8 +488,9 @@
   const fixedTerm = document.getElementById('fixedTerm');
   const freqSeg = document.getElementById('freqSeg');
   const householdIncome = document.getElementById('householdIncome');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   let freq = 12;
+  let lastCalc = null;
 
   const rateMap = {"0.5":4.49, "1":4.65, "2":5.19, "3":5.29, "4":5.39, "5":5.49};
 
@@ -545,16 +547,21 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){
-      prompt(t('common_copylinkmanual'), url);
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!lastCalc || !window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_mortgage.png',
+        title: 'Mortgage calculation',
+        chips: [ fmt(lastCalc.P), lastCalc.annualRate.toFixed(2)+'%', lastCalc.years + ' years' ],
+        resultValue: fmt2(lastCalc.payment) + lastCalc.freqLabel,
+        resultLabel: 'Estimated repayment',
+        url: url
+      });
     });
-  });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);
@@ -603,6 +610,8 @@
     const totalPaid = payment * n;
     const totalInterest = totalPaid - P;
     const freqLabel = freq===52?'/week':freq===26?'/fortnight':'/month';
+
+    lastCalc = { P: P, annualRate: annualRate, years: years, payment: payment, freqLabel: freqLabel };
 
     document.getElementById('outPayment').textContent = fmt2(payment);
     document.getElementById('outFreqLabel').textContent = freqLabel;
