@@ -285,6 +285,7 @@ const T = {
 
   // ---------- Pilot template: contextual insight, comparison, assumptions, save/share ----------
   common_copylink: { en:"Copy link to this scenario", ko:"이 시나리오 링크 복사하기", zh:"复制此方案链接" },
+  common_shareresult: { en:"Share my result", ko:"결과 공유하기", zh:"分享我的结果" },
   common_linkcopied: { en:"Link copied!", ko:"링크가 복사되었습니다!", zh:"链接已复制!" },
   common_copylinkmanual: { en:"Copy this link:", ko:"이 링크를 복사하세요:", zh:"请复制此链接:" },
   common_neutrality: { en:"Calculations are estimates only and do not constitute financial advice. This calculation also doesn't favour any lender — KiwiSums isn't owned by a bank or broker, and sponsored placements, if any, never change your result.",
