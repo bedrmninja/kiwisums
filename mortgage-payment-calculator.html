@@ -250,6 +250,8 @@
           <p class="receipt-note" data-i18n-html="m_receipt_note">Estimate only, based on a standard reducing-balance loan with no offset, revolving credit or interest-only period. Confirm exact figures with your bank or mortgage adviser.</p>
         </div>
 
+        <p class="callout" id="interpretedResult" style="margin-top:16px;"></p>
+
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/home-buying-costs-calculator.html" data-i18n="m_next_btn">Next: what else will it cost to buy? →</a>
           <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
@@ -402,9 +404,24 @@
 
   <section class="section">
     <div class="wrap prose">
-      <h2 data-i18n="m_h2_1">How this calculator works</h2>
-      <p data-i18n="m_p1">This tool uses the standard reducing-balance formula that New Zealand banks use for table (principal &amp; interest) mortgages. Each repayment is the same amount, but the split between interest and principal shifts over time — early payments are mostly interest, later payments are mostly principal.</p>
+      <h2 data-i18n="m_h2_1">How mortgage repayments are calculated</h2>
+      <p data-i18n="m_p1">This tool uses the standard reducing-balance formula that New Zealand banks use for table (principal &amp; interest) mortgages — the same repayment amount every period, with the mix of interest and principal shifting over time. Here's what each part of the calculation means:</p>
+      <ul>
+        <li><strong data-i18n="m_how_principal_label">Principal</strong> — <span data-i18n="m_how_principal_body">The loan amount — what's left after your deposit is subtracted from the purchase price. This is the balance interest is charged on.</span></li>
+        <li><strong data-i18n="m_how_rate_label">Interest rate</strong> — <span data-i18n="m_how_rate_body">The annual rate your bank charges on the outstanding balance, applied proportionally to however often you repay (weekly, fortnightly or monthly).</span></li>
+        <li><strong data-i18n="m_how_term_label">Loan term</strong> — <span data-i18n="m_how_term_body">How many years you have to repay the loan in full. A longer term lowers each repayment but increases the total interest you pay over the life of the loan.</span></li>
+        <li><strong data-i18n="m_how_freq_label">Repayment frequency</strong> — <span data-i18n="m_how_freq_body">Weekly, fortnightly or monthly. Paying more often shaves a small amount off total interest, since the balance reduces slightly sooner each time.</span></li>
+        <li><strong data-i18n="m_how_amort_label">Amortisation</strong> — <span data-i18n="m_how_amort_body">Why early repayments are mostly interest: the balance is largest at the start, so interest makes up a bigger share of each repayment. As the balance shrinks, more of each repayment goes toward principal instead.</span></li>
+        <li><strong data-i18n="m_how_formula_label">The formula, in plain English</strong> — <span data-i18n="m_how_formula_body">Each repayment first covers that period's interest charge, and whatever's left over goes toward reducing the loan balance. Repeat that every period for the full term, and the balance reaches exactly zero on the final repayment.</span></li>
+      </ul>
       <p data-i18n="m_p2">The interest rate defaults to a representative rate based on major-bank carded rates as advertised in July 2026. Fixed-rate NZ mortgages currently range from around 4.5% for a 6-month term up to around 5.5% for a 5-year term, though special rates for borrowers with 20%+ equity are often a little lower, and rates move regularly — always check the current rate with your bank or a mortgage adviser before making decisions.</p>
+
+      <h2 data-i18n="m_example_h2">Example: $700,000 Auckland mortgage</h2>
+      <p data-i18n="m_example_p1">Sarah and James are buying an $875,000 home in Auckland with a 20% deposit, leaving them with a $700,000 mortgage over 30 years.</p>
+      <p data-i18n="m_example_p2">At 6% interest, their estimated repayment would be approximately $4,197 per month.</p>
+      <p data-i18n="m_example_p3">If their rate increased to 7% at their next refix, repayments would rise to approximately $4,657 per month — roughly $460 more each month, or about $5,520 more a year.</p>
+      <p data-i18n="m_example_p4">That's the kind of shift a single percentage point can make on an Auckland-sized mortgage — which is why comparing fixed-term options before you refix is worth the ten minutes it takes.</p>
+
       <h2 data-i18n="m_h2_2">What this doesn't include</h2>
       <ul>
         <li data-i18n="m_li1">Council rates, water rates, and home &amp; contents insurance</li>
@@ -478,7 +495,7 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
 <script src="/js/share.js?v=6"></script>
 <script>
 (function(){
@@ -621,6 +638,14 @@
     document.getElementById('outTerm').textContent = years + ' ' + t('m_years_suffix');
     document.getElementById('outInterest').textContent = fmt(totalInterest);
     document.getElementById('outTotal').textContent = fmt(totalPaid);
+
+    document.getElementById('interpretedResult').textContent = t('m_interpreted_template')
+      .replace('{rate}', annualRate.toFixed(2))
+      .replace('{loan}', fmt(P))
+      .replace('{years}', years)
+      .replace('{payment}', fmt2(payment))
+      .replace('{freqlabel}', freqLabel)
+      .replace('{interest}', fmt(totalInterest));
 
     const principalPct = clamp(100 * P / totalPaid, 0, 100);
     document.getElementById('splitBar').style.width = principalPct + '%';

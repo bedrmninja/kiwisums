@@ -200,7 +200,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/solar-sizing-calculator.html" data-i18n="sic_next_btn">Next: how big a system do I need? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -334,6 +334,12 @@
       <p data-i18n="sic_p1">Solar panel prices are misleading because the panels themselves are only around a third of what you pay — the rest is inverter, racking, switchboard work, labour, scaffolding and compliance paperwork. That's why a 3kW and 6.6kW system don't cost proportionally different amounts: the fixed costs are roughly the same regardless of size, which is exactly why 6.6kW has become the sweet spot for most NZ homes.</p>
       <p data-i18n="sic_p2">Above 6.6-8kW, the extra panels increasingly generate power you'll export rather than use yourself, which sells at the much lower buy-back rate rather than offsetting your retail bill — so bigger isn't always proportionally better once you're past your household's realistic daytime usage.</p>
 
+      <h2 data-i18n="sic_example_h2">Example: A 6.6kW system with battery in Hamilton</h2>
+      <p data-i18n="sic_example_p1">The Patterson family is installing a standard 6.6kW system in Hamilton at $1.85 per watt, which comes to approximately $12,210 before any battery.</p>
+      <p data-i18n="sic_example_p2">They're also adding a 10kWh battery at $1,000/kWh, which adds another $10,000 to the project.</p>
+      <p data-i18n="sic_example_p3">That brings their total installed cost to approximately $22,210 — a reminder that battery storage on a system this size roughly adds as much again as the panels and inverter themselves.</p>
+      <p data-i18n="sic_example_p4">Many households start with panels only and add a battery later once the panels have paid for themselves — worth comparing both paths with the solar payback calculator before deciding.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -393,7 +399,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const sizeSeg = document.getElementById('sizeSeg');
@@ -403,7 +410,7 @@
   const batteryFields = document.getElementById('batteryFields');
   const batteryKwh = document.getElementById('batteryKwh');
   const batteryCostPerKwh = document.getElementById('batteryCostPerKwh');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   let sizeKw = 6.6;
 
   sizeSeg.addEventListener('click', function(e){
@@ -427,14 +434,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

@@ -224,7 +224,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/pay-rise-calculator.html" data-i18n="th_next_btn">What would a raise add? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -367,6 +367,12 @@
       </table>
       <p style="margin-top:14px;" data-i18n="th_p1">Plus the ACC earner levy at 1.75% of gross earnings, capped at $156,641 of income (maximum levy $2,741.22/year). Student loan repayments are 12% of income above the $24,128 annual threshold. KiwiSaver's default employee contribution rate rose from 3% to 3.5% from 1 April 2026.</p>
 
+      <h2 data-i18n="th_example_h2">Example: A $95,000 salary with default 3.5% KiwiSaver</h2>
+      <p data-i18n="th_example_p1">On a $95,000 gross salary, PAYE income tax comes to approximately $21,228.</p>
+      <p data-i18n="th_example_p2">The ACC earner levy at 1.75% adds approximately $1,663, and the default 3.5% KiwiSaver contribution takes approximately $3,325.</p>
+      <p data-i18n="th_example_p3">That leaves approximately $68,785 take-home — about 72% of the gross salary — or roughly $1,323 a week.</p>
+      <p data-i18n="th_example_p4">Turning off KiwiSaver contributions would add that $3,325 back to take-home pay, but it's worth weighing against the employer match and long-term retirement savings you'd be giving up — the KiwiSaver calculator shows what that trade-off looks like over a working life.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -425,7 +431,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const salary = document.getElementById('salary');
@@ -516,7 +523,7 @@
     document.getElementById('cmp10kEffRate').textContent = pct(r10k.effRate);
   }
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     return new URLSearchParams({
       salary: Math.round(num(salary.value,0)), ks: num(kiwisaver.value,3.5), sl: studentLoan.checked?1:0,
@@ -524,14 +531,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

@@ -200,7 +200,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/solar-battery-calculator.html" data-i18n="shv_next_btn">Thinking about adding a battery too? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -330,6 +330,12 @@
       <p data-i18n="shv_p1">Solar delivers value in two distinct ways that are easy to conflate: the bill savings you bank every year you live in the home, and the resale premium a buyer might pay because they're inheriting those future savings too. NZ research points to roughly a 3-4% uplift in property value on average — meaningful, but well short of the full replacement cost of a system, since a buyer is really only paying for a discounted share of future savings, adjusted for the system's remaining useful life and any perceived risk.</p>
       <p data-i18n="shv_p2">In practice this means solar rarely "pays for itself twice" — once through bill savings and again in full through resale value — but the combination of both benefits still makes it a genuinely strong long-term investment for most NZ homeowners who stay put for several years.</p>
 
+      <h2 data-i18n="shv_example_h2">Example: Selling a $620,000 Nelson home with an owned system</h2>
+      <p data-i18n="shv_example_p1">Sela's home is valued at $620,000 without solar, and her owned system cost $12,500 to install.</p>
+      <p data-i18n="shv_example_p2">At a 3.5% research-based uplift, solar adds approximately $21,700 to her home's value when she comes to sell.</p>
+      <p data-i18n="shv_example_p3">That's more than her $12,500 system cost, for a net equity gain of approximately $9,200 — on top of whatever she already saved on power bills while living there.</p>
+      <p data-i18n="shv_example_p4">That's the double benefit in practice — Sela banked electricity savings every year she lived there, then recovered most of her system cost again at resale, without those two benefits overlapping or double-counting the same dollars.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -389,7 +395,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const homeValue = document.getElementById('homeValue');
@@ -398,7 +405,7 @@
   const upliftPct = document.getElementById('upliftPct');
   const upliftHint = document.getElementById('upliftHint');
   const systemCost = document.getElementById('systemCost');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
 
   [homeValue, upliftPct, systemCost].forEach(el=>el.addEventListener('input', calc));
   ownership.addEventListener('change', function(){
@@ -418,14 +425,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

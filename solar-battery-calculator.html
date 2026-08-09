@@ -198,7 +198,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/solar-export-earnings-calculator.html" data-i18n="sb_next_btn">See what surplus power could earn you →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -328,6 +328,12 @@
       <p data-i18n="sb_p1">A battery doesn't generate a single extra kilowatt-hour of power — its entire value proposition is converting power you'd otherwise export at a low buy-back rate into power you use yourself and avoid paying the much higher retail rate for. In markets with generous feed-in tariffs, that arbitrage is small and batteries make less financial sense. In NZ, where buy-back rates commonly sit at 8-12 cents against a retail rate around 33 cents, that gap is actually quite large in relative terms — but the battery hardware cost is also high enough that payback periods still typically run into the teens of years on the numbers alone.</p>
       <p data-i18n="sb_p2">That's why battery decisions in NZ often come down to more than pure payback maths — genuine backup power during an outage, EV charging flexibility, or simply wanting to maximise self-sufficiency can tip the decision even when the payback period alone looks marginal.</p>
 
+      <h2 data-i18n="sb_example_h2">Example: A 13kWh battery shifting 2,800kWh a year</h2>
+      <p data-i18n="sb_example_p1">The Fitzgeralds add a 13kWh battery for $16,500, expecting to shift approximately 2,800kWh a year that would otherwise be exported.</p>
+      <p data-i18n="sb_example_p2">At the 23-cent gap between retail (33c) and buy-back (10c) rates, that's an additional saving of approximately $644 a year.</p>
+      <p data-i18n="sb_example_p3">At that rate, the battery takes approximately 25.6 years to pay for itself on the numbers alone — longer than many battery warranties, and a clear illustration of why pure payback maths often doesn't favour batteries in NZ.</p>
+      <p data-i18n="sb_example_p4">Whether it still makes sense for the Fitzgeralds depends on things this maths doesn't capture — backup power during an outage, or simply valuing self-sufficiency, which is a personal call rather than a financial one.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -391,7 +397,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const batteryKwh = document.getElementById('batteryKwh');
@@ -401,7 +408,7 @@
   const cycledPeriodSeg = document.getElementById('cycledPeriodSeg');
   const retailPrice = document.getElementById('retailPrice');
   const buybackPrice = document.getElementById('buybackPrice');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   let cycledPeriod = 'annual';
 
   function refreshCycledLabel(){
@@ -436,14 +443,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

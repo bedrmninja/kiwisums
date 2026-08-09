@@ -225,7 +225,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/car-insurance-cost-calculator.html" data-i18n="hci_next_btn">Check car insurance cost too →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -344,6 +344,12 @@
       <h2 data-i18n="hci_h2_2">Sum insured vs market value</h2>
       <p data-i18n="hci_p2">House insurance is based on the cost to rebuild your home, not what it would sell for — land value is excluded, since land itself doesn't burn down or need rebuilding. Underinsuring (setting the sum insured too low) is a common and costly mistake, since it can leave you short at claim time.</p>
 
+      <h2 data-i18n="hci_example_h2">Example: The same $650,000 home insured in Auckland vs Wellington</h2>
+      <p data-i18n="hci_example_p1">With the same $650,000 rebuild sum, $60,000 contents cover, and $500 excess, a homeowner in Wellington will typically see a meaningfully higher premium quote than the identical policy in Auckland.</p>
+      <p data-i18n="hci_example_p2">Christchurch, still carrying the pricing legacy of the 2010-2011 earthquakes, often lands even higher again for the same sums insured.</p>
+      <p data-i18n="hci_example_p3">None of this reflects the quality or condition of the home itself — it's entirely about location risk, since insurers price earthquake exposure into every quote regardless of how well-built the property is.</p>
+      <p data-i18n="hci_example_p4">Which is exactly why comparing quotes across two or three insurers is worth the effort for anyone in a higher-risk region — each insurer weights regional seismic risk somewhat differently, and the gap between quotes can be substantial.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -409,7 +415,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const homeSum = document.getElementById('homeSum');
@@ -475,20 +482,31 @@
     });
   }
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     return new URLSearchParams({ homesum: Math.round(num(homeSum.value,0)), contentssum: Math.round(num(contentsSum.value,0)), region, excess });
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

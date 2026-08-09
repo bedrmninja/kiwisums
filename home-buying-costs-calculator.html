@@ -212,7 +212,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/monthly-budget-calculator.html" data-i18n="hbc_next_btn">See how this fits your monthly budget →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -316,6 +316,12 @@
       <p data-i18n="hbc_p1">Most first-home buyers budget carefully for their deposit, then get caught out by the additional cash needed on top of it. Legal fees, a building inspection, and a LIM report are the big three that apply to almost every purchase, commonly totalling $3,000-$4,000 combined. A registered valuation may be needed if your bank doesn't accept an automated valuation model, particularly for older, unusual, or higher-value properties.</p>
       <p data-i18n="hbc_p2">Beyond the transaction itself, budget for moving costs and a buffer for anything that needs immediate attention once you're in — a $400 building inspection doesn't catch everything, and older homes especially can have surprises in the first few months.</p>
 
+      <h2 data-i18n="hbc_example_h2">Example: A $650,000 first home in Tauranga</h2>
+      <p data-i18n="hbc_example_p1">David is buying his first home in Tauranga for $650,000 with a $130,000 (20%) deposit.</p>
+      <p data-i18n="hbc_example_p2">His bank accepted an automated valuation, so he skipped the $800 registered valuation fee, and his lender waived the loan establishment fee entirely.</p>
+      <p data-i18n="hbc_example_p3">His extra buying costs — legal fees, a building inspection, a LIM report and moving costs — come to roughly $3,900.</p>
+      <p data-i18n="hbc_example_p4">That means David needs roughly $133,900 in total cash at settlement — not just his $130,000 deposit. It's that extra $3,900 that catches first-home buyers out if they've only budgeted for the deposit itself.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -374,14 +380,15 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const price = document.getElementById('price');
   const deposit = document.getElementById('deposit');
   const fieldIds = ['legal','inspection','lim','valuation','moving','establishment'];
   const fields = fieldIds.map(id=>document.getElementById(id));
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
 
   const LOW = {legal:1500, inspection:400, lim:250, valuation:600, moving:1000, establishment:200};
   const HIGH = {legal:2500, inspection:900, lim:450, valuation:1200, moving:2000, establishment:450};
@@ -395,14 +402,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

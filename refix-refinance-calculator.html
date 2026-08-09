@@ -209,7 +209,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/mortgage-payment-calculator.html" data-i18n="rf_next_btn">Compare to a fresh mortgage →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -313,6 +313,12 @@
       <p data-i18n="rf_p1">A break fee isn't simply the gap between your old and new retail rates — it's the bank's estimate of what it costs them to unwind the wholesale funding arrangement they made when you fixed. That's driven by wholesale swap rates, which move differently to the retail rates banks advertise to customers, so a rough estimate based on retail rates (like the default in this calculator) can be meaningfully off in either direction. Always get an exact quote from your bank before committing.</p>
       <p data-i18n="rf_p2">Even with an exact break fee, the decision usually comes down to how much time is left on your current fix and how big the rate gap is. A large rate drop with a year or more remaining often clears the break fee comfortably; a small rate drop with only a few months left rarely does.</p>
 
+      <h2 data-i18n="rf_example_h2">Example: Breaking a $450,000 fix with 8 months left</h2>
+      <p data-i18n="rf_example_p1">Mere has $450,000 remaining on a 1-year fixed rate of 6.79%, with 8 months left to run. A 6-month rate of 5.39% has just become available, and her bank quotes a break fee of $2,100.</p>
+      <p data-i18n="rf_example_p2">The 1.40-percentage-point rate gap saves her approximately $525 a month in interest, or about $4,200 over her remaining 8 months.</p>
+      <p data-i18n="rf_example_p3">After the $2,100 break fee, she'd come out approximately $2,100 ahead in net interest savings — before even counting that she'd then be on a lower rate to refix from at the 6-month mark, rather than locking in 4 more months at the old 6.79%.</p>
+      <p data-i18n="rf_example_p4">With that much of her fixed term left and a rate gap this size, breaking clears her fee comfortably — the calculation gets much tighter with only a month or two remaining, which is why it's worth checking your own numbers rather than a rule of thumb.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -371,7 +377,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const balance = document.getElementById('balance');
@@ -380,7 +387,7 @@
   const monthsRemaining = document.getElementById('monthsRemaining');
   const breakFee = document.getElementById('breakFee');
   const verdictLabel = document.getElementById('verdictLabel');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   let breakFeeManuallyEdited = false;
 
   breakFee.addEventListener('input', function(){ breakFeeManuallyEdited = true; calc(); });
@@ -398,14 +405,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

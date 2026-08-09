@@ -227,7 +227,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/how-much-can-i-borrow-calculator.html" data-i18n="rvb_next_btn">Next: how much could I borrow? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -351,6 +351,12 @@
       <p data-i18n="rvb_p1">Buying builds wealth through home equity — the gap between your home's value and what you still owe on the mortgage. Renting builds wealth by investing what you're not spending on a deposit and, if renting is cheaper than owning month-to-month, investing that monthly saving too. This calculator tracks both paths over the same number of years and compares the net result.</p>
       <p data-i18n="rvb_p2">The result is sensitive to your assumptions, especially property growth and investment returns — small changes to either can flip the outcome, so it's worth testing a few scenarios rather than trusting a single result.</p>
 
+      <h2 data-i18n="rvb_example_h2">Example: A $600,000 Christchurch townhouse vs renting</h2>
+      <p data-i18n="rvb_example_p1">Aroha is deciding between buying a $600,000 townhouse in Christchurch with a $100,000 deposit, or renting an equivalent home for $550 a week and investing the difference.</p>
+      <p data-i18n="rvb_example_p2">At 5.59% over 10 years, buying would leave her with approximately $475,000 in home equity (after her remaining mortgage balance), assuming 4% annual property growth.</p>
+      <p data-i18n="rvb_example_p3">If she rented instead and invested her $100,000 deposit plus the monthly difference between renting and owning at a 5% return, she'd have approximately $356,000 after 10 years.</p>
+      <p data-i18n="rvb_example_p4">In this scenario, buying comes out around $118,000 ahead over the 10-year window — though that gap narrows or reverses at lower property growth rates, higher investment returns, or a shorter time horizon, which is exactly why it's worth running your own numbers above rather than relying on a rule of thumb.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -409,7 +415,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const price = document.getElementById('price');
@@ -421,7 +428,7 @@
   const growth = document.getElementById('growth');
   const invReturn = document.getElementById('invReturn');
   const verdictLabel = document.getElementById('verdictLabel');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
 
   [price, deposit, rent, mortgageRate, years, growth, invReturn].forEach(el=>el.addEventListener('input', calc));
 
@@ -434,14 +441,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);
