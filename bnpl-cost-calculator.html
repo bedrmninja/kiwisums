@@ -194,7 +194,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/credit-card-payoff-calculator.html" data-i18n="bnpl_next_btn">Compare to paying by credit card →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -319,6 +319,12 @@
       <p data-i18n="bnpl_p1">Buy Now Pay Later providers make their money mainly from merchant fees, not from customers, which is why there's no interest charge if you pay on time. The risk is entirely in missed payments — late fees are flat dollar amounts rather than percentage-based interest, which means they hit hardest on smaller purchases and add up fast if you're juggling several BNPL purchases at once and miss payments on more than one.</p>
       <p data-i18n="bnpl_p2">BNPL purchases also don't build any credit history the way responsible credit card use can, and multiple concurrent BNPL commitments can be easy to lose track of since each provider tracks your payments separately — worth keeping a simple list if you use more than one.</p>
 
+      <h2 data-i18n="bnpl_example_h2">Example: $150 shoes on Afterpay, 2 missed payments</h2>
+      <p data-i18n="bnpl_example_p1">Leilani buys $150 shoes on Afterpay, split into 4 payments of $37.50 each.</p>
+      <p data-i18n="bnpl_example_p2">She misses 2 of the 4 payments and doesn't catch up within the grace period on either one.</p>
+      <p data-i18n="bnpl_example_p3">Each missed payment costs $10 initially plus another $7 if still unpaid after about a week — $17 per missed payment, or $34 total for both.</p>
+      <p data-i18n="bnpl_example_p4">That $34 stays under the cap (the lesser of $37.50 — 25% of the order — or $68), for an effective cost of approximately 22.7% on top of the purchase price — all from a purchase that would have cost nothing extra if every payment had landed on time.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -377,7 +383,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const purchase = document.getElementById('purchase');
@@ -452,20 +459,31 @@
     document.getElementById('rowLaybuy').classList.toggle('compare-row-current', provider==='laybuy');
   }
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     return new URLSearchParams({ provider, purchase: num(purchase.value,0), missed: num(missed.value,0) });
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

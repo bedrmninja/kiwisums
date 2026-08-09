@@ -209,7 +209,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/debt-payoff-order-calculator.html" data-i18n="sg_next_btn">Got debt to deal with too? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -354,6 +354,12 @@
       <p data-i18n="sg_p1">The two levers that matter most are your monthly contribution and your starting point — interest helps, especially over longer timeframes, but for most short-to-medium goals it's a smaller factor than simply how much you set aside each month. Automating a transfer on payday, before you can spend it, is one of the most reliable ways to hit a savings target on schedule.</p>
       <p data-i18n="sg_p2">For goals within the next 1-3 years, a savings account or term deposit is usually the safer home for the money, since the balance won't drop right before you need it. Growth-style investments suit longer horizons where short-term dips have time to recover.</p>
 
+      <h2 data-i18n="sg_example_h2">Example: Saving $8,000 for a wedding</h2>
+      <p data-i18n="sg_example_p1">Priya and Ben want to save $8,000 for their wedding in Wellington. They already have $500 put aside and can contribute $380 a month.</p>
+      <p data-i18n="sg_example_p2">Ignoring interest, that's approximately 20 months to reach $8,000 — the $7,500 gap divided by their $380 monthly contribution.</p>
+      <p data-i18n="sg_example_p3">Adding a 4% p.a. return from a savings account shaves a little off that timeline, but not dramatically — over a 20-month window, interest contributes only a small fraction of the total.</p>
+      <p data-i18n="sg_example_p4">For a goal this size and timeframe, the monthly contribution amount matters far more than the interest rate — worth remembering before agonising over which savings account offers 0.2% more.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -412,7 +418,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const target = document.getElementById('target');
@@ -549,7 +556,7 @@
     document.getElementById('cmp100Time').textContent = r100c.alreadyThere ? t('sg_already_there') : (r100c.months!==undefined ? monthsLabel(r100c.months) : '—');
   }
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     return new URLSearchParams({
       target: Math.round(num(target.value,0)), current: Math.round(num(current.value,0)),
@@ -558,14 +565,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

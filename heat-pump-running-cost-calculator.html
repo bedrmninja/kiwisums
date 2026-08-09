@@ -195,7 +195,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/solar-install-cost-calculator.html" data-i18n="hp_next_btn">Thinking about solar too? Start with install cost →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -325,6 +325,12 @@
       <p data-i18n="hp_p1">A standard electric heater converts electricity to heat at roughly a 1-to-1 ratio — every kWh of electricity becomes about 1 kWh of heat. A heat pump works completely differently: it moves existing heat from outside air into your home rather than generating it from scratch, which lets it deliver 3-4 kWh of heat for every 1 kWh of electricity it consumes. That 3-4x efficiency multiplier is why heat pumps commonly cost 60-75% less to run for the same amount of warmth.</p>
       <p data-i18n="hp_p2">Efficiency does drop as outdoor temperatures fall, since there's less ambient heat to extract — this is why cold-climate-rated heat pumps, which maintain higher COP in near-freezing conditions, are worth the premium in colder parts of NZ like Central Otago or inland Canterbury.</p>
 
+      <h2 data-i18n="hp_example_h2">Example: A Dunedin household heating for 150 days</h2>
+      <p data-i18n="hp_example_p1">The Andersons run a 3kW heat pump for 5 hours a day over Dunedin's 150-day heating season, delivering approximately 2,250kWh of heat.</p>
+      <p data-i18n="hp_example_p2">At a COP of 3.2 — a little lower than the 3.5 mid-range default, since Dunedin's colder climate reduces heat pump efficiency — that heat pump uses only approximately 700kWh of electricity, costing approximately $232 for the season.</p>
+      <p data-i18n="hp_example_p3">An equivalent electric heater delivering the same 2,250kWh of heat at a 1:1 ratio would cost approximately $743 — meaning the heat pump saves the Andersons roughly $511 over the winter, for the same warmth.</p>
+      <p data-i18n="hp_example_p4">Even accounting for Dunedin's colder climate pulling the COP down from the mid-range default, the heat pump still costs less than a third of what an electric heater would for the same heat — the efficiency gap holds up even in NZ's colder regions.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -384,7 +390,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const capacityKw = document.getElementById('capacityKw');
@@ -393,7 +400,7 @@
   const cop = document.getElementById('cop');
   const copHint = document.getElementById('copHint');
   const price = document.getElementById('price');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
 
   [capacityKw, hoursDay, seasonDays, cop, price].forEach(el=>el.addEventListener('input', calc));
 
@@ -405,14 +412,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

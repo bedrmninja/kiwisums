@@ -250,7 +250,7 @@
         <p class="receipt-note" data-i18n="cve_receipt_note">Employees also get paid annual leave (commonly 4+ weeks) and sick leave that contractors don't — factor that into any rate comparison, not just the dollar figures above.</p>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/kiwisaver-calculator.html" data-i18n="cve_next_btn">See how this affects your KiwiSaver →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -384,6 +384,12 @@
       <p data-i18n-html="cve_p1">Employees and contractors pay income tax at the same marginal rates, so tax brackets aren't the main difference. What differs is: contractors can deduct genuine business expenses before tax; employees get an employer-matched KiwiSaver contribution on top of their salary, which contractors don't; contractors pay their own ACC levies (an earner's levy plus a Working Safer levy, and typically a work levy on top that varies by occupation); and employees get paid annual and sick leave that contractors have to self-fund by charging more.</p>
       <p data-i18n="cve_p2">Because of the leave and KiwiSaver gap, many contractors price their day or hourly rate around 20-30% above an equivalent employee salary, on top of covering their own expenses and ACC. If a contract rate looks similar to a salaried role's pay, it's often worth less once those gaps are accounted for.</p>
 
+      <h2 data-i18n="cve_example_h2">Example: A $110,000 salaried role vs an equivalent contract</h2>
+      <p data-i18n="cve_example_p1">Using the common 20-30% contractor premium convention, an equivalent day-rate contract for a $110,000 PAYE role would typically be priced to gross approximately $132,000-$143,000 a year.</p>
+      <p data-i18n="cve_example_p2">That's a meaningful headline jump — but once the contractor covers their own ACC levies, gets no employer KiwiSaver match, and self-funds annual and sick leave by working fewer paid weeks a year, the gap in real take-home terms narrows considerably.</p>
+      <p data-i18n="cve_example_p3">Which is exactly why comparing headline pay alone is misleading — the 20-30% premium exists specifically to offset those gaps, not to represent a genuine pay rise.</p>
+      <p data-i18n="cve_example_p4">Running your own actual numbers above — not the rule of thumb — is the only way to know whether a specific contract rate is genuinely better, worse, or roughly equivalent to a salaried offer.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -442,7 +448,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const salary = document.getElementById('salary');
@@ -455,7 +462,7 @@
   const ksRate = document.getElementById('ksRate');
   const expenses = document.getElementById('expenses');
   const verdictLabel = document.getElementById('verdictLabel');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   let rateType = 'daily';
 
   const BRACKETS = [
@@ -575,14 +582,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

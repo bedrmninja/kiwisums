@@ -195,7 +195,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/solar-payback-calculator.html" data-i18n="sv_next_btn">Next: how long until it pays for itself? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -325,6 +325,12 @@
       <p data-i18n="sv_p1">The single biggest lever in your solar savings isn't system size — it's how much of what you generate you actually use in your own home. In 2026, retail electricity runs around 33 cents per kWh, while buy-back rates for exported power sit around 8-12 cents — meaning self-used power is worth roughly three times as much as exported power. Two identical systems can produce very different savings depending purely on when the household is home and using power during daylight hours.</p>
       <p data-i18n="sv_p2">Simple habits — running the dishwasher, washing machine or hot water cylinder timer during the day rather than the evening — can meaningfully shift this balance in your favour without spending anything extra.</p>
 
+      <h2 data-i18n="sv_example_h2">Example: Two identical 6.6kW systems in Tauranga, different habits</h2>
+      <p data-i18n="sv_example_p1">Both the Okafor and Kim families have identical 6.6kW systems in Tauranga, each generating approximately 8,580kWh a year.</p>
+      <p data-i18n="sv_example_p2">The Okafors are home during the day and run appliances in daylight, reaching 65% self-consumption. The Kims both work 9-5 and use most of their power in the evening, reaching only 35% self-consumption.</p>
+      <p data-i18n="sv_example_p3">At 33c/kWh retail and a 10c/kWh buy-back rate, the Okafors save approximately $2,140 a year, while the Kims save only approximately $1,550 — from the exact same system.</p>
+      <p data-i18n="sv_example_p4">That's a nearly $600-a-year gap driven entirely by when power gets used, not by the system itself — which is exactly why shifting appliance use to daylight hours is often the cheapest upgrade a solar household can make.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -384,7 +390,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const sizeKw = document.getElementById('sizeKw');
@@ -393,7 +400,7 @@
   const buybackPrice = document.getElementById('buybackPrice');
   const selfConsumption = document.getElementById('selfConsumption');
   const scHint = document.getElementById('scHint');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
 
   [sizeKw, yieldKwh, retailPrice, buybackPrice, selfConsumption].forEach(el=>el.addEventListener('input', calc));
 
@@ -405,14 +412,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

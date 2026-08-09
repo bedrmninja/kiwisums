@@ -191,7 +191,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/solar-home-value-calculator.html" data-i18n="sp_next_btn">Next: does it add to my home's value? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -333,6 +333,12 @@
       <p data-i18n="sp_p1">NZ retail electricity prices have climbed roughly 30-50% over the past decade, driven by network upgrades and rising demand from EV charging and heat pump adoption — and most forecasts expect that trend to continue. Once your solar system is paid for, your generation cost is effectively locked at zero for the remaining 15-20+ years of its life, while the electricity you're no longer buying keeps getting more expensive. That's why payback calculations that ignore rising prices tend to understate solar's real long-term value.</p>
       <p data-i18n="sp_p2">There's also a dry-year risk factor specific to NZ: because the grid leans heavily on hydro generation, low-rainfall years can spike wholesale (and sometimes retail) prices — a risk solar households are partially insulated from.</p>
 
+      <h2 data-i18n="sp_example_h2">Example: A $16,000 system saving $2,400 in year one</h2>
+      <p data-i18n="sp_example_p1">Tama installs a $16,000 solar system in Whanganui that saves him approximately $2,400 in year one.</p>
+      <p data-i18n="sp_example_p2">Even with a modest 3% annual rise in electricity prices, his cumulative savings cross the $16,000 system cost during year 6 — a payback period of approximately 6.2 years.</p>
+      <p data-i18n="sp_example_p3">Over the system's full 25-year life, assuming that same 3% annual price growth, he'd save approximately $87,500 in total — a net profit of roughly $71,500 once the panels have paid for themselves.</p>
+      <p data-i18n="sp_example_p4">If electricity prices rise faster than 3% a year, which they have in several recent years, both numbers get better still — this calculator's inflation slider is worth testing at a few different settings rather than trusting a single assumption.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -392,14 +398,15 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const systemCost = document.getElementById('systemCost');
   const annualSavings = document.getElementById('annualSavings');
   const inflation = document.getElementById('inflation');
   const inflHint = document.getElementById('inflHint');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
 
   [systemCost, annualSavings, inflation].forEach(el=>el.addEventListener('input', calc));
 
@@ -410,14 +417,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

@@ -202,7 +202,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/contractor-vs-employee-calculator.html" data-i18n="pr_next_btn">Thinking about contracting instead? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -332,6 +332,12 @@
       <p data-i18n-html="pr_p1">New Zealand's tax system is marginal, meaning a raise is taxed at increasing rates only on the portion that falls into each new bracket — not your entire income. Even so, the marginal rate on the raise itself is usually higher than your overall average tax rate, since it's stacked on top of income already using up the lower brackets. Add KiwiSaver (commonly 3.5% of the extra income) and ACC earner levy, and a $10,000 raise can easily net out at $5,500-$6,500 in extra take-home pay rather than the full amount.</p>
       <p data-i18n="pr_p2">This is worth knowing before negotiating — a raise that sounds generous gross can be underwhelming net, and it's reasonable to ask for a slightly larger gross figure if a specific net outcome matters to your budget.</p>
 
+      <h2 data-i18n="pr_example_h2">Example: An $8,000 raise from $70,000 to $78,000</h2>
+      <p data-i18n="pr_example_p1">Wiremu gets a raise from $70,000 to $78,000. Instinctively, an $8,000 raise sounds like an extra $667 a month.</p>
+      <p data-i18n="pr_example_p2">In reality, after PAYE tax (some of which lands in the 30% bracket), the 1.75% ACC levy, and his 3.5% KiwiSaver contribution, his take-home only rises by approximately $5,180 a year.</p>
+      <p data-i18n="pr_example_p3">That's about 65% of the gross raise, or roughly $432 a month — not the $667 the headline number suggested.</p>
+      <p data-i18n="pr_example_p4">Worth knowing before negotiating — if Wiremu needed a specific net outcome to make a budget work, he'd need to ask for a somewhat larger gross figure than the net number alone would suggest.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -390,7 +396,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const oldSalary = document.getElementById('oldSalary');
@@ -461,7 +468,7 @@
     document.getElementById('cmp10kGain').textContent = fmt(net10k - oldNet);
   }
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     return new URLSearchParams({
       old: Math.round(num(oldSalary.value,0)), new: Math.round(num(newSalary.value,0)),
@@ -470,14 +477,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

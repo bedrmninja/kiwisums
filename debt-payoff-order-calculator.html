@@ -202,7 +202,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/credit-card-payoff-calculator.html" data-i18n="dpo_next_btn">Focus on one card? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -348,6 +348,12 @@
       <p data-i18n="dpo_p1">Both methods pay the minimum on every debt, then throw every spare dollar at one target debt until it's gone, then roll that payment into the next target. The only difference is which debt you target first. Avalanche targets the highest interest rate, which mathematically minimises total interest paid — it's the objectively cheaper method every time balances and rates differ.</p>
       <p data-i18n="dpo_p2">Snowball targets the smallest balance instead, which usually means winning your first "debt-free" moment faster, even if it costs a bit more overall. For many people that early win is worth more in motivation than the extra interest costs in dollars — this calculator shows you exactly how much that motivation costs, so you can decide if it's worth it for you.</p>
 
+      <h2 data-i18n="dpo_example_h2">Example: A $3,000 car loan at 11% vs an $8,000 credit card at 21%</h2>
+      <p data-i18n="dpo_example_p1">Sina has a $3,000 car loan at 11% p.a. and an $8,000 credit card balance at 21% p.a., plus $200 a month extra to put toward whichever she tackles first.</p>
+      <p data-i18n="dpo_example_p2">Avalanche has her attack the credit card first, since 21% is the higher rate — even though it's the bigger balance. This minimises the total interest she pays across both debts.</p>
+      <p data-i18n="dpo_example_p3">Snowball has her attack the smaller $3,000 car loan first instead. She'd hit her first "debt-free" milestone several months sooner, which can be worth a lot for staying motivated — but the $8,000 balance keeps accruing at 21% for longer, so she pays more in total interest overall.</p>
+      <p data-i18n="dpo_example_p4">Neither answer is wrong — it depends on whether Sina needs the early win to stay motivated or can stick with the plan either way. Try both scenarios above with your own numbers to see the actual dollar gap for your situation.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -406,7 +412,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const ids = ['balA','rateA','minA','balB','rateB','minB','balC','rateC','minC','extra'];
@@ -561,7 +568,7 @@
     document.getElementById('cmp200Interest').textContent = fmt(ava200.totalInterest);
   }
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     const paramObj = {};
     ids.forEach(id=>{ paramObj[id] = num(els[id].value,0); });
@@ -569,14 +576,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

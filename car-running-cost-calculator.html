@@ -233,7 +233,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/car-depreciation-calculator.html" data-i18n="cr_next_btn">Next: what will it be worth later? →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -351,6 +351,12 @@
       <p data-i18n="cr_p1">This calculator adds together your fuel or electricity cost, road user charges (RUC) where applicable, registration (rego), warrant of fitness (WOF), insurance, and servicing/tyres to give a realistic annual and weekly running cost. Diesel and electric vehicles pay RUC — currently around $76 per 1,000km for light vehicles — instead of, or in addition to, fuel excise, which is why they're broken out separately.</p>
       <p data-i18n-html="cr_p2">It doesn't include depreciation, which for many vehicles is actually the single largest cost of ownership, or finance costs if you're paying the car off — use the <a href="/car-finance-calculator.html">car finance calculator</a> alongside this one if that applies to you.</p>
 
+      <h2 data-i18n="cr_example_h2">Example: A diesel ute doing 18,000km a year in Palmerston North</h2>
+      <p data-i18n="cr_example_p1">Grant drives a diesel Ford Ranger for his building business, covering 18,000km a year at 9.5L/100km.</p>
+      <p data-i18n="cr_example_p2">His fuel cost comes to approximately $3,590 a year, plus around $1,370 in road user charges (RUC), since diesel vehicles pay RUC instead of fuel excise.</p>
+      <p data-i18n="cr_example_p3">Add rego, WOF, insurance and servicing, and his total running cost comes to approximately $7,900 a year — or about $152 a week.</p>
+      <p data-i18n="cr_example_p4">That's before depreciation or finance costs. For a work ute like Grant's that gets traded in every few years, depreciation alone can add another $150 a week or more — which is why it's worth checking the car depreciation calculator alongside this one for the full picture.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -409,7 +415,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const fuelSeg = document.getElementById('fuelSeg');
@@ -459,7 +466,7 @@
     calc();
   });
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     return new URLSearchParams({
       fuel: fuelType, economy: num(economy.value,0), price: num(fuelPrice.value,0),
@@ -469,14 +476,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

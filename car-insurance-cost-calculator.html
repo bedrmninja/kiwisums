@@ -228,7 +228,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/house-contents-insurance-calculator.html" data-i18n="cic_next_btn">Check house & contents insurance too →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -346,6 +346,12 @@
       <h2 data-i18n="cic_h2_2">Why do young drivers pay more?</h2>
       <p data-i18n="cic_p2">Statistically, younger and less experienced drivers are involved in more at-fault accidents, so insurers price that higher claims risk into the premium. The gap narrows with age and a clean driving record, and can often be reduced with a higher excess or a restricted-driver discount for some policies.</p>
 
+      <h2 data-i18n="cic_example_h2">Example: The same $25,000 car, a 22-year-old vs a 35-year-old driver</h2>
+      <p data-i18n="cic_example_p1">Comparing comprehensive cover on the same $25,000 car with the same $500 excess, a 22-year-old driver will typically see a substantially higher premium quote than a driver in the 25-59 age band.</p>
+      <p data-i18n="cic_example_p2">That gap reflects the higher at-fault accident rate insurers statistically see in younger drivers — it's priced into the premium regardless of any individual driver's actual skill or care.</p>
+      <p data-i18n="cic_example_p3">That gap narrows with age and a clean driving record over time, and can often be reduced sooner by choosing a higher excess or asking about a no-claims or restricted-licence discount.</p>
+      <p data-i18n="cic_example_p4">It's not personal — it's statistical — but the excess level and cover type are the two levers a young driver actually has some control over, which is exactly what this calculator lets you test.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -411,7 +417,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const vehicleValue = document.getElementById('vehicleValue');
@@ -484,20 +491,31 @@
     document.getElementById('cmpTpo').textContent = fmt(computePremium(value, 'tpo', ageBand, excess));
   }
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     return new URLSearchParams({ value: Math.round(num(vehicleValue.value,0)), cover: coverType, age: ageBand, excess });
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

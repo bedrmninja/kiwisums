@@ -227,7 +227,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/income-protection-insurance-calculator.html" data-i18n="hic_next_btn">Check income protection cover too →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -346,6 +346,12 @@
       <h2 data-i18n="hic_h2_2">Why does age matter so much?</h2>
       <p data-i18n="hic_p2">Health claims become statistically more likely as you age, so premiums rise steadily through your 40s, 50s and beyond. Joining younger and staying continuously covered can help avoid new-condition exclusions that may apply if you switch insurers or re-join after a gap later in life.</p>
 
+      <h2 data-i18n="hic_example_h2">Example: A couple in their 50s comparing surgical-only vs comprehensive</h2>
+      <p data-i18n="hic_example_p1">For a couple both aged 52, surgical-only cover — hospital treatment and surgery, helping skip public waitlists — will typically price meaningfully lower than comprehensive cover on the same $500 excess.</p>
+      <p data-i18n="hic_example_p2">Comprehensive cover adds day-to-day extras like specialist consultations and diagnostic scans, which get used far more often than major surgery — that usage frequency is why the price gap between the two levels is so large.</p>
+      <p data-i18n="hic_example_p3">Both premiums will also sit noticeably higher than the same policy would cost this couple at 35, reflecting the steadily rising health-claim risk that comes with age.</p>
+      <p data-i18n="hic_example_p4">Joining now, even at surgical-only level, and staying continuously covered protects against new-condition exclusions that can apply if they let cover lapse and try to rejoin later, once new health issues have already appeared.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -411,7 +417,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const age = document.getElementById('age');
@@ -488,20 +495,31 @@
     });
   }
 
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   function buildShareParams(){
     return new URLSearchParams({ age: Math.round(num(age.value,35)), cover: coverLevel, people, excess });
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);

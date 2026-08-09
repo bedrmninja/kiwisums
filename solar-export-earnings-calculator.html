@@ -198,7 +198,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn" href="/heat-pump-running-cost-calculator.html" data-i18n="se_next_btn">Check heat pump running costs →</a>
-          <button type="button" class="btn btn-ghost" id="shareBtn" data-i18n="common_copylink" style="min-width:250px; justify-content:center;">Copy link to this scenario</button>
+          <button type="button" class="btn btn-ghost" id="shareResultBtn" data-i18n="common_shareresult" style="min-width:190px; justify-content:center;">Share my result</button>
         </div>
         <p class="neutrality-note" data-i18n="common_neutrality">This calculation doesn't favour any lender. KiwiSums isn't owned by a bank or broker, and sponsored placements — if any — never change your result.</p>
       </div>
@@ -328,6 +328,12 @@
       <p data-i18n="se_p1">It's tempting to think of solar export as a mini income stream, and it genuinely is one — but it's worth keeping in perspective. At a typical 10c/kWh buy-back rate against a 33c/kWh retail rate, every kWh you export earns you roughly a third of what the same kWh would have saved you if used directly. Shopping around for a better buy-back rate is worthwhile once you've got a system installed, since the gap between retailers can be meaningful, but it shouldn't be the deciding factor in choosing a system size or an installer.</p>
       <p data-i18n="se_p2">Some retailers bundle buy-back rates into wider "solar plans" with different fixed charges or time-of-use pricing — it pays to compare the full plan, not just the headline buy-back number, since a slightly lower buy-back rate on an otherwise cheaper plan can still come out ahead overall.</p>
 
+      <h2 data-i18n="se_example_h2">Example: Comparing buy-back offers on an 8kW system in New Plymouth</h2>
+      <p data-i18n="se_example_p1">Koa has an 8kW system generating approximately 10,000kWh a year, with 60% self-consumption — leaving approximately 4,000kWh a year exported.</p>
+      <p data-i18n="se_example_p2">His current retailer pays an 8c/kWh buy-back rate, worth approximately $320 a year. A competitor offers 15c/kWh on an otherwise similar plan, worth approximately $600 a year.</p>
+      <p data-i18n="se_example_p3">Switching adds approximately $280 a year for doing nothing but changing which company buys his surplus power — no system changes, no extra cost.</p>
+      <p data-i18n="se_example_p4">Small compared to his overall bill savings, but a genuinely free $280 a year is still worth an annual check of what other retailers are offering.</p>
+
       <h2 data-i18n="common_faqheading">Frequently asked questions</h2>
       <div class="faq-list">
         <div class="faq-item">
@@ -387,7 +393,8 @@
 </footer>
 
 <script src="/js/site.js?v=6"></script>
-<script src="/js/i18n.js?v=8"></script>
+<script src="/js/i18n.js?v=9"></script>
+<script src="/js/share.js?v=6"></script>
 <script>
 (function(){
   const sizeKw = document.getElementById('sizeKw');
@@ -395,7 +402,7 @@
   const selfConsumption = document.getElementById('selfConsumption');
   const scHint = document.getElementById('scHint');
   const buybackPrice = document.getElementById('buybackPrice');
-  const shareBtn = document.getElementById('shareBtn');
+  const shareResultBtn = document.getElementById('shareResultBtn');
   const earningsPeriodSeg = document.getElementById('earningsPeriodSeg');
   const earningsLabel = document.getElementById('earningsLabel');
   const secondaryLineLabel = document.getElementById('secondaryLineLabel');
@@ -418,14 +425,25 @@
   }
   const defaultShareParams = buildShareParams();
 
-  shareBtn.addEventListener('click', function(){
-    const params = diffParams(buildShareParams(), defaultShareParams);
-    const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
-    navigator.clipboard.writeText(url).then(function(){
-      shareBtn.textContent = t('common_linkcopied');
-      setTimeout(function(){ shareBtn.textContent = t('common_copylink'); }, 2200);
-    }).catch(function(){ prompt(t('common_copylinkmanual'), url); });
-  });
+  if(shareResultBtn){
+    shareResultBtn.addEventListener('click', function(){
+      if(!window.KSShare) return;
+      const params = diffParams(buildShareParams(), defaultShareParams);
+      const url = location.origin + location.pathname + (params.toString() ? '?' + params.toString() : '');
+      const totalEl = document.querySelector('.receipt-total');
+      const labelEl = document.querySelector('.receipt-total-label');
+      const chipEls = Array.from(document.querySelectorAll('.receipt-line .v')).slice(0, 3);
+      const h1El = document.querySelector('h1');
+      window.KSShare.openSharePanel({
+        iconImage: '/images/summy_calculator.png',
+        title: h1El ? h1El.textContent.trim() : document.title,
+        chips: chipEls.map(function(el){ return el.textContent.trim(); }),
+        resultValue: totalEl ? totalEl.textContent.trim() : '',
+        resultLabel: labelEl ? labelEl.textContent.trim() : '',
+        url: url
+      });
+    });
+  }
 
   function loadFromUrl(){
     const p = new URLSearchParams(location.search);
