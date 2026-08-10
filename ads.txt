@@ -1,4 +1,4 @@
-# ads.txt — required by Google AdSense to prevent unauthorised ad reselling.
+# ads.txt - required by Google AdSense to prevent unauthorised ad reselling.
 # This file must live at the root of your domain: https://kiwisums.com/ads.txt
 
 google.com, pub-6566059220538616, DIRECT, f08c47fec0942fa0
